@@ -1,0 +1,22 @@
+.advertisement {
+  background-color: $dark-theme-color;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 16px;
+    background-image: none;
+
+    .social-share {
+      margin-left: auto;
+    }
+  }
+}
+
+@media (min-width: 990px) {
+  .advertisement .container {
+    flex-direction: row;
+  }
+}
+

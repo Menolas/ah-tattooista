@@ -1,0 +1,50 @@
+.tattoo-style {
+
+  &::after {
+    display: none;
+  }
+
+  .tattoo-style__list {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .tattoo-style__item {
+    display: none;
+  }
+
+  .tattoo-style__item.active {
+    display: block;
+  }
+
+  .tattoo-style__item-content {
+    line-height: 1.4;
+  }
+}
+
+.tattoo-style__title {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+@media (min-width: 990px) {
+
+  .tattoo-style {
+    padding-bottom: 112px;
+
+    .tattoo-style__list {
+      column-gap: 28px;
+      margin-bottom: 70px;
+    }
+
+    .tattoo-style__item-content {
+      display: flex;
+      column-gap: 60px;
+    }
+
+    .tattoo-style__item {
+      display: block;
+    }
+  }
+}
