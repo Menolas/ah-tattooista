@@ -1,0 +1,104 @@
+.portfolio__list-wrap {
+  width: 100%;
+}
+
+.portfolio__list {
+  @include list-style;
+  display: flex;
+  justify-content: center;
+  column-gap: 38px;
+}
+
+.portfolio__item {
+  display: none;
+
+  &:first-child {
+    display: block;
+  }
+
+  &:first-child .portfolio__link {
+    background-image: url("../img/black-gray.png");
+  }
+
+  &:nth-child(2) .portfolio__link {
+    background-image: url("../img/blackWork.jpg");
+  }
+
+  &:nth-child(3) .portfolio__link {
+    background-image: url("../img/fineLine.jpg");
+  }
+
+  &:nth-child(4) .portfolio__link {
+    background-image: url("../img/neoTraditional.png");
+  }
+}
+
+.portfolio__link {
+  @include link-style;
+  position: relative;
+  width: 270px;
+  height: 380px;
+  background-size: cover;
+}
+
+.portfolio__link-title {
+  position: absolute;
+  bottom: 50px;
+  right: -22px;
+  display: flex;
+  flex-direction: column;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 0.9;
+  text-shadow: 6px 2px 2px rgba(0, 0, 0, 0.95);
+
+  span {
+    text-transform: capitalize;
+  }
+
+  span:nth-child(2) {
+    margin: 0 auto;
+  }
+
+  span:last-child {
+    margin-left: 20px;
+  }
+}
+
+@media(min-width: 990px) {
+  .portfolio__list-wrap {
+    width: 90%;
+  }
+
+  .portfolio__list {
+    @include list-style;
+    display: flex;
+    justify-content: center;
+    column-gap: 38px;
+  }
+
+  .portfolio__item.active {
+    display: block;
+  }
+
+  .portfolio__link {
+    @include link-style;
+    position: relative;
+  }
+
+  .portfolio__link-title {
+    position: absolute;
+    bottom: 50px;
+    right: -22px;
+    display: flex;
+    flex-direction: column;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 0.9;
+    text-shadow: 6px 2px 2px rgba(0, 0, 0, 0.95);
+
+    span:last-child {
+      margin-left: 20px;
+    }
+  }
+}
