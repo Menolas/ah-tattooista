@@ -1,0 +1,11 @@
+body {
+  display: block;
+  margin: 0;
+  font-family: 'Monseratt', sans-serif;
+  color: $light-text;
+  background-color: $dark-theme-color;
+}
+
+.list {
+  @include list-style;
+}
