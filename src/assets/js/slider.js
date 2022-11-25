@@ -1,16 +1,15 @@
-const upBtn = document.querySelector('.up-button');
-const downBtn = document.querySelector('.down-button');
-const sidebar = document.querySelector('.portfolio-slider__sidebar');
-const mainSlide = document.querySelector('.main-slide');
-const slidesCount = mainSlide.querySelectorAll('div').length;
 const container = document.querySelector('.portfolio-slider__container');
 const height = container.clientHeight;
-
-//console.log(height);
+const mainSlide = document.querySelector('.main-slide');
+const slidesCount = mainSlide.querySelectorAll('div').length;
+const sidebar = document.querySelector('.portfolio-slider__sidebar');
 
 let activeSlideIndex = 0;
-
 sidebar.style.top = `-${(slidesCount - 1) * 100}vh`;
+
+const upBtn = document.querySelector('.up-button');
+const downBtn = document.querySelector('.down-button');
+
 
 const changeSlide = (direction) => {
   if (direction === 'up') {

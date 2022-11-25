@@ -40,7 +40,7 @@ const Advertisement = () => {
   return (
     <section className="advertisement">
       <div className="container">
-      <button className="btn btn--light-bg" type="submit">BOOK A CONSULTATION</button>
+      <button className="btn advertisement__btn" type="submit">BOOK A CONSULTATION</button>
       <div className="social-share">
         <span>Share this page</span>
         <ul className="social-share__list list">

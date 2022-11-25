@@ -9,7 +9,7 @@
   left: 50%;
   display: flex;
   justify-content: space-between;
-  width: 110%;
+  width: 100%;
   transform: translate(-50%, -50%);
   z-index: 5;
 }
@@ -39,6 +39,10 @@
 }
 
 @media (min-width: 990px) {
+
+  .handlers__elements {
+    width: 110%;
+  }
 
   .handlers__left-arrow,
   .handlers__right-arrow {

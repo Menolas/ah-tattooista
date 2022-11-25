@@ -1,5 +1,5 @@
 .portfolio-slider {
-  display: none;
+  /*display: none;*/
 }
 
 .portfolio-slider__container {
@@ -26,7 +26,6 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  /*background: linear-gradient(215.32deg, #adadad -1%, #8d8d8d 124%) !important;*/
   background-image: url("../img/form-background.png");
   background-repeat: no-repeat;
   background-color: $light-theme-color;

@@ -7,12 +7,9 @@ const Contacts = () => {
       <div className="contacts__map-wrap">
         <div className="contacts__content">
           <p>
-            Sniki Art Custom Tattoo<br />
-            Torvet 1, 3120 Nøtterøy
-          </p>
-          <p>
             Adelaine Hobf Studio<br />
-            Agnes, 3290 Stavern
+            Bj Nicolaisensvei 18,<br />
+            3290, Stavern
           </p>
           <p>
             +47 455 19 015<br />

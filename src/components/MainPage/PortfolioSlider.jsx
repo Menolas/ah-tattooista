@@ -1,10 +1,49 @@
 import React from "react";
-import Portfolio from './../Portfolio/Portfolio';
+
+const HandleSlider = (event) => {
+
+  //const height = container.clientHeight;
+  let activeSlideIndex = 0;
+  const container = event.currentTarget;
+  const height = container.clientHeight;
+  const mainSlide = container.querySelector('.main-slide');
+  const slidesCount = mainSlide.querySelectorAll('div').length;
+  const sidebar = container.querySelector('.portfolio-slider__sidebar');
+  sidebar.style.top = `-${(slidesCount - 1) * 100}vh`;
+  let direction = "";
+
+  const changeSlide = (direction) => {
+    if (direction === 'up') {
+      activeSlideIndex++;
+      if (activeSlideIndex === slidesCount) {
+        activeSlideIndex = 0;
+      }
+    } else if (direction === 'down') {
+      activeSlideIndex--;
+      if (activeSlideIndex < 0) {
+        activeSlideIndex = slidesCount - 1;
+      }
+    }
+    mainSlide.style.transform = `translateY(-${activeSlideIndex * height}px)`;
+    sidebar.style.transform = `translateY(${activeSlideIndex * height}px)`;
+  }
+
+  if (event.target.classList.contains("fa-arrow-up")) {
+    direction = "up";
+  }
+
+  if (event.target.classList.contains("fa-arrow-down")) {
+    direction = "down";
+  }
+
+  changeSlide(direction);
+
+}
 
 const PortfolioSlider = () => {
   return (
     <section className="portfolio-slider">
-      <div className="portfolio-slider__container container">
+      <div className="portfolio-slider__container container" onClick={HandleSlider}>
         <div className="portfolio-slider__sidebar">
           <div>
             <h2 className="title title--secondary portfolio-slider__title">Neotradition</h2>
