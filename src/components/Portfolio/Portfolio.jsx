@@ -7,9 +7,9 @@ import TattooStyle from './TattooStyle';
 const Portfolio = (props) => {
   return (
     <main className="site-main">
-      <TattooStyle />
+      <TattooStyle tattooStyles={props.tattooStyles} activeStyle={props.activeStyle} />
       <Advertisement />
-      <Gallery />
+      <Gallery gallery={props.gallery} activeStyle={props.activeStyle} />
       <Contacts />
     </main>
   )

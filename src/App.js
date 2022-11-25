@@ -1,10 +1,10 @@
 import React from 'react';
 import './assets/css/style.css';
 import { Route, Routes, BrowserRouter, } from 'react-router-dom';
-import store from './redux/redux-store';
-import { compose } from "redux";
-import { Provider } from 'react-redux';
-import { withRouter } from './utils/withRouter';
+//import store from './redux/redux-store';
+//import { compose } from "redux";
+//import { Provider } from 'react-redux';
+//import { withRouter } from './utils/withRouter';
 import HeaderMain from './components/Header/HeaderMain';
 import Header from './components/Header/Header';
 import Portfolio from './components/Portfolio/Portfolio';
@@ -12,6 +12,9 @@ import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
 
 const App = (props) => {
+  const activeStyle = props.state.activeStyle;
+  const gallery = props.state.gallery;
+  
   return (
     <BrowserRouter>
       <div className="App">
@@ -23,9 +26,9 @@ const App = (props) => {
         </Routes>
         <Routes>
           <Route exact path='/'
-            element={<MainPage />} />
+            element={<MainPage faq={props.state.faq} services = {props.state.services} />} />
           <Route path='/portfolio'
-            element={<Portfolio />} />
+            element={<Portfolio tattooStyles={props.state.tattooStyles} activeStyle={activeStyle} gallery={gallery[activeStyle]} />} />
         </Routes>
         <Footer />
       </div>

@@ -47,11 +47,6 @@ body {
   min-width: 320px;
   max-width: 100vw;
   width: 100vw;
-  background-image: url("../img/body-bg-mobile.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: top center;
-  background-color: #080808;
   overflow: hidden;
 }
 
@@ -59,7 +54,6 @@ body {
   .container {
     padding: 0 70px;
     max-width: 1440px;
-    background-image: url("../img/body-bg.jpg");
   }
 }
 .modal {
@@ -764,11 +758,11 @@ body {
     font-size: 48px;
   }
 }
-.portfolio__list-wrap {
+.portfolio-slider1__list-wrap {
   width: 100%;
 }
 
-.portfolio__list {
+.portfolio-slider1__list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -783,26 +777,26 @@ body {
           column-gap: 38px;
 }
 
-.portfolio__item {
+.portfolio-slider1__item {
   display: none;
 }
-.portfolio__item:first-child {
+.portfolio-slider1__item:first-child {
   display: block;
 }
-.portfolio__item:first-child .portfolio__link {
+.portfolio-slider1__item:first-child .portfolio-slider1__link {
   background-image: url("../img/black-gray.png");
 }
-.portfolio__item:nth-child(2) .portfolio__link {
+.portfolio-slider1__item:nth-child(2) .portfolio-slider1__link {
   background-image: url("../img/blackWork.jpg");
 }
-.portfolio__item:nth-child(3) .portfolio__link {
+.portfolio-slider1__item:nth-child(3) .portfolio-slider1__link {
   background-image: url("../img/fineLine.jpg");
 }
-.portfolio__item:nth-child(4) .portfolio__link {
+.portfolio-slider1__item:nth-child(4) .portfolio-slider1__link {
   background-image: url("../img/neoTraditional.png");
 }
 
-.portfolio__link {
+.portfolio-slider1__link {
   display: inline-block;
   color: inherit;
   text-decoration: none;
@@ -813,7 +807,7 @@ body {
   background-size: cover;
 }
 
-.portfolio__link-title {
+.portfolio-slider1__link-title {
   position: absolute;
   bottom: 50px;
   right: -22px;
@@ -829,21 +823,18 @@ body {
   line-height: 0.9;
   text-shadow: 6px 2px 2px rgba(0, 0, 0, 0.95);
 }
-.portfolio__link-title span {
+.portfolio-slider1__link-title span {
   text-transform: capitalize;
 }
-.portfolio__link-title span:nth-child(2) {
-  margin: 0 auto;
-}
-.portfolio__link-title span:last-child {
+.portfolio-slider1__link-title span:last-child {
   margin-left: 20px;
 }
 
 @media (min-width: 990px) {
-  .portfolio__list-wrap {
+  .portfolio-slider1__list-wrap {
     width: 90%;
   }
-  .portfolio__list {
+  .portfolio-slider1__list {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -857,17 +848,17 @@ body {
        -moz-column-gap: 38px;
             column-gap: 38px;
   }
-  .portfolio__item.active {
+  .portfolio-slider1__item.active {
     display: block;
   }
-  .portfolio__link {
+  .portfolio-slider1__link {
     display: inline-block;
     color: inherit;
     text-decoration: none;
     font-size: inherit;
     position: relative;
   }
-  .portfolio__link-title {
+  .portfolio-slider1__link-title {
     position: absolute;
     bottom: 50px;
     right: -22px;
@@ -883,7 +874,7 @@ body {
     line-height: 0.9;
     text-shadow: 6px 2px 2px rgba(0, 0, 0, 0.95);
   }
-  .portfolio__link-title span:last-child {
+  .portfolio-slider1__link-title span:last-child {
     margin-left: 20px;
   }
 }
@@ -965,6 +956,7 @@ body {
 .services__item {
   width: 100%;
   max-width: 100%;
+  min-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -978,8 +970,12 @@ body {
   color: inherit;
   text-decoration: none;
   font-size: inherit;
+  width: 100%;
 }
 
+.services__article {
+  width: 100%;
+}
 .services__article h4 {
   margin-top: 0;
   margin-bottom: 20px;
@@ -1027,6 +1023,7 @@ body {
   }
   .services__item {
     width: 430px;
+    min-width: 430px;
   }
   .services__link {
     display: inline-block;
@@ -1064,17 +1061,15 @@ body {
 }
 
 .faq__item {
-  position: relative;
   padding: 16px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.65);
 }
 .faq__item:last-child {
   border-bottom: 1px solid rgba(255, 255, 255, 0.65);
 }
-.faq__item p {
-  margin: 0;
-  height: 0;
-  overflow: hidden;
+
+.faq__item-header {
+  position: relative;
 }
 
 .faq__item-title {
@@ -1082,6 +1077,15 @@ body {
   width: 80%;
   font-size: 18px;
   font-weight: 600;
+}
+
+.faq__item-text {
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .faq__item-handle {
@@ -1110,8 +1114,22 @@ body {
   -webkit-transform: rotate(45deg) skew(-4deg, -4deg);
       -ms-transform: rotate(45deg) skew(-4deg, -4deg);
           transform: rotate(45deg) skew(-4deg, -4deg);
-  bottom: 3px;
+  bottom: 2px;
   left: 4px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.faq__item:hover .faq__item-text {
+  margin-top: 16px;
+  height: auto;
+}
+.faq__item:hover .faq__item-handle::before {
+  bottom: -6px;
+  -webkit-transform: rotate(225deg) skew(-4deg, -4deg);
+      -ms-transform: rotate(225deg) skew(-4deg, -4deg);
+          transform: rotate(225deg) skew(-4deg, -4deg);
 }
 
 @media (min-width: 990px) {
@@ -1123,35 +1141,6 @@ body {
   }
   .faq__item-title {
     font-size: 24px;
-  }
-  .faq__item-handle {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    width: 25px;
-    height: 11px;
-    -webkit-transform: translate(0, -50%);
-        -ms-transform: translate(0, -50%);
-            transform: translate(0, -50%);
-  }
-  .faq__item-handle::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background-color: transparent;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    border: 2px solid white;
-    border-radius: 2px;
-    border-left: none;
-    border-top: none;
-    -webkit-transform: rotate(45deg) skew(-4deg, -4deg);
-        -ms-transform: rotate(45deg) skew(-4deg, -4deg);
-            transform: rotate(45deg) skew(-4deg, -4deg);
-    bottom: 3px;
-    left: 4px;
   }
 }
 .booking__content {
@@ -1505,7 +1494,7 @@ input::placeholder {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 110%;
+  width: 100%;
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -1548,6 +1537,9 @@ input::placeholder {
 }
 
 @media (min-width: 990px) {
+  .handlers__elements {
+    width: 110%;
+  }
   .handlers__left-arrow,
 .handlers__right-arrow {
     position: relative;
@@ -1583,7 +1575,8 @@ input::placeholder {
   }
 }
 .advertisement {
-  background-color: #080808;
+  padding: 16px 0;
+  background-color: #fafafa;
 }
 .advertisement .container {
   display: -webkit-box;
@@ -1594,11 +1587,27 @@ input::placeholder {
       -ms-flex-direction: column;
           flex-direction: column;
   row-gap: 20px;
-  padding: 16px;
   background-image: none;
+  background-color: #fafafa;
+  color: #080808;
 }
 .advertisement .container .social-share {
   margin-left: auto;
+}
+.advertisement .advertisement__btn {
+  position: relative;
+}
+.advertisement .advertisement__btn::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 2px;
+  height: 50%;
+  background-color: #080808;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  left: 0;
+  bottom: 0;
 }
 
 @media (min-width: 990px) {
@@ -1608,6 +1617,9 @@ input::placeholder {
         -ms-flex-direction: row;
             flex-direction: row;
   }
+}
+.tattoo-style.page-block {
+  padding-bottom: 30px;
 }
 .tattoo-style::after {
   display: none;
@@ -1623,6 +1635,9 @@ input::placeholder {
 }
 .tattoo-style .tattoo-style__item {
   display: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
 }
 .tattoo-style .tattoo-style__item.active {
   display: block;
@@ -1632,6 +1647,7 @@ input::placeholder {
 }
 
 .tattoo-style__title {
+  display: none;
   text-align: left;
   margin-bottom: 18px;
 }
@@ -1655,10 +1671,33 @@ input::placeholder {
             column-gap: 60px;
   }
   .tattoo-style .tattoo-style__item {
+    position: relative;
+    display: block;
+    font-size: 28px;
+  }
+  .tattoo-style .tattoo-style__item.active::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fafafa;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+  }
+  .tattoo-style .tattoo-style__title {
     display: block;
   }
 }
+.gallery.page-block {
+  background-image: none;
+}
+
 .gallery__list {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1677,8 +1716,64 @@ input::placeholder {
   height: auto;
 }
 
-.portfolio-slider {
+.gallery__item-large {
   display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 70vh;
+  width: auto;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 4px solid #fafafa;
+  z-index: 10;
+}
+.gallery__item-large img {
+  height: 100%;
+  width: auto;
+  max-width: 90vw;
+}
+
+.gallery__item.active .gallery__item-large {
+  display: block;
+}
+
+.gallery__item-close-btn {
+  position: absolute;
+  display: block;
+  right: -38px;
+  top: -4px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+}
+.gallery__item-close-btn::before, .gallery__item-close-btn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 32px;
+  background-color: #fafafa;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  top: -1px;
+  left: 14px;
+}
+.gallery__item-close-btn::before {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.gallery__item-close-btn::after {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.portfolio-slider {
+  /*display: none;*/
 }
 
 .portfolio-slider__container {
@@ -1718,7 +1813,6 @@ input::placeholder {
       -ms-flex-pack: center;
           justify-content: center;
   color: #fff;
-  /*background: linear-gradient(215.32deg, #adadad -1%, #8d8d8d 124%) !important;*/
   background-image: url("../img/form-background.png");
   background-repeat: no-repeat;
   background-color: #fafafa;
