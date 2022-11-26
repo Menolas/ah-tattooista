@@ -1637,6 +1637,7 @@ input::placeholder {
   display: none;
   font-size: 20px;
   font-weight: 600;
+  text-transform: capitalize;
   cursor: pointer;
 }
 .tattoo-style .tattoo-style__item.active {
@@ -1706,14 +1707,19 @@ input::placeholder {
   -webkit-column-gap: 1%;
      -moz-column-gap: 1%;
           column-gap: 1%;
+  row-gap: 10px;
 }
 
 .gallery__item {
   width: 24%;
+  height: 120px;
+  overflow: hidden;
 }
 .gallery__item img {
   max-width: 100%;
   height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .gallery__item-large {
@@ -1772,6 +1778,27 @@ input::placeholder {
           transform: rotate(-45deg);
 }
 
+@media (min-width: 768px) {
+  .gallery__list {
+    row-gap: 12px;
+  }
+  .gallery__item {
+    height: 250px;
+  }
+}
+@media (min-width: 990px) {
+  .gallery__list {
+    row-gap: 16px;
+  }
+  .gallery__item {
+    height: 290px;
+  }
+}
+@media (min-width: 1400px) {
+  .gallery__item {
+    height: 440px;
+  }
+}
 .portfolio-slider {
   /*display: none;*/
 }

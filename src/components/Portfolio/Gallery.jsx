@@ -5,7 +5,19 @@ import GalleryItem from "./GalleryItem";
 const Gallery = (props) => {
   const gallery = props.gallery;
 
-  const galleryItems = gallery.map(item => <GalleryItem imgUrl={item} activeStyle={props.activeStyle} />);
+  const getGalleryItems = () => {
+    let i = 0;
+    const array = gallery.map(item => {
+      i++;
+      return (
+        <GalleryItem imgUrl={item} key={i} activeStyle={props.activeStyle} />
+      )
+    });
+    return array;
+
+  }
+
+  const galleryItems = getGalleryItems();
 
   return (
     <section className="gallery page-block container">

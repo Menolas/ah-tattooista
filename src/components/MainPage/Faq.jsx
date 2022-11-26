@@ -1,10 +1,5 @@
 import React from "react";
 
-const clickHandle = (evt) => {
-  const faqItem = evt.currentTarget;
-  faqItem.classList.toggle("active");
-}
-
 const Faq = (props) => {
   
   const FaqItem = (props) => {
