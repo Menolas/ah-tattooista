@@ -6,7 +6,8 @@ const TattooStyle = (props) => {
 
   const handleStyleClick = (evt) => {
     let style = evt.target.getAttribute('data');
-  }
+    props.changeActiveStyle(style);
+  };
 
   const TattooStylesItem = (props) => {
     let itemClass = '';
