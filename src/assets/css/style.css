@@ -1714,6 +1714,7 @@ input::placeholder {
   width: 24%;
   height: 120px;
   overflow: hidden;
+  cursor: pointer;
 }
 .gallery__item img {
   max-width: 100%;

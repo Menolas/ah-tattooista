@@ -28,7 +28,7 @@ const App = (props) => {
           <Route exact path='/'
             element={<MainPage faq={props.state.faq} services = {props.state.services} />} />
           <Route path='/portfolio'
-            element={<Portfolio tattooStyles={props.state.tattooStyles} activeStyle={activeStyle} gallery={gallery[activeStyle]} />} />
+            element={<Portfolio tattooStyles={props.state.tattooStyles} activeStyle={activeStyle} gallery={gallery[activeStyle]} changeActiveStyle={props.changeActiveStyle} />} />
         </Routes>
         <Footer />
       </div>

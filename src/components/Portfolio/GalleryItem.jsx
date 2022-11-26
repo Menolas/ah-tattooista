@@ -14,7 +14,7 @@ const showLarge = (evt) => {
   console.log(closeBtn);
   largeImage.classList.add("active");
   closeBtn.addEventListener("click", () => {
-    debugger;
+  
     largeImage.classList.remove("active");
   });
 } 
