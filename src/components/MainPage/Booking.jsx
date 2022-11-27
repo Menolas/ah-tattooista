@@ -1,20 +1,20 @@
 import React from "react";
 
 const Booking = (props) => {
-  const updateBookingNameText = props.updateBookingNameText;
-  const updateBookingPhoneText = props.updateBookingPhoneText;
 
   let newNameField = React.createRef();
   const newPhoneField = React.createRef();
 
   const onNameFieldChange = () => {
     let text = newNameField.current.value;
-    props.updateBookingNameText(text);
+    let action = { type: 'UPDATE_BOOKING_NAME_TEXT', text: text };
+    props.dispatch(action);
   }
 
   const onPhoneFieldChange = () => {
     let text = newPhoneField.current.value;
-    props.updateBookingPhoneText(text);
+    let action = { type: 'UPDATE_BOOKING_PHONE_TEXT', text: text };
+    props.dispatch(action);
   }
 
   const clickSubmit = (evt) => {

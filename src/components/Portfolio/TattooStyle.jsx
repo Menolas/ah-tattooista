@@ -6,7 +6,8 @@ const TattooStyle = (props) => {
 
   const handleStyleClick = (evt) => {
     let style = evt.target.getAttribute('data');
-    props.changeActiveStyle(style);
+    let action = { type: 'CHANGE_ACTIVE_STYLE', style: style };
+    props.dispatch(action);
   };
 
   const TattooStylesItem = (props) => {
@@ -37,7 +38,7 @@ const TattooStyle = (props) => {
         {tattooStylesArray}
       </ul>
       <div className="tattoo-style__item-content">
-        <h2 className="title title--secondary page-block__title tattoo-style__title">FineLine</h2>
+        <h2 className="title title--secondary page-block__title tattoo-style__title">{activeStyle}</h2>
         <div className="tattoo-style__text">
           {tattooStyles[activeStyle]}
         </div>  
