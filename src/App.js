@@ -12,8 +12,11 @@ import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
 
 const App = (props) => {
+  //debugger;
   const activeStyle = props.state.activeStyle;
   const gallery = props.state.gallery;
+  //const bookingNameText = props.state.bookingNameText;
+  //const bookingPhoneText = props.state.bookingPhoneText;
   
   return (
     <BrowserRouter>
@@ -26,7 +29,13 @@ const App = (props) => {
         </Routes>
         <Routes>
           <Route exact path='/'
-            element={<MainPage faq={props.state.faq} services = {props.state.services} />} />
+            element={<MainPage
+              faq={props.state.faq}
+              services={props.state.services}
+              updateBookingNameText={props.updateBookingNameText}
+              updateBookingPhoneText={props.updateBookingPhoneText}
+              bookingNameText={props.state.bookingNameText}
+              bookingPhoneText={props.state.bookingPhoneText} />} />
           <Route path='/portfolio'
             element={<Portfolio tattooStyles={props.state.tattooStyles} activeStyle={activeStyle} gallery={gallery[activeStyle]} changeActiveStyle={props.changeActiveStyle} />} />
         </Routes>

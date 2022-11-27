@@ -15,7 +15,11 @@ const MainPage = (props) => {
       <About />
       <Services services={props.services} />
       <Faq faq={props.faq} />
-      <Booking />
+      <Booking
+        bookingNameText={props.bookingNameText}
+        bookingPhoneText={props.bookingPhoneText}
+        updateBookingNameText={props.updateBookingNameText}
+        updateBookingPhoneText={props.updateBookingPhoneText} />
       <Contacts />
     </main>
   )

@@ -1,5 +1,3 @@
-import { renderEntireTree } from './../render';
-
 let state = {
 
   tattooStyles: {
@@ -13,7 +11,6 @@ let state = {
   },
 
   activeStyle: 'neoTradition',
-
   
   gallery: {
     blackAndGray: [
@@ -157,11 +154,34 @@ let state = {
       ],
     }
   ],
+
+  bookingNameText: '',
+  bookingPhoneText: '',
+}
+
+window.state = state;
+
+export const updateBookingNameText = (text) => {
+  state.bookingNameText = text;
+  renderEntireTree();
+}
+
+export const updateBookingPhoneText = (text) => {
+  state.bookingPhoneText = text;
+  renderEntireTree();
 }
 
 export const changeActiveStyle = (style) => {
   state.activeStyle = style;
-  renderEntireTree(state);
+  renderEntireTree();
+}
+
+let renderEntireTree = () => {
+  console.log('State changed');
+};
+
+export const subscribe = (observer) => {
+  renderEntireTree = observer;
 }
 
 export default state;

@@ -24,10 +24,10 @@ const GalleryItem = (props) => {
 
   return (
     <li className="gallery__item" onClick={showLarge}>
-      <img src={imgUrl} />
+      <img src={imgUrl} alt=""/>
       <div className="gallery__item-large">
         <button className="close-btn gallery__item-close-btn"></button>
-        <img src={imgUrl} />
+        <img src={imgUrl} alt="" />
       </div>
     </li>
   )
