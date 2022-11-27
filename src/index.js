@@ -9,14 +9,12 @@ export const renderEntireTree = (state) => {
   const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(
     <App
-      state={store.getState()}
-      changeActiveStyle={store.changeActiveStyle.bind(store)}
-      updateBookingNameText={store.updateBookingNameText.bind(store)}
-      updateBookingPhoneText={store.updateBookingPhoneText.bind(store)} />
+      state={state}
+      dispatch={store.dispatch.bind(store)} />
   );
 };
 
-renderEntireTree();
+renderEntireTree(store.getState());
 
 store.subscribe(renderEntireTree);
 

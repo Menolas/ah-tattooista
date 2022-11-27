@@ -163,21 +163,6 @@ let store = {
   getState() {
     return this._state;
   },
-  
-  updateBookingNameText(text) {
-    this._state.bookingNameText = text;
-    this._callSubscriber();
-  },
-
-  updateBookingPhoneText(text) {
-    this._state.bookingPhoneText = text;
-    this._callSubscriber();
-  },
-
-  changeActiveStyle(style) {
-    this._state.activeStyle = style;
-    this._callSubscriber();
-  },
 
   _callSubscriber() {
     console.log('State changed');
@@ -186,6 +171,19 @@ let store = {
   subscribe(observer) {
     this._callSubscriber = observer;
   },
+
+  dispatch(action) {
+    if (action.type === 'CHANGE_ACTIVE_STYLE') {
+      this._state.activeStyle = action.style;
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE_BOOKING_NAME_TEXT') {
+      this._state.bookingNameText = action.text;
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE_BOOKING_PHONE_TEXT') {
+      this._state.bookingPhoneText = action.text;
+      this._callSubscriber(this._state);
+    }
+  }
 }
 
 //window.state = state;

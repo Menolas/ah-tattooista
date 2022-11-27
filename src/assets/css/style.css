@@ -1651,6 +1651,7 @@ input::placeholder {
   display: none;
   text-align: left;
   margin-bottom: 18px;
+  text-transform: capitalize;
 }
 
 @media (min-width: 990px) {
