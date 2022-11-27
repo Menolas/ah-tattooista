@@ -18,7 +18,7 @@ const SocialNav = (props) => {
           </a>
         </li>
         <li className="social-nav__item">
-          <a className="social-nav__link">
+          <a className="social-nav__link" href="tel:+4745519015">
             <span><svg><use href={`${Sprite}#phone`}></use></svg></span>
             Facebook
           </a>
