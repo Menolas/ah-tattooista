@@ -18,8 +18,7 @@ const MainPage = (props) => {
       <Booking
         bookingNameText={props.bookingNameText}
         bookingPhoneText={props.bookingPhoneText}
-        updateBookingNameText={props.updateBookingNameText}
-        updateBookingPhoneText={props.updateBookingPhoneText} />
+        dispatch={props.dispatch} />
       <Contacts />
     </main>
   )

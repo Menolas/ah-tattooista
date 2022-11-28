@@ -12,7 +12,7 @@ import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
 
 const App = (props) => {
-  //debugger;
+  
   const activeStyle = props.state.activeStyle;
   const gallery = props.state.gallery;
   
