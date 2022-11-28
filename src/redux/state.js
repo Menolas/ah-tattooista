@@ -1,3 +1,7 @@
+const UPDATE_BOOKING_NAME_TEXT = 'UPDATE_BOOKING_NAME_TEXT';
+const UPDATE_BOOKING_PHONE_TEXT = 'UPDATE_BOOKING_PHONE_TEXT';
+const CHANGE_ACTIVE_STYLE = 'CHANGE_ACTIVE_STYLE';
+
 let store = {
 
   _state: {
@@ -185,6 +189,24 @@ let store = {
     }
   }
 }
+
+export const updateBookingNameTextActionCreator = (text) =>
+  ({
+    type: UPDATE_BOOKING_NAME_TEXT,
+    text: text,
+  });
+
+export const updateBookingPhoneTextTextActionCreator = (text) =>
+  ({
+    type: UPDATE_BOOKING_PHONE_TEXT,
+    text: text,
+  });
+
+export const changeActiveStyleActionCreator = (style) =>
+  ({
+    type: CHANGE_ACTIVE_STYLE,
+    style: style,
+  });
 
 //window.state = state;
 

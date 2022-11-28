@@ -1,4 +1,6 @@
 import React from "react";
+import { updateBookingNameTextActionCreator, updateBookingPhoneTextTextActionCreator } from '../../redux/state';
+
 
 const Booking = (props) => {
 
@@ -7,13 +9,13 @@ const Booking = (props) => {
 
   const onNameFieldChange = () => {
     let text = newNameField.current.value;
-    let action = { type: 'UPDATE_BOOKING_NAME_TEXT', text: text };
+    let action = updateBookingNameTextActionCreator(text);
     props.dispatch(action);
   }
 
   const onPhoneFieldChange = () => {
     let text = newPhoneField.current.value;
-    let action = { type: 'UPDATE_BOOKING_PHONE_TEXT', text: text };
+    let action = updateBookingPhoneTextTextActionCreator(text);
     props.dispatch(action);
   }
 

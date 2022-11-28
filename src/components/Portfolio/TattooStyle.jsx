@@ -1,13 +1,12 @@
 import React from 'react';
-
+import { changeActiveStyleActionCreator } from '../../redux/state';
 const TattooStyle = (props) => {
   const activeStyle = props.activeStyle;
   const tattooStyles = props.tattooStyles;
 
   const handleStyleClick = (evt) => {
     let style = evt.target.getAttribute('data');
-    let action = { type: 'CHANGE_ACTIVE_STYLE', style: style };
-    props.dispatch(action);
+    props.dispatch(changeActiveStyleActionCreator(style));
   };
 
   const TattooStylesItem = (props) => {

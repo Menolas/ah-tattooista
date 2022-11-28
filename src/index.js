@@ -4,9 +4,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/state';
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-export const renderEntireTree = (state) => {
-  const root = ReactDOM.createRoot(document.getElementById('root'));
+const renderEntireTree = (state) => { 
   root.render(
     <App
       state={state}
