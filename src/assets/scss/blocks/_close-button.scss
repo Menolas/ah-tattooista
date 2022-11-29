@@ -9,7 +9,7 @@
 
   &::before,
   &::after {
-    @include element-style(24px, 3px, $dark-theme-color);
+    @include element-style(125%, 3px, $dark-theme-color);
     left: -2px;
     bottom: 9px;
     border-radius: 2px;
@@ -17,6 +17,7 @@
 
   &::before {
     transform: rotate(45deg);
+
   }
 
   &::after {

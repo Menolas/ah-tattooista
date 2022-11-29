@@ -14,8 +14,8 @@ const Booking = (props) => {
   }
 
   const onPhoneFieldChange = () => {
-    let text = newPhoneField.current.value;
-    let action = updateBookingPhoneTextTextActionCreator(text);
+    let number = newPhoneField.current.value;
+    let action = updateBookingPhoneTextTextActionCreator(number);
     props.dispatch(action);
   }
 

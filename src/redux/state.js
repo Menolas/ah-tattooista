@@ -1,6 +1,10 @@
 const UPDATE_BOOKING_NAME_TEXT = 'UPDATE_BOOKING_NAME_TEXT';
 const UPDATE_BOOKING_PHONE_TEXT = 'UPDATE_BOOKING_PHONE_TEXT';
 const CHANGE_ACTIVE_STYLE = 'CHANGE_ACTIVE_STYLE';
+const SHOW_GALLERY_LARGE_IMAGE = 'SHOW_GALLERY_LARGE_IMAGE';
+const CLOSE_LARGE_IMAGE = 'CLOSE_LARGE_IMAGE';
+const SHOW_BOOKING_MODAL = 'SHOW_BOOKING_MODAL';
+const CLOSE_BOOKING_MODAL = 'CLOSE_BOOKING_MODAL';
 
 let store = {
 
@@ -64,49 +68,49 @@ let store = {
       {
         id: 2,
         question: 'HOW TO LOOK AFTER YOU FRESH TATTOO?',
-        answer: '', 
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 
       },
       
       {
         id: 3,
         question: 'RECOMMENDATION BEFORE SESSION?',
-        answer: '',  
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',  
       },
       
       {
         id: 4,
         question: 'CAN I GET A TATTOO IF I AM UNDER 18?',
-        answer: '',  
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',  
       },
       
       {
         id: 5,
         question: 'DO YOU PROVIDE ANT ANESTHESIA WHILE TATTOOING?',
-        answer: '',  
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',  
       },
       
       {
         id: 6,
         question: 'HOW LONG CAN BE A ONE TATTOO SESSION?',
-        answer: '', 
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 
       },
       
       {
         id: 7,
         question: 'DO YOU REMOVING TATTOO?',
-        answer: '',  
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',  
       },
 
       {
         id: 8,
         question: 'DO YOU WORK WITH AN ADVANCE PAYMENT?',
-        answer: '', 
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 
       },
 
       {
         id: 9,
         question: 'HOW TO CHOOSE A DESIGN FOR TATTOO?',
-        answer: '',
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       },
     ],
 
@@ -162,6 +166,8 @@ let store = {
 
     bookingNameText: '',
     bookingPhoneText: '',
+    imgLargeUrl: '',
+    bookingModal: false,
   },
 
   getState() {
@@ -177,36 +183,94 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === 'CHANGE_ACTIVE_STYLE') {
-      this._state.activeStyle = action.style;
-      this._callSubscriber(this._state);
-    } else if (action.type === 'UPDATE_BOOKING_NAME_TEXT') {
-      this._state.bookingNameText = action.text;
-      this._callSubscriber(this._state);
-    } else if (action.type === 'UPDATE_BOOKING_PHONE_TEXT') {
-      this._state.bookingPhoneText = action.text;
-      this._callSubscriber(this._state);
+    //debugger;
+
+    switch (action.type) {
+
+      case CHANGE_ACTIVE_STYLE:
+        this._state.activeStyle = action.style;
+        this._callSubscriber(this._state);
+        break;
+      case UPDATE_BOOKING_NAME_TEXT:
+        this._state.bookingNameText = action.text;
+        this._callSubscriber(this._state);
+        break;
+      case UPDATE_BOOKING_PHONE_TEXT:
+        this._state.bookingPhoneText = action.number;
+        this._callSubscriber(this._state);
+        break;
+      case SHOW_GALLERY_LARGE_IMAGE:
+        const style = this._state.activeStyle;
+        const largeImg = this._state.gallery[style][action.img];
+        console.log(largeImg);
+        this._state.imgLargeUrl = "gallery/" + this._state.activeStyle + "/" + largeImg;
+        this._callSubscriber(this._state);
+        break;
+      case CLOSE_LARGE_IMAGE:
+        this._state.imgLargeUrl = '';
+        this._callSubscriber(this._state);
+        break;
+      case SHOW_BOOKING_MODAL:
+        this._state.bookingModal = true;
+        this._callSubscriber(this._state);
+        break;
+      case CLOSE_BOOKING_MODAL:
+        this._state.bookingModal = false;
+        this._callSubscriber(this._state);
+        break;
+      default: return;
     }
   }
 }
 
-export const updateBookingNameTextActionCreator = (text) =>
-  ({
+
+
+export const updateBookingNameTextActionCreator = (text) => (
+  {
     type: UPDATE_BOOKING_NAME_TEXT,
     text: text,
-  });
+  }
+);
 
-export const updateBookingPhoneTextTextActionCreator = (text) =>
-  ({
-    type: UPDATE_BOOKING_PHONE_TEXT,
-    text: text,
-  });
+export const updateBookingPhoneTextTextActionCreator = (number) => (
+    {
+      type: UPDATE_BOOKING_PHONE_TEXT,
+      number: number,
+    }
+);
 
-export const changeActiveStyleActionCreator = (style) =>
-  ({
+export const changeActiveStyleActionCreator = (style) => (
+  {
     type: CHANGE_ACTIVE_STYLE,
     style: style,
-  });
+  }
+);
+
+export const showGalleryLargeImageActionCreator = (img) => (
+  {
+    type: SHOW_GALLERY_LARGE_IMAGE,
+    img: img,
+  }
+);
+
+export const closeGalleryLargeImageActionCreator = () => (
+  {
+    type: CLOSE_LARGE_IMAGE,
+  }
+);
+
+export const showBookingModalActionCreator = () => (
+  {
+    type: SHOW_BOOKING_MODAL,
+  }
+);
+
+export const closeBookingModalActionCreator = () => (
+  {
+    type: CLOSE_BOOKING_MODAL,
+  }
+);
+  
 
 //window.state = state;
 

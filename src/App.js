@@ -21,7 +21,7 @@ const App = (props) => {
       <div className="App">
         <Routes>
           <Route exact path='/'
-            element={<HeaderMain />} />
+            element={<HeaderMain dispatch={props.dispatch} />} />
           <Route path='/portfolio'
             element={<Header />} />
         </Routes>
@@ -32,9 +32,15 @@ const App = (props) => {
               services={props.state.services}
               dispatch={props.dispatch}
               bookingNameText={props.state.bookingNameText}
-              bookingPhoneText={props.state.bookingPhoneText} />} />
+              bookingPhoneText={props.state.bookingPhoneText}
+              bookingModal={props.state.bookingModal} />} />
           <Route path='/portfolio'
-            element={<Portfolio tattooStyles={props.state.tattooStyles} activeStyle={activeStyle} gallery={gallery[activeStyle]} dispatch={props.dispatch} />} />
+            element={<Portfolio
+              tattooStyles={props.state.tattooStyles}
+              activeStyle={activeStyle}
+              gallery={gallery[activeStyle]}
+              dispatch={props.dispatch}
+              imgLargeUrl={props.state.imgLargeUrl} />} />
         </Routes>
         <Footer />
       </div>

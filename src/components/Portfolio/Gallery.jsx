@@ -1,19 +1,30 @@
 import React from 'react';
-import GalleryItem from "./GalleryItem";
+import { showGalleryLargeImageActionCreator, closeGalleryLargeImageActionCreator } from '../../redux/state';
 
 const Gallery = (props) => {
-  const gallery = props.gallery;
+
+  const showLargeImage = (evt) => {
+    const image = evt.currentTarget.getAttribute('data');
+    props.dispatch(showGalleryLargeImageActionCreator(image));
+  }
+
+  const closeLargeImage = () => {
+    props.dispatch(closeGalleryLargeImageActionCreator());
+  }
 
   const getGalleryItems = () => {
-    let i = 0;
-    const array = gallery.map(item => {
-      i++;
+
+    const array = props.gallery.map((item, i) => {
+
+      const imgUrl = "gallery/" + props.activeStyle + "/" + item;
+
       return (
-        <GalleryItem imgUrl={item} key={i} activeStyle={props.activeStyle} />
+        <li key={i} className="gallery__item" data={i} onClick={showLargeImage}>
+          <img src={imgUrl} alt={props.activeStyle} />
+        </li>
       )
     });
     return array;
-
   }
 
   const galleryItems = getGalleryItems();
@@ -23,6 +34,16 @@ const Gallery = (props) => {
       <ul className="gallery__list list">
         {galleryItems}
       </ul>
+      {
+        props.imgLargeUrl &&
+        <div className="gallery__large-wrap modal-wrap">
+          <div className="gallery__large">
+            <button className="close-btn gallery__item-close-btn" onClick={closeLargeImage}></button>
+            <img src={props.imgLargeUrl} alt={props.activeStyle} />
+          </div>
+        </div>
+      }
+      
     </section>
   )
 }

@@ -1,6 +1,12 @@
 import React from 'react';
+import { showBookingModalActionCreator } from '../../redux/state';
 
 const MainOffer = (props) => {
+
+  const showBookConsultationModal = () => {
+    props.dispatch(showBookingModalActionCreator());
+  }
+
   return (
     <div className="main-offer">
       <div className="main-offer__content-wrap">
@@ -11,7 +17,12 @@ const MainOffer = (props) => {
         </h1>
         <span className="main-offer__motto">Your philosophy on your skin</span>
       </div>
-      <button className="btn btn--light-bg main-header__btn" type="submit">BOOK A CONSULTATION</button>
+      <button
+        className="btn btn--light-bg main-header__btn"
+        type="submit"
+        onClick= {showBookConsultationModal}>
+        BOOK A CONSULTATION
+      </button>
     </div>
   )
 }

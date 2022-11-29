@@ -1,9 +1,17 @@
 import React from 'react';
+import { closeBookingModalActionCreator } from '../redux/state';
 
-const BookingModal = () => {
+const BookingModal = (props) => {
+
+  const closeBookingModal = (evt) => {
+    evt.preventDefault();
+    props.dispatch(closeBookingModalActionCreator());
+  }
+
   return (
-    <div className="booking-modal">
+    <div className="booking-modal modal-wrap">
       <form id="booking" className="booking__form" method="POST">
+        <button className="close-button booking-modal__close-btn" onClick={closeBookingModal}></button>
         <h3 className="booking__form-title">
           FILL THE FORM AND WE WILL CONTACT YOU SOON
         </h3>
