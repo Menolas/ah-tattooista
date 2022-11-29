@@ -12,7 +12,7 @@ const HeaderMain = (props) => {
         <MainNav />
         <SocialNav />
       </div>
-      <MainOffer />
+      <MainOffer dispatch={props.dispatch} />
     </header>
   );
 }

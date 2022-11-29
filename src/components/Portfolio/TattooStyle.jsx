@@ -1,5 +1,6 @@
 import React from 'react';
 import { changeActiveStyleActionCreator } from '../../redux/state';
+
 const TattooStyle = (props) => {
   const activeStyle = props.activeStyle;
   const tattooStyles = props.tattooStyles;
