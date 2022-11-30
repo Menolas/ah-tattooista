@@ -1039,13 +1039,16 @@ body {
   display: none;
 }
 
-.booking__form {
+.booking__form-page-wrap {
   padding: 60px 36px;
   width: 100%;
-  color: #080808;
   background-image: url("../img/form-background.png");
   background-repeat: no-repeat;
   background-color: #fafafa;
+}
+
+.booking__form {
+  color: #080808;
 }
 
 .booking__form-title {
@@ -1104,7 +1107,7 @@ label[for=consentModal] .checkbox {
           transform: translate(0, -50%);
 }
 
-input[type=checkbox]:checked + label .checkbox::after {
+label[for=consent].checked .checkbox::after {
   content: "";
   display: block;
   position: absolute;
@@ -1187,12 +1190,10 @@ input::placeholder {
     background-position: top -120px left;
     background-size: 615px auto;
   }
-  .booking__form {
-    position: relative;
+  .booking__form-page-wrap {
     padding: 107px 97px 0 60px;
     width: 615px;
     height: 657px;
-    background-image: url("../img/form-background.png");
   }
   .booking__form-title {
     margin-bottom: 67px;
@@ -1214,18 +1215,6 @@ input::placeholder {
     padding-left: 36px;
     font-size: 14px;
     font-weight: 700;
-  }
-  input[type=checkbox]:checked + label::after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 9px;
-    height: 16px;
-    background-color: transparent;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    bottom: 3px;
-    left: 6px;
   }
   input::-webkit-input-placeholder {
     font-weight: 600;
@@ -1825,8 +1814,13 @@ input::placeholder {
   z-index: 10;
 }
 
-.booking-modal .booking__form {
+.booking-modal .booking__form-modal-wrap {
   position: relative;
+  padding: 60px 36px;
+  width: 100%;
+  background-image: url("../img/form-background.png");
+  background-repeat: no-repeat;
+  background-color: #fafafa;
 }
 .booking-modal .booking-modal__close-btn {
   position: absolute;
@@ -1838,4 +1832,11 @@ input::placeholder {
 .booking-modal .booking-modal__close-btn::before, .booking-modal .booking-modal__close-btn::after {
   bottom: 14px;
   left: -3px;
+}
+
+@media (min-width: 990px) {
+  .booking-modal .booking__form-modal-wrap {
+    padding: 80px 60px;
+    width: 615px;
+  }
 }/*# sourceMappingURL=style.css.map */

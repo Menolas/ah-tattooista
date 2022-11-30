@@ -10,8 +10,10 @@ import Header from './components/Header/Header';
 import Portfolio from './components/Portfolio/Portfolio';
 import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
+import BookingModal from './components/BookingModal';
 
 const App = (props) => {
+  //console.log(props.state.mainPage.mainNavMenu);
   
   return (
     <BrowserRouter>
@@ -19,9 +21,12 @@ const App = (props) => {
         <Routes>
           <Route exact path='/'
             element={<HeaderMain
+              mainNavMenu={props.state.mainPage.mainNavMenu}
               dispatch={props.dispatch} />} />
           <Route path='/portfolio'
-            element={<Header />} />
+            element={<Header
+              mainNavMenu={props.state.mainPage.mainNavMenu}
+              dispatch={props.dispatch}/>} />
         </Routes>
         <Routes>
           <Route exact path='/'
@@ -35,6 +40,12 @@ const App = (props) => {
               dispatch={props.dispatch} />} />
         </Routes>
         <Footer />
+        {
+          props.state.booking.bookingModal &&
+          <BookingModal
+            booking={props.state.booking}
+            dispatch={props.dispatch} />
+        }
       </div>
     </BrowserRouter>
   );

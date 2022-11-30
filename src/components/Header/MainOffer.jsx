@@ -4,7 +4,6 @@ import { showBookingModalActionCreator } from '../../redux/booking-reducer';
 const MainOffer = (props) => {
 
   const showBookConsultationModal = () => {
-    //debugger;
     props.dispatch(showBookingModalActionCreator());
   }
 
@@ -20,7 +19,6 @@ const MainOffer = (props) => {
       </div>
       <button
         className="btn btn--light-bg main-header__btn"
-        type="submit"
         onClick= {showBookConsultationModal}>
         BOOK A CONSULTATION
       </button>

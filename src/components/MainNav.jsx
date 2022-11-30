@@ -1,19 +1,25 @@
-import React from 'react';
-import {NavLink} from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { showMainMenuActionCreator } from "../redux/mainPage-reducer";
 
 const MainNav = (props) => {
+  let mainNavClass = "";
 
-  //const menu = document.querySelector(".main-nav");
+  if (props.mainNavMenu) {
+    mainNavClass = "shown";
+  }
 
-  const openMenu = (event) => {
-    const menu = event.currentTarget;
-    console.log(menu);
-    menu.classList.toggle("shown");
+  const openMenu = () => {
+    let status = props.mainNavMenu;
+    let action = showMainMenuActionCreator(status);
+    props.dispatch(action);
   }
 
   return (
-    <nav className="main-nav" onClick={openMenu}>
-      <div className="hamburger">
+    <nav className={"main-nav " + mainNavClass} >
+      <div
+        className="hamburger"
+        onClick={openMenu}>
         <span></span>
       </div>
       <ul className="list main-nav__list">

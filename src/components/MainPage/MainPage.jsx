@@ -5,7 +5,6 @@ import Services from './Services';
 import Faq from './Faq';
 import Booking from './Booking';
 import Contacts from './Contacts';
-import BookingModal from '../BookingModal';
 
 const MainPage = (props) => {
   //debugger;
@@ -19,10 +18,6 @@ const MainPage = (props) => {
         booking={props.booking }
         dispatch={props.dispatch} />
       <Contacts />
-      {
-        props.booking.bookingModal &&
-        <BookingModal dispatch={props.dispatch} />
-      }
     </main>
   )
 }

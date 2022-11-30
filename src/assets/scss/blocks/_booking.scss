@@ -8,13 +8,16 @@
   display: none;
 }
 
-.booking__form {
+.booking__form-page-wrap {
   padding: 60px 36px;
   width: 100%;
-  color: $dark-text;
   background-image: url("../img/form-background.png");
   background-repeat: no-repeat;
   background-color: $light-theme-color;
+}
+
+.booking__form {
+  color: $dark-text;
 }
 
 .booking__form-title {
@@ -74,7 +77,7 @@ label[for="consentModal"]{
   }
 }
 
-input[type="checkbox"]:checked + label .checkbox::after {
+label[for="consent"].checked .checkbox::after {
   @include element-style(9px, 16px, transparent);
   bottom: 3px;
   left: 4px;
@@ -119,12 +122,10 @@ input::placeholder {
     background-size: 615px auto;
   }
 
-  .booking__form {
-    position: relative;
+  .booking__form-page-wrap {
     padding: 107px 97px 0 60px;
     width: 615px;
     height: 657px;
-    background-image: url("../img/form-background.png");
   }
 
   .booking__form-title {
@@ -150,12 +151,6 @@ input::placeholder {
     padding-left: 36px;
     font-size: 14px;
     font-weight: 700;
-  }
-
-  input[type="checkbox"]:checked+label::after {
-    @include element-style(9px, 16px, transparent);
-    bottom: 3px;
-    left: 6px;
   }
 
   input::placeholder {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { closeBookingModalActionCreator } from '../redux/booking-reducer';
+import BookingForm from './BookingForm';
 
 const BookingModal = (props) => {
 
@@ -10,27 +11,14 @@ const BookingModal = (props) => {
 
   return (
     <div className="booking-modal modal-wrap">
-      <form id="booking" className="booking__form" method="POST">
+      <div className="booking__form-modal-wrap">
         <button className="close-button booking-modal__close-btn" onClick={closeBookingModal}></button>
-        <h3 className="booking__form-title">
-          FILL THE FORM AND WE WILL CONTACT YOU SOON
-        </h3>
-        <div className="booking__input-wrap">
-          <input type="text" name="name" placeholder="Full Name" required />
-        </div>
-        <div className="booking__input-wrap">
-          <input type="text" name="phone" placeholder="Phone Number" required />
-        </div>
-        <div className="booking__input-wrap">
-          <input id="consent" type="checkbox" name="consent" placeholder="Phone Number" required />
-          <label htmlFor="consent">
-            <span className="checkbox"></span>
-            CONSENT WITH PROCESSING OF MY PERSONAL DATA
-          </label>
-        </div>
-        <button className="btn btn--transparent booking__submit-btn" type="submit">BOOK A CONSULTATION</button>
-      </form>
+        <BookingForm
+          booking={props.booking }
+            dispatch={props.dispatch} />
+      </div>
     </div>
+    
   );
 }
 
