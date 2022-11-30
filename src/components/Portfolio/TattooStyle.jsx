@@ -1,5 +1,5 @@
 import React from 'react';
-import { changeActiveStyleActionCreator } from '../../redux/state';
+import { changeActiveStyleActionCreator } from '../../redux/portfolio-reducer';
 
 const TattooStyle = (props) => {
   const activeStyle = props.activeStyle;

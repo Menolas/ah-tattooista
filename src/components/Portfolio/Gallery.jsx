@@ -1,5 +1,5 @@
 import React from 'react';
-import { showGalleryLargeImageActionCreator, closeGalleryLargeImageActionCreator } from '../../redux/state';
+import { showGalleryLargeImageActionCreator, closeGalleryLargeImageActionCreator } from '../../redux/portfolio-reducer';
 
 const Gallery = (props) => {
 
@@ -13,8 +13,11 @@ const Gallery = (props) => {
   }
 
   const getGalleryItems = () => {
+    const activeStyle = props.activeStyle;
+    const gallery = props.gallery;
+    console.log(gallery);
 
-    const array = props.gallery.map((item, i) => {
+    const array = gallery[activeStyle].map((item, i) => {
 
       const imgUrl = "gallery/" + props.activeStyle + "/" + item;
 

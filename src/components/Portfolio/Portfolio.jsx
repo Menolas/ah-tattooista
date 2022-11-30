@@ -5,17 +5,18 @@ import Gallery from './Gallery';
 import TattooStyle from './TattooStyle';
 
 const Portfolio = (props) => {
+  
   return (
     <main className="site-main">
       <TattooStyle
-        tattooStyles={props.tattooStyles}
-        activeStyle={props.activeStyle}
+        tattooStyles={props.state.tattooStyles}
+        activeStyle={props.state.activeStyle}
         dispatch={props.dispatch} />
       <Advertisement />
       <Gallery
-        gallery={props.gallery}
-        activeStyle={props.activeStyle}
-        imgLargeUrl={props.imgLargeUrl}
+        gallery={props.state.gallery}
+        activeStyle={props.state.activeStyle}
+        imgLargeUrl={props.state.imgLargeUrl}
         dispatch={props.dispatch} />
       <Contacts />
     </main>

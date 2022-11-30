@@ -1,9 +1,10 @@
 import React from 'react';
-import { showBookingModalActionCreator } from '../../redux/state';
+import { showBookingModalActionCreator } from '../../redux/booking-reducer';
 
 const MainOffer = (props) => {
 
   const showBookConsultationModal = () => {
+    //debugger;
     props.dispatch(showBookingModalActionCreator());
   }
 

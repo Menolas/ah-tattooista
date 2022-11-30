@@ -13,34 +13,26 @@ import Footer from './components/Footer/Footer';
 
 const App = (props) => {
   
-  const activeStyle = props.state.activeStyle;
-  const gallery = props.state.gallery;
-  
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
           <Route exact path='/'
-            element={<HeaderMain dispatch={props.dispatch} />} />
+            element={<HeaderMain
+              dispatch={props.dispatch} />} />
           <Route path='/portfolio'
             element={<Header />} />
         </Routes>
         <Routes>
           <Route exact path='/'
             element={<MainPage
-              faq={props.state.faq}
-              services={props.state.services}
-              dispatch={props.dispatch}
-              bookingNameText={props.state.bookingNameText}
-              bookingPhoneText={props.state.bookingPhoneText}
-              bookingModal={props.state.bookingModal} />} />
+              mainPage={props.state.mainPage}
+              booking={props.state.booking}
+              dispatch={props.dispatch} />} />
           <Route path='/portfolio'
             element={<Portfolio
-              tattooStyles={props.state.tattooStyles}
-              activeStyle={activeStyle}
-              gallery={gallery[activeStyle]}
-              dispatch={props.dispatch}
-              imgLargeUrl={props.state.imgLargeUrl} />} />
+              state={props.state.portfolio}
+              dispatch={props.dispatch} />} />
         </Routes>
         <Footer />
       </div>
