@@ -15,7 +15,6 @@ const Gallery = (props) => {
   const getGalleryItems = () => {
     const activeStyle = props.activeStyle;
     const gallery = props.gallery;
-    console.log(gallery);
 
     const array = gallery[activeStyle].map((item, i) => {
 

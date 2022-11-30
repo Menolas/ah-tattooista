@@ -1,3 +1,5 @@
+const SHOW_MAIN_MENU = 'SHOW_MAIN_MENU';
+
 let initialState = {
   faq: [
     {
@@ -96,10 +98,32 @@ let initialState = {
       ],
     }
   ],
+
+  mainNavMenu: false,
 }
 
 const mainPageReducer = (state = initialState, action) => {
-  return state;
+
+  switch (action.type) {
+
+    case SHOW_MAIN_MENU:
+      if (!action.status) {
+        state.mainNavMenu = true;
+      } else {
+        state.mainNavMenu = false;
+      }
+      
+      return state;
+    
+    default: return state;
+  }
 }
+
+export const showMainMenuActionCreator = (status) => (
+  {
+    type: SHOW_MAIN_MENU,
+    status: status,
+  }
+);
 
 export default mainPageReducer;

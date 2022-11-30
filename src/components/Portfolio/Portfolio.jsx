@@ -12,7 +12,8 @@ const Portfolio = (props) => {
         tattooStyles={props.state.tattooStyles}
         activeStyle={props.state.activeStyle}
         dispatch={props.dispatch} />
-      <Advertisement />
+      <Advertisement
+        dispatch={props.dispatch} />
       <Gallery
         gallery={props.state.gallery}
         activeStyle={props.state.activeStyle}

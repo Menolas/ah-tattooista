@@ -1,46 +1,21 @@
 import React from 'react';
 import Sprite from '../../assets/svg/sprite.svg';
+import { showBookingModalActionCreator } from '../../redux/booking-reducer';
 
-/* const bookingButton = document.querySelector(".main-header__btn");
-const modal = document.querySelector(".modal");
-const modalCloseBtn = modal.querySelector(".close-button");
-const body = document.querySelector("body");
+const Advertisement = (props) => {
 
-const openModal = (modal) => {
-    modal.classList.add("shown");
-    body.classList.add("overlay");
+  const showBookConsultationModal = () => {
+    props.dispatch(showBookingModalActionCreator());
+  }
 
-}
-
-const closeModal = (modal) => {
-    modal.classList.remove("shown");
-    body.classList.remove("overlay");
-    bookingButton.removeEventListener("click", openModal);
-}
-
-bookingButton.addEventListener("click", function () {
-    openModal(modal);
-});
-
-if (modalCloseBtn) {
-    modalCloseBtn.addEventListener("click", function () {
-        closeModal(modal);
-    });
-}
-
-const faqList = document.querySelector(".faq__list");
-
-if (faqList) {
-    const faqItems = faqList.querySelectorAll(".faq__item");
-}
- */
-
-
-const Advertisement = () => {
   return (
     <section className="advertisement">
       <div className="container">
-      <button className="btn advertisement__btn" type="submit">BOOK A CONSULTATION</button>
+        <button
+          className="btn advertisement__btn"
+          onClick={showBookConsultationModal}>
+          BOOK A CONSULTATION
+        </button>
       <div className="social-share">
         <span>Share this page</span>
         <ul className="social-share__list list">

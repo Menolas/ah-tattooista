@@ -7,7 +7,9 @@ const Header = (props) => {
   return (
     <header className="main-header container">
       <div className="main-header__top">
-        <MainNav />
+        <MainNav
+          mainNavMenu={props.mainNavMenu}
+          dispatch={props.dispatch}/>
         <div className="main-header__logo">
           <Logo />
           <span>Adelaine<br />Hobf</span>

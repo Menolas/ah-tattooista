@@ -47,22 +47,20 @@ const portfolioReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
-      case CHANGE_ACTIVE_STYLE:
-        state.activeStyle = action.style;
-        return state;
-      case SHOW_GALLERY_LARGE_IMAGE:
-        const style = state.activeStyle;
-        const largeImg = state.gallery[style][action.img];
-        state.imgLargeUrl = "gallery/" + state.activeStyle + "/" + largeImg;
-        return state;
-      case CLOSE_LARGE_IMAGE:
-        state.imgLargeUrl = '';
-        return state;
-    
-      default: return state;
-    }
-
-  return state;
+    case CHANGE_ACTIVE_STYLE:
+      state.activeStyle = action.style;
+      return state;
+    case SHOW_GALLERY_LARGE_IMAGE:
+      const style = state.activeStyle;
+      const largeImg = state.gallery[style][action.img];
+      state.imgLargeUrl = "gallery/" + state.activeStyle + "/" + largeImg;
+      return state;
+    case CLOSE_LARGE_IMAGE:
+      state.imgLargeUrl = '';
+      return state;
+  
+    default: return state;
+  }
 }
 
 export const changeActiveStyleActionCreator = (style) => (
