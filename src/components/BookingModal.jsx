@@ -1,5 +1,5 @@
 import React from 'react';
-import { closeBookingModalActionCreator } from '../redux/state';
+import { closeBookingModalActionCreator } from '../redux/booking-reducer';
 
 const BookingModal = (props) => {
 

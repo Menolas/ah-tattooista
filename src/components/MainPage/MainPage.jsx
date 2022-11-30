@@ -8,19 +8,19 @@ import Contacts from './Contacts';
 import BookingModal from '../BookingModal';
 
 const MainPage = (props) => {
+  //debugger;
   return (
     <main className="site-main">
       <PortfolioSlider />
       <About />
-      <Services services={props.services} />
-      <Faq faq={props.faq} />
+      <Services services={props.mainPage.services} />
+      <Faq faq={props.mainPage.faq} />
       <Booking
-        bookingNameText={props.bookingNameText}
-        bookingPhoneText={props.bookingPhoneText}
+        booking={props.booking }
         dispatch={props.dispatch} />
       <Contacts />
       {
-        props.bookingModal &&
+        props.booking.bookingModal &&
         <BookingModal dispatch={props.dispatch} />
       }
     </main>

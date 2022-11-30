@@ -1,20 +1,20 @@
 import React from "react";
-import { updateBookingNameTextActionCreator, updateBookingPhoneTextTextActionCreator } from '../../redux/state';
+import { updateBookingNameTextActionCreator, updateBookingPhoneTextTextActionCreator } from '../../redux/booking-reducer';
 
 
 const Booking = (props) => {
+  const bookingNameText = props.booking.bookingNameText;
+  const bookingPhoneText=props.booking.bookingPhoneText;
+  const bookingModal=props.booking.bookingModal;
 
-  let newNameField = React.createRef();
-  const newPhoneField = React.createRef();
-
-  const onNameFieldChange = () => {
-    let text = newNameField.current.value;
+  const onNameFieldChange = (evt) => {
+    let text = evt.target.value;
     let action = updateBookingNameTextActionCreator(text);
     props.dispatch(action);
   }
 
-  const onPhoneFieldChange = () => {
-    let number = newPhoneField.current.value;
+  const onPhoneFieldChange = (evt) => {
+    let number = evt.target.value;
     let action = updateBookingPhoneTextTextActionCreator(number);
     props.dispatch(action);
   }
@@ -36,7 +36,6 @@ const Booking = (props) => {
               type="text"
               name="name"
               placeholder="Full Name"
-              ref={newNameField}
               value={props.bookingNameText}
               onChange={onNameFieldChange}
               required />
@@ -46,7 +45,6 @@ const Booking = (props) => {
               type="text"
               name="phone"
               placeholder="Phone Number"
-              ref={newPhoneField}
               value={props.bookingPhoneText}
               onChange={onPhoneFieldChange}
               required />
