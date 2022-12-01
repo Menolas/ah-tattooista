@@ -13,7 +13,10 @@ const MainPage = (props) => {
       <PortfolioSlider />
       <About />
       <Services services={props.mainPage.services} />
-      <Faq faq={props.mainPage.faq} />
+      <Faq
+        faq={props.mainPage.faq}
+        faqActive={props.mainPage.faqActive}
+        dispatch={props.dispatch} />
       <Booking
         booking={props.booking }
         dispatch={props.dispatch} />

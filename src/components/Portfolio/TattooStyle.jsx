@@ -1,5 +1,6 @@
 import React from 'react';
 import { changeActiveStyleActionCreator } from '../../redux/portfolio-reducer';
+import classNames from "classnames";
 
 const TattooStyle = (props) => {
   const activeStyle = props.activeStyle;
@@ -11,19 +12,16 @@ const TattooStyle = (props) => {
   };
 
   const TattooStylesItem = (props) => {
-    let itemClass = '';
-    if (activeStyle === props.item) {
-      itemClass = 'active';
-    }
+    let itemClasses = classNames('tattoo-style__item', { 'active': activeStyle === props.item });
+    
     return (
-      <li className={"tattoo-style__item " + itemClass} data={props.item}>{props.item}</li>
+      <li className={itemClasses} data={props.item}>{props.item}</li>
     )
   }
 
   const getTattooStylesArray = () => {
     let i = 0;
-    const array = Object.keys(tattooStyles).map(item => {
-      i++;
+    const array = Object.keys(tattooStyles).map((item, i) => {
       return (
         <TattooStylesItem item={item} key={i} />
       )
