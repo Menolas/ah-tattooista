@@ -715,7 +715,7 @@ body {
 .page-block {
   position: relative;
   padding-top: 40px;
-  padding-bottom: 56px;
+  padding-bottom: 30px;
 }
 .page-block::after {
   content: "";
@@ -741,19 +741,6 @@ body {
   .page-block {
     position: relative;
     padding-top: 112px;
-    padding-bottom: 142px;
-  }
-  .page-block::after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 60px;
-    background-color: #080808;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    bottom: 0;
-    right: 0;
   }
   .page-block__title {
     margin-top: 0;
@@ -763,7 +750,7 @@ body {
   }
 }
 .about {
-  padding-bottom: 86px;
+  padding-bottom: 5 0px;
   text-align: center;
 }
 
@@ -801,7 +788,7 @@ body {
 
 @media (min-width: 990px) {
   .about {
-    padding-bottom: 192px;
+    padding-bottom: 70px;
   }
   .about__img-wrap {
     width: 400px;

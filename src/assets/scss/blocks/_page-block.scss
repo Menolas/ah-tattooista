@@ -1,7 +1,7 @@
 .page-block {
   position: relative;
   padding-top: 40px;
-  padding-bottom: 56px;
+  padding-bottom: 30px;
 
   &::after {
     @include element-style(100%, 16px, $dark-theme-color);
@@ -22,13 +22,6 @@
   .page-block {
     position: relative;
     padding-top: 112px;
-    padding-bottom: 142px;
-
-    &::after {
-      @include element-style(100%, 60px, $dark-theme-color);
-      bottom: 0;
-      right: 0;
-    }
   }
 
   .page-block__title {

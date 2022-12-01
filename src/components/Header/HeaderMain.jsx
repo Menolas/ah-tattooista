@@ -5,13 +5,14 @@ import MainOffer from './MainOffer';
 import Logo from '../Logo';
 
 const HeaderMain = (props) => {
+  //debugger;
   
   return (
     <header className="main-header main-header--index container">
       <div className="main-header__top">
         <Logo />
         <MainNav
-          mainNavMenu={props.mainNavMenu}
+          mainNav={props.mainNav}
           dispatch={props.dispatch} />
         <SocialNav />
       </div>

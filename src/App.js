@@ -21,11 +21,12 @@ const App = (props) => {
         <Routes>
           <Route exact path='/'
             element={<HeaderMain
+              mainNav={props.state.mainNav}
               mainNavMenu={props.state.mainPage.mainNavMenu}
               dispatch={props.dispatch} />} />
           <Route path='/portfolio'
             element={<Header
-              mainNavMenu={props.state.mainPage.mainNavMenu}
+              mainNav={props.state.mainNav}
               dispatch={props.dispatch}/>} />
         </Routes>
         <Routes>
