@@ -1,13 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { showMainMenuActionCreator } from "../redux/mainPage-reducer";
+import classNames from "classnames";
 
 const MainNav = (props) => {
-  let mainNavClass = "";
-
-  if (props.mainNavMenu) {
-    mainNavClass = "shown";
-  }
+  let mainNavClasses = classNames('main-nav', {'shown': props.mainNavMenu });
 
   const openMenu = () => {
     let status = props.mainNavMenu;
@@ -16,7 +13,7 @@ const MainNav = (props) => {
   }
 
   return (
-    <nav className={"main-nav " + mainNavClass} >
+    <nav className={ mainNavClasses } >
       <div
         className="hamburger"
         onClick={openMenu}>

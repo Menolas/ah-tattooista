@@ -1005,11 +1005,14 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-.faq__item:hover .faq__item-text {
+.faq__item.shown .faq__item-text {
   margin-top: 16px;
   height: auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-.faq__item:hover .faq__item-handle::before {
+.faq__item.shown .faq__item-handle::before {
   bottom: -6px;
   -webkit-transform: rotate(225deg) skew(-4deg, -4deg);
       -ms-transform: rotate(225deg) skew(-4deg, -4deg);

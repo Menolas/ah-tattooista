@@ -1,12 +1,9 @@
 import React from 'react';
 import { updateBookingNameTextActionCreator, updateBookingPhoneTextActionCreator, updateBookingConcentActionCreator } from '../redux/booking-reducer';
+import classNames from "classnames";
 
 const BookingForm = (props) => {
-  let concentClass = "not-checked";
-
-  if (props.booking.bookingConcent) {
-    concentClass = "checked";
-  }
+  let concentClasses = classNames({ 'checked': props.booking.bookingConcent });
 
   const onNameFieldChange = (evt) => {
     let text = evt.target.value;
@@ -63,7 +60,7 @@ const BookingForm = (props) => {
           name="consent"
           onChange={onConcentFieldChange}
           required />
-        <label htmlFor="consent" className={concentClass}>
+        <label htmlFor="consent" className={concentClasses}>
           <span className="checkbox"></span>
           CONSENT WITH PROCESSING OF MY PERSONAL DATA
         </label>

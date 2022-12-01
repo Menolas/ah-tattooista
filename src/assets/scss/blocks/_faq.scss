@@ -53,11 +53,12 @@
   }
 }
 
-.faq__item:hover {
+.faq__item.shown {
 
   .faq__item-text {
     margin-top: 16px;
     height: auto;
+    transition: all 0.3s ease-in-out;
   }
 
   .faq__item-handle::before {
