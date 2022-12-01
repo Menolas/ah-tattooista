@@ -1,5 +1,5 @@
 .about {
-  padding-bottom: 86px;
+  padding-bottom: 5 0px;
   text-align: center;
 }
 
@@ -28,8 +28,9 @@
 }
 
 @media(min-width: 990px) {
+
   .about {
-    padding-bottom: 192px;
+    padding-bottom: 70px;
   }
 
   .about__img-wrap {

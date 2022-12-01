@@ -22,7 +22,7 @@ const Faq = (props) => {
       <li
         className={faqItemClasses}
         data={props.data}
-        onClick={onFaqItemHover}>
+        onMouseOver={onFaqItemHover}>
         <div className="faq__item-header">
           <span className="faq__item-handle"></span>
           <h5 className="faq__item-title">
