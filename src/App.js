@@ -18,33 +18,30 @@ const App = (props) => {
       <div className="App">
         <Routes>
           <Route exact path='/'
-            element={<Header
-              indexPage={true}
-              mainNav={props.state.mainNav}
-              dispatch={props.dispatch} />} />
+            element={ <Header
+              indexPage={ true }
+              store={ props.store } /> } />
           <Route path='/portfolio'
-            element={<Header
-              indexPage={false}
-              mainNav={props.state.mainNav}
-              dispatch={props.dispatch} />} />
+            element={ <Header
+              indexPage={ false }
+              store={ props.store } /> } />
         </Routes>
         <Routes>
           <Route exact path='/'
-            element={<MainPage
-              mainPage={props.state.mainPage}
-              booking={props.state.booking}
-              dispatch={props.dispatch} />} />
+            element={ <MainPage
+              store={ props.store }
+              mainPage={ props.state.mainPage }
+              dispatch={ props.dispatch } /> } />
           <Route path='/portfolio'
-            element={<Portfolio
-              state={props.state.portfolio}
-              dispatch={props.dispatch} />} />
+            element={ <Portfolio
+              state={ props.state.portfolio }
+              dispatch={ props.dispatch } /> } />
         </Routes>
         <Footer />
         {
           props.state.booking.bookingModal &&
           <BookingModal
-            booking={props.state.booking}
-            dispatch={props.dispatch} />
+            store={ props.store } />
         }
       </div>
     </BrowserRouter>

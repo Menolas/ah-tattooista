@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { showMainMenuActionCreator, hideMainMenuActionCreator } from "../redux/main-nav-reducer";
 import classNames from "classnames";
 
 const MainNav = (props) => {
@@ -9,37 +8,35 @@ const MainNav = (props) => {
 
   const openMenu = () => {
     let status = props.mainNav.mainNavMenuModal;
-    let action = showMainMenuActionCreator(status);
-    props.dispatch(action);
+    props.openMenu(status);
   };
 
   const closeMenu = () => {
-    let action = hideMainMenuActionCreator();
-    props.dispatch(action);
+    props.closeMenu();
   }
 
   const mainNavItems = props.mainNav.mainNavList.map((item, i) => {
     return (
-      <li className="main-nav__item" key={i}>
+      <li className = "main-nav__item" key = { i }>
         <NavLink
-          to={item.url}
-          className="main-nav__link"
-          onClick={closeMenu}>
-          {item.text}
+          to = { item.url }
+          className = "main-nav__link"
+          onClick = { closeMenu }>
+          { item.text }
         </NavLink>
       </li>
     )
   });
 
   return (
-    <nav className={mainNavClasses} >
+    <nav className = { mainNavClasses } >
       <div
-        className="hamburger"
-        onClick={openMenu}>
+        className = "hamburger"
+        onClick = { openMenu }>
         <span></span>
       </div>
-      <ul className="list main-nav__list">
-        {mainNavItems}
+      <ul className = "list main-nav__list">
+        { mainNavItems }
       </ul>
     </nav>
   );
