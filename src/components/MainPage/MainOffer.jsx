@@ -8,7 +8,7 @@ const MainOffer = (props) => {
   }
 
   return (
-    <div className="main-offer">
+    <div className="main-offer container">
       <div className="main-offer__content-wrap">
         <span className="main-offer__decorative-text">Tattoo Artist</span>
         <h1 className="title title--first main-offer__title">

@@ -1,9 +1,10 @@
 .logo {
-  width: 40px;
+  display: flex;
+  align-items: center;
 
   .logo__link {
     display: block;
-    width: 100%;
+    width: 40px;
     height: 100%;
     background-image: url("../img/logo.png");
     background-size: cover;
@@ -13,6 +14,9 @@
 @media (min-width: 990px) {
 
   .logo {
-    width: 88px;
+
+    .logo__link {
+      width: 88px;
+    }
   }
 }

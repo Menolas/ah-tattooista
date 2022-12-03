@@ -1,4 +1,5 @@
 .tattoo-style {
+  padding-top: 152px;
 
   &.page-block {
     padding-bottom: 30px;
@@ -41,6 +42,7 @@
 @media (min-width: 990px) {
 
   .tattoo-style {
+    padding-top: 224px;
     padding-bottom: 112px;
 
     .tattoo-style__list {

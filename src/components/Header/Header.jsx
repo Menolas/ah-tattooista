@@ -2,21 +2,20 @@ import React from 'react';
 import SocialNav from '../SocialNav';
 import MainNav from '../MainNav';
 import Logo from '../Logo';
+import classNames from "classnames";
 
 const Header = (props) => {
+  //debugger;
+  
+  let headerClasses = classNames('main-header', 'container', { 'main-header--inner': !props.indexPage });
   
   return (
-    <header className="main-header container">
-      <div className="main-header__top">
-        <MainNav
-          mainNav={props.mainNav}
-          dispatch={props.dispatch}/>
-        <div className="main-header__logo">
-          <Logo />
-          <span>Adelaine<br />Hobf</span>
-        </div>
-        <SocialNav />
-      </div>
+    <header className={headerClasses}>
+      <Logo />
+      <MainNav
+        mainNav={props.mainNav}
+        dispatch={props.dispatch}/>
+      <SocialNav />
     </header>
   );
 }

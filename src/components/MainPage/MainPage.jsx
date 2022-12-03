@@ -1,4 +1,5 @@
 import React from 'react';
+import MainOffer from './MainOffer';
 import PortfolioSlider from './PortfolioSlider';
 import About from './About';
 import Services from './Services';
@@ -10,6 +11,7 @@ const MainPage = (props) => {
   //debugger;
   return (
     <main className="site-main">
+      <MainOffer dispatch={props.dispatch} />
       <PortfolioSlider />
       <About />
       <Services services={props.mainPage.services} />
