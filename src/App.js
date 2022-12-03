@@ -5,7 +5,6 @@ import { Route, Routes, BrowserRouter, } from 'react-router-dom';
 //import { compose } from "redux";
 //import { Provider } from 'react-redux';
 //import { withRouter } from './utils/withRouter';
-import HeaderMain from './components/Header/HeaderMain';
 import Header from './components/Header/Header';
 import Portfolio from './components/Portfolio/Portfolio';
 import MainPage from './components/MainPage/MainPage';
@@ -13,21 +12,21 @@ import Footer from './components/Footer/Footer';
 import BookingModal from './components/BookingModal';
 
 const App = (props) => {
-  //console.log(props.state.mainPage.mainNavMenu);
   
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
           <Route exact path='/'
-            element={<HeaderMain
+            element={<Header
+              indexPage={true}
               mainNav={props.state.mainNav}
-              mainNavMenu={props.state.mainPage.mainNavMenu}
               dispatch={props.dispatch} />} />
           <Route path='/portfolio'
             element={<Header
+              indexPage={false}
               mainNav={props.state.mainNav}
-              dispatch={props.dispatch}/>} />
+              dispatch={props.dispatch} />} />
         </Routes>
         <Routes>
           <Route exact path='/'
