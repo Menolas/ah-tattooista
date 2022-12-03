@@ -9,8 +9,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const renderEntireTree = (state) => { 
   root.render(
     <App
-      state={state}
-      dispatch={store.dispatch.bind(store)} />
+      state={ state }
+      dispatch={ store.dispatch.bind(store) }
+      store={ store } />
   );
 };
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { updateBookingNameTextActionCreator, updateBookingPhoneTextActionCreator, updateBookingConcentActionCreator } from '../redux/booking-reducer';
 import classNames from "classnames";
 
 const BookingForm = (props) => {
@@ -7,14 +6,12 @@ const BookingForm = (props) => {
 
   const onNameFieldChange = (evt) => {
     let text = evt.target.value;
-    let action = updateBookingNameTextActionCreator(text);
-    props.dispatch(action);
+    props.onNameFieldChange(text);
   }
 
   const onPhoneFieldChange = (evt) => {
     let number = evt.target.value;
-    let action = updateBookingPhoneTextActionCreator(number);
-    props.dispatch(action);
+    props.onPhoneFieldChange(number);
   }
 
   const onConcentFieldChange = (evt) => {
@@ -22,8 +19,7 @@ const BookingForm = (props) => {
     if (evt.target.checked) {
       checkbox = true;
     }
-    let action = updateBookingConcentActionCreator(checkbox);
-    props.dispatch(action);
+    props.onConcentFieldChange(checkbox);
   }
 
   const clickSubmit = (evt) => {
@@ -31,44 +27,44 @@ const BookingForm = (props) => {
   }
 
   return (
-    <form id="booking" className="booking__form" method="POST">
-      <h3 className="booking__form-title">
+    <form id = "booking" className="booking__form" method="POST">
+      <h3 className = "booking__form-title">
         FILL THE FORM AND WE WILL CONTACT YOU SOON
       </h3>
-      <div className="booking__input-wrap">
+      <div className = "booking__input-wrap">
         <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={props.booking.bookingNameText}
-          onChange={onNameFieldChange}
+          type = "text"
+          name = "name"
+          placeholder = "Full Name"
+          value = { props.booking.bookingNameText }
+          onChange = { onNameFieldChange }
           required />
       </div>
-      <div className="booking__input-wrap">
+      <div className = "booking__input-wrap">
         <input
-          type="text"
-          name="phone"
-          placeholder="Phone Number"
-          value={props.booking.bookingPhoneText}
-          onChange={onPhoneFieldChange}
+          type = "text"
+          name = "phone"
+          placeholder = "Phone Number"
+          value = { props.booking.bookingPhoneText }
+          onChange = { onPhoneFieldChange }
           required />
       </div>
-      <div className="booking__input-wrap">
+      <div className = "booking__input-wrap">
         <input
-          id="consent"
-          type="checkbox"
-          name="consent"
-          onChange={onConcentFieldChange}
+          id = "consent"
+          type = "checkbox"
+          name = "consent"
+          onChange = { onConcentFieldChange }
           required />
-        <label htmlFor="consent" className={concentClasses}>
-          <span className="checkbox"></span>
+        <label htmlFor = "consent" className={ concentClasses }>
+          <span className = "checkbox"></span>
           CONSENT WITH PROCESSING OF MY PERSONAL DATA
         </label>
       </div>
       <button
         className="btn btn--transparent booking__submit-btn"
-        type="submit"
-        onClick={clickSubmit}>
+        type = "submit"
+        onClick = { clickSubmit }>
         BOOK A CONSULTATION
       </button>
     </form>

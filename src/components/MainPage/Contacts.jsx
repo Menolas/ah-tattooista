@@ -2,10 +2,10 @@ import React from "react";
 
 const Contacts = () => {
   return (
-    <section className="page-block contacts container">
-      <h2 className="title title--secondary page-block__title">Contacts</h2>
-      <div className="contacts__map-wrap">
-        <div className="contacts__content">
+    <section className = "page-block contacts container">
+      <h2 className = "title title--secondary page-block__title">Contacts</h2>
+      <div className = "contacts__map-wrap">
+        <div className = "contacts__content">
           <p>
             Adelaine Hobf Studio<br />
             Bj Nicolaisensvei 18,<br />

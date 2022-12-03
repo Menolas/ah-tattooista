@@ -5,13 +5,13 @@ const Services = (props) => {
   const ServiceItem = (props) => {
     const Point = (props) => {
       return (
-        <li>{props.text}</li>
+        <li>{ props.text }</li>
       )
     }
     let i = 0;
     const points = props.points.map(item => {
       i++;
-      return <Point text={item} key={i} />
+      return <Point text = { item } key = { i } />
     });
 
     return (
@@ -20,9 +20,9 @@ const Services = (props) => {
           <a className="services__link" href="#">
             <div className="services__article-img-wrap"></div>
             <div className="services__article-text-block">
-              <h4>{props.title}:</h4>
+              <h4>{ props.title }:</h4>
               <ul className="services__item-list">
-                {points}
+                { points }
               </ul>
             </div>
           </a>
@@ -31,16 +31,20 @@ const Services = (props) => {
     )
   }
 
-  const servicesArray = props.services.map(item => <ServiceItem key={item.id} title={item.title} points={item.points} />);
+  const servicesArray = props.services.map(item => {
+    return (
+      <ServiceItem key = {item.id} title = {item.title} points = {item.points} />
+    )
+  });
 
   return (
     <section className="page-block services container">
       <h2 className="page-block__title">Studio services</h2>
       <ul className="services__list list">
-        {servicesArray}
+        { servicesArray }
       </ul>
     </section>
-  )
+  );
 }
 
 export default Services;
