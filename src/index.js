@@ -3,15 +3,21 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/redux-store';
+import { BrowserRouter } from 'react-router-dom';
+import StoreContext from './StoreContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const renderEntireTree = (state) => { 
   root.render(
-    <App
-      state={ state }
-      dispatch={ store.dispatch.bind(store) }
-      store={ store } />
+    <BrowserRouter>
+      <StoreContext.Provider value = { store }>
+        <App
+          state = { state }
+          dispatch = { store.dispatch.bind(store) }
+          store = { store } />
+      </StoreContext.Provider>
+    </BrowserRouter>
   );
 };
 
