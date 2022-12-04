@@ -12,8 +12,7 @@ const Header = (props) => {
   return (
     <header className = { headerClasses }>
       <Logo />
-      <MainNavContainer
-        store = { props.store } />
+      <MainNavContainer />
       <SocialNav />
     </header>
   );

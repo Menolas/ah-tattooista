@@ -1,11 +1,10 @@
 import React from 'react';
 import Sprite from '../../assets/svg/sprite.svg';
-import { showBookingModalActionCreator } from '../../redux/booking-reducer';
 
 const Advertisement = (props) => {
 
   const showBookConsultationModal = () => {
-    props.dispatch(showBookingModalActionCreator());
+    props.showBookConsultationModal();
   }
 
   return (
@@ -13,7 +12,7 @@ const Advertisement = (props) => {
       <div className="container">
         <button
           className="btn advertisement__btn"
-          onClick={showBookConsultationModal}>
+          onClick={ showBookConsultationModal }>
           BOOK A CONSULTATION
         </button>
       <div className="social-share">

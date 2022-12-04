@@ -1,27 +1,19 @@
 import React from 'react';
 import Contacts from '../MainPage/Contacts';
-import Advertisement from './Advertisement';
-import Gallery from './Gallery';
-import TattooStyle from './TattooStyle';
+import AdvertisementContainer from './AdvertisementContainer';
+import GalleryContainer from './GalleryContainer';
+import TattooStyleContainer from './TattooStyleContainer';
 
 const Portfolio = (props) => {
   
   return (
     <main className="site-main">
-      <TattooStyle
-        tattooStyles={props.state.tattooStyles}
-        activeStyle={props.state.activeStyle}
-        dispatch={props.dispatch} />
-      <Advertisement
-        dispatch={props.dispatch} />
-      <Gallery
-        gallery={props.state.gallery}
-        activeStyle={props.state.activeStyle}
-        imgLargeUrl={props.state.imgLargeUrl}
-        dispatch={props.dispatch} />
+      <TattooStyleContainer />
+      <AdvertisementContainer />
+      <GalleryContainer />
       <Contacts />
     </main>
-  )
+  );
 }
 
 export default Portfolio;
