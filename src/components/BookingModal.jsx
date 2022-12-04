@@ -6,17 +6,16 @@ const BookingModal = (props) => {
 
   const closeBookingModal = (evt) => {
     evt.preventDefault();
-    props.store.dispatch(closeBookingModalActionCreator());
+    props.dispatch(closeBookingModalActionCreator());
   }
 
   return (
     <div className = "booking-modal modal-wrap">
       <div className = "booking__form-modal-wrap">
         <button
-          className="close-button booking-modal__close-btn"
-          onClick={closeBookingModal}></button>
-        <BookingFormContainer
-          store={ props.store } />
+          className = "close-button booking-modal__close-btn"
+          onClick = { closeBookingModal }></button>
+        <BookingFormContainer />
       </div>
     </div>
     
