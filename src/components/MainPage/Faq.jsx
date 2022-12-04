@@ -1,15 +1,11 @@
 import React from "react";
 import classNames from "classnames";
-import { showFaqItemTextActionCreator } from "../../redux/mainPage-reducer";
 
 const Faq = (props) => {
-  //console.log(props.faqActive);
 
   const onFaqItemHover = (evt) => {
     const index = evt.currentTarget.getAttribute('data');
-    //console.log(index);
-    const action = showFaqItemTextActionCreator(index);
-    props.dispatch(action);
+    props.onFaqItemHover(index);
   }
   
   const FaqItem = (props) => {

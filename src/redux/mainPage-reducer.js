@@ -96,30 +96,21 @@ let initialState = {
 }
 
 const mainPageReducer = (state = initialState, action) => {
-  //debugger;
+  
   switch (action.type) {
 
-    case SHOW_MAIN_MENU:
-      if (!action.status) {
-        state.mainNavMenu = true;
-      } else {
-        state.mainNavMenu = false;
-      }
-      return state;
     case SHOW_FAQ_ITEM_TEXT:
-      state.faqActive = action.index;
-      return state;
-    
-    default: return state;
-  }
-}
 
-export const showMainMenuActionCreator = (status) => (
-  {
-    type: SHOW_MAIN_MENU,
-    status: status,
+      return {
+        ...state,
+        faqActive: action.index,
+      };
+    
+    default: return {
+      ...state,
+    };
   }
-);
+};
 
 export const showFaqItemTextActionCreator = (index) => (
   {

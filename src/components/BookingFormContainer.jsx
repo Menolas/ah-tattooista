@@ -1,42 +1,27 @@
-import React from 'react';
+import { connect } from 'react-redux/es/exports';
 import { updateBookingNameTextActionCreator, updateBookingPhoneTextActionCreator, updateBookingConcentActionCreator } from '../redux/booking-reducer';
 import BookingForm from './BookingForm';
-import StoreContext from '../StoreContext';
 
-const BookingFormContainer = (props) => {
-
-  return (
-    <StoreContext.Consumer>
-      {
-        (store) => {
-
-          let state = store.getState();
-          const onNameFieldChange = (text) => {
-            let action = updateBookingNameTextActionCreator(text);
-            store.dispatch(action);
-          };
-
-          const onPhoneFieldChange = (number) => {
-            let action = updateBookingPhoneTextActionCreator(number);
-            store.dispatch(action);
-          };
-
-          const onConcentFieldChange = (checkbox) => {
-            let action = updateBookingConcentActionCreator(checkbox);
-            store.dispatch(action);
-          };
-
-          return (
-            <BookingForm
-              booking={state.booking}
-              onNameFieldChange={onNameFieldChange}
-              onPhoneFieldChange={onPhoneFieldChange}
-              onConcentFieldChange={onConcentFieldChange} />
-          );
-        }
-      }
-    </StoreContext.Consumer>
-  );
+let mapStateToProps = (state) => {
+  return {
+    booking: state.booking,
+  }
 }
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    onNameFieldChange: (text) => {
+      dispatch(updateBookingNameTextActionCreator(text));
+    },
+    onPhoneFieldChange: (number) => {
+      dispatch(updateBookingPhoneTextActionCreator(number));
+    },
+    onConcentFieldChange: (checkbox) => {
+      dispatch(updateBookingConcentActionCreator(checkbox));
+    },
+  }
+}
+
+const BookingFormContainer = connect(mapStateToProps, mapDispatchToProps)(BookingForm);
 
 export default BookingFormContainer;
