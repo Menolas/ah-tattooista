@@ -16,21 +16,43 @@ const bookingReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case UPDATE_BOOKING_NAME_TEXT:
-      state.bookingNameText = action.text;
-      return state;
+
+      return {
+        ...state,
+        bookingNameText: action.text
+      };
+    
     case UPDATE_BOOKING_PHONE_TEXT:
-      state.bookingPhoneText = action.number;
-      return state;
+
+      return {
+        ...state,
+        bookingPhoneText: action.number,
+      };
+    
     case UPDATE_BOOKING_CONCENT:
-      state.bookingConcent = action.checkbox;
-      return state;
+
+      return {
+        ...state,
+        bookingConcent: action.checkbox,
+      };
+
     case SHOW_BOOKING_MODAL:
-      state.bookingModal = true;
-      return state;
+
+      return {
+        ...state,
+        bookingModal: true,
+      };
+    
     case CLOSE_BOOKING_MODAL:
-      state.bookingModal = false;
-      return state;
-    default: return state;
+
+      return {
+        ...state,
+        bookingModal: false,
+      };
+    
+    default: return {
+      ...state
+    };
   }
 }
 

@@ -32,21 +32,31 @@ let initialState = {
 }
 
 const mainNavReducer = (state = initialState, action) => {
+  //debugger;
 
   switch (action.type) {
     case SHOW_MAIN_MENU:
-      if (!action.status) {
-        state.mainNavMenuModal = true;
-      } else {
-        state.mainNavMenuModal = false;
+      let status = true;
+
+      if (action.status) {
+        status = false;
       }
-      return state;
+
+      return {
+        ...state,
+        mainNavMenuModal: status,
+      };
     
     case HIDE_MAIN_MENU:
-      state.mainNavMenuModal = false;
-      return state;
+
+      return {
+        ...state,
+        mainNavMenuModal: false,
+      };
     
-    default: return state;
+    default: return {
+      ...state
+    };
   }
 }
 
