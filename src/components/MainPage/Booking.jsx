@@ -9,8 +9,7 @@ const Booking = (props) => {
       <h2 className = "page-block__title">Apply for booking</h2>
       <div className = "booking__content">
         <div className = "booking__form-page-wrap">
-          <BookingFormContainer
-            store = { props.store } />
+          <BookingFormContainer />
         </div>
         <div className = "booking__img-wrap"></div>
       </div>

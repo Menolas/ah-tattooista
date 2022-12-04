@@ -1,15 +1,14 @@
 import React from 'react';
-import { showGalleryLargeImageActionCreator, closeGalleryLargeImageActionCreator } from '../../redux/portfolio-reducer';
 
 const Gallery = (props) => {
 
   const showLargeImage = (evt) => {
     const image = evt.currentTarget.getAttribute('data');
-    props.dispatch(showGalleryLargeImageActionCreator(image));
+    props.showLargeImage(image);
   }
 
   const closeLargeImage = () => {
-    props.dispatch(closeGalleryLargeImageActionCreator());
+    props.closeLargeImage();
   }
 
   const getGalleryItems = () => {

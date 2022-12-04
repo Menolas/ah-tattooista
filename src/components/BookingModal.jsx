@@ -6,7 +6,7 @@ const BookingModal = (props) => {
 
   const closeBookingModal = (evt) => {
     evt.preventDefault();
-    props.dispatch(closeBookingModalActionCreator());
+    props.closeBookingModal();
   }
 
   return (
