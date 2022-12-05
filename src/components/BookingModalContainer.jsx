@@ -1,6 +1,5 @@
 import { connect } from 'react-redux/es/exports';
 import { closeBookingModalActionCreator } from '../redux/booking-reducer';
-import BookingFormContainer from './BookingFormContainer';
 import BookingModal from './BookingModal';
 
 let mapStateToProps = (state) => {

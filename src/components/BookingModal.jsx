@@ -1,5 +1,4 @@
 import React from 'react';
-import { closeBookingModalActionCreator } from '../redux/booking-reducer';
 import BookingFormContainer from './BookingFormContainer';
 
 const BookingModal = (props) => {
@@ -17,8 +16,7 @@ const BookingModal = (props) => {
           onClick = { closeBookingModal }></button>
         <BookingFormContainer />
       </div>
-    </div>
-    
+    </div>  
   );
 }
 

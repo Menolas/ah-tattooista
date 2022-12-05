@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 const TattooStyle = (props) => {
   const activeStyle = props.activeStyle;
+  const activeStyleObject = props.tattooStyles.find(item => item.style === activeStyle);
 
   const handleStyleClick = (evt) => {
     let style = evt.target.getAttribute('data');
@@ -11,17 +12,17 @@ const TattooStyle = (props) => {
 
   const TattooStylesItem = (props) => {
     
-    let itemClasses = classNames('tattoo-style__item', { 'active': activeStyle === props.item });
+    let itemClasses = classNames('tattoo-style__item', { 'active': activeStyle === props.item.style });
     
     return (
-      <li className={itemClasses} data={props.item}>{props.item}</li>
+      <li className={itemClasses} data={props.item.style}>{props.item.writtenName}</li>
     );
   }
 
-  const tattooStylesArray = Object.keys(props.tattooStyles)
+  const tattooStylesArray = props.tattooStyles
     .map((item, i) => {
       return (
-        <TattooStylesItem item={item} key={i} />
+        <TattooStylesItem item = { item } key={ i } />
       );
   });
 
@@ -31,9 +32,9 @@ const TattooStyle = (props) => {
         { tattooStylesArray }
       </ul>
       <div className="tattoo-style__item-content">
-        <h2 className="title title--secondary page-block__title tattoo-style__title">{ activeStyle }</h2>
+        <h2 className="title title--secondary page-block__title tattoo-style__title">{ activeStyleObject.writtenName }</h2>
         <div className="tattoo-style__text">
-          { props.tattooStyles[activeStyle] }
+          { activeStyleObject.description }
         </div>  
       </div>
     </section>
