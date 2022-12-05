@@ -1,47 +1,40 @@
 .portfolio-slider__list-wrap {
-  width: 100%;
+  position: relative;
+  max-width: 100%;
+  height: 380px;
+  width: 270px;
+  overflow: hidden;
 }
 
 .portfolio-slider__list {
   @include list-style;
   display: flex;
   justify-content: center;
-  column-gap: 38px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .portfolio-slider__item {
-  display: none;
+  flex-shrink: 0;
+  position: relative;
+  width: 270px;
+  height: 380px;
+  background-size: cover;
+  filter: grayscale(100%);
 
-  &:first-child {
-    display: block;
-  }
-
-  &:first-child .portfolio-slider__link {
-    background-image: url("../img/black-gray.png");
-  }
-
-  &:nth-child(2) .portfolio-slider__link {
-    background-image: url("../img/blackWork.jpg");
-  }
-
-  &:nth-child(3) .portfolio-slider__link {
-    background-image: url("../img/fineLine.jpg");
-  }
-
-  &:nth-child(4) .portfolio-slider__link {
-    background-image: url("../img/neoTraditional.png");
+  &:hover {
+    filter: none;
   }
 }
 
 .portfolio-slider__link {
   @include link-style;
-  position: relative;
-  width: 270px;
-  height: 380px;
-  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 
-.portfolio-slider__link-title {
+.portfolio-slider__item-title {
   position: absolute;
   bottom: 50px;
   right: -22px;
@@ -63,14 +56,18 @@
 
 @media(min-width: 990px) {
   .portfolio-slider__list-wrap {
-    width: 90%;
+    width: 842px;
   }
 
   .portfolio-slider__list {
     @include list-style;
     display: flex;
     justify-content: center;
-    column-gap: 38px;
+    column-gap: 16px;
+  }
+
+  .portfolio-slider__item {
+    
   }
 
   .portfolio-slider__item.active {
@@ -96,5 +93,16 @@
     span:last-child {
       margin-left: 20px;
     }
+  }
+}
+
+@media(min-width: 1400px) {
+
+  .portfolio-slider__list-wrap {
+    width: 1140px;
+  }
+
+  .portfolio-slider__list {
+    column-gap: 20px;
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Sprite from '../../assets/svg/sprite.svg';
+import { NavLink } from "react-router-dom";
 
 const Advertisement = (props) => {
 
@@ -19,19 +20,19 @@ const Advertisement = (props) => {
         <span>Share this page</span>
         <ul className="social-share__list list">
           <li className="social-share__item">
-            <a href="#" className="social-share__link">
+            <NavLink to="#" className="social-share__link">
               <svg><use href={`${Sprite}#instagram`}></use></svg>
-            </a>
+            </NavLink>
           </li>
           <li className="social-share__item">
-            <a href="#" className="social-share__link">
+            <NavLink to="#" className="social-share__link">
               <svg><use href={`${Sprite}#facebook`}></use></svg>
-            </a>
+            </NavLink>
           </li>
           <li className="social-share__item">
-            <a href="#" className="social-share__link">
+            <NavLink to="#" className="social-share__link">
               <svg><use href={`${Sprite}#phone`}></use></svg>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

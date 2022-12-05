@@ -1,4 +1,3 @@
-const SHOW_MAIN_MENU = 'SHOW_MAIN_MENU';
 const SHOW_FAQ_ITEM_TEXT = 'SHOW_FAQ_ITEM_TEXT';
 
 let initialState = {

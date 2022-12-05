@@ -6,9 +6,10 @@
 .handlers__elements {
   position: absolute;
   @include center;
+  top: 68%;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   z-index: 5;
 }
 
@@ -39,7 +40,7 @@
 @media (min-width: 990px) {
 
   .handlers__elements {
-    width: 110%;
+    width: 95%;
   }
 
   .handlers__left-arrow,

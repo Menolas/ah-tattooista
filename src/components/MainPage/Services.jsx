@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Services = (props) => {
 
@@ -17,7 +18,7 @@ const Services = (props) => {
     return (
       <li className="services__item">
         <article className="services__article">
-          <a className="services__link" href="#">
+          <NavLink className="services__link" to="#">
             <div className="services__article-img-wrap"></div>
             <div className="services__article-text-block">
               <h4>{ props.title }:</h4>
@@ -25,7 +26,7 @@ const Services = (props) => {
                 { points }
               </ul>
             </div>
-          </a>
+          </NavLink>
         </article>
       </li>
     )

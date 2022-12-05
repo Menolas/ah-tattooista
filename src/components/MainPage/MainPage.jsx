@@ -1,6 +1,6 @@
 import React from 'react';
 import MainOfferContainer from './MainOfferContainer';
-import PortfolioSlider from './PortfolioSlider';
+import PortfolioSliderContainer from './PortfolioSliderContainer';
 import About from './About';
 import ServicesContainer from './ServicesContainer';
 import FaqContainer from './FaqContainer';
@@ -12,7 +12,7 @@ const MainPage = (props) => {
   return (
     <main className="site-main">
       <MainOfferContainer />
-      <PortfolioSlider />
+      <PortfolioSliderContainer />
       <About />
       <ServicesContainer />
       <FaqContainer />

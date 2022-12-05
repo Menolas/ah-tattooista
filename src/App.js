@@ -1,6 +1,6 @@
 import React from 'react';
 import './assets/css/style.css';
-import { Route, Routes, BrowserRouter, } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 //import store from './redux/redux-store';
 //import { compose } from "redux";
 //import { Provider } from 'react-redux';
@@ -26,8 +26,8 @@ const App = (props) => {
       <Routes>
         <Route exact path='/'
           element = { <MainPage/> } />
-        <Route path = '/portfolio'
-          element = { <Portfolio /> } />
+        <Route path="/portfolio"
+          element={<Portfolio />} />
       </Routes>
       <Footer />
       {
