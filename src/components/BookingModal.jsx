@@ -8,16 +8,21 @@ const BookingModal = (props) => {
     props.closeBookingModal();
   }
 
-  return (
-    <div className = "booking-modal modal-wrap">
-      <div className = "booking__form-modal-wrap">
-        <button
-          className = "close-button booking-modal__close-btn"
-          onClick = { closeBookingModal }></button>
-        <BookingFormContainer />
+  if (props.bookingModal) {
+
+    return (
+      <div className="booking-modal modal-wrap">
+        <div className="booking__form-modal-wrap">
+          <button
+            className="close-button booking-modal__close-btn"
+            onClick={closeBookingModal}></button>
+          <BookingFormContainer />
+        </div>
       </div>
-    </div>  
-  );
+    );
+  } else {
+    return;
+  }
 }
 
 export default BookingModal;

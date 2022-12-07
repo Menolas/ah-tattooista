@@ -3,7 +3,9 @@ import { closeBookingModalActionCreator } from '../redux/booking-reducer';
 import BookingModal from './BookingModal';
 
 let mapStateToProps = (state) => {
-  return {};
+  return {
+    bookingModal: state.booking.bookingModal,
+  };
 }
 
 let mapDispatchToProps = (dispatch) => {

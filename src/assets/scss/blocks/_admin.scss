@@ -1,0 +1,49 @@
+.admin {
+
+  .admin__header {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    padding: 20px 0;
+  }
+
+  .admin__back-link {
+    @include link-style;
+  }
+
+  .admin__view-btns {
+    display: flex;
+    column-gap: 10px;
+    border-bottom: $light-border;
+  }
+
+  .admin__cards-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    padding: 25px;
+  }
+
+  .admin__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: $light-border;
+  }
+
+  .admin__card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .admin__card-message {
+    display: flex;
+    align-items: flex-start;
+
+    p {
+      margin: 0;
+    }
+  }
+}

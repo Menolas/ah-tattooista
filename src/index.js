@@ -12,7 +12,7 @@ const renderEntireTree = (state) => {
   root.render(
     <BrowserRouter>
       <Provider store = { store }>
-        <App state={ store.getState() } />
+        <App />
       </Provider>
     </BrowserRouter>
   );
