@@ -43,4 +43,3 @@ const MainNav = (props) => {
 };
 
 export default MainNav;
- 

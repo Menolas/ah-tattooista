@@ -10,8 +10,9 @@ import Portfolio from './components/Portfolio/Portfolio';
 import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
 import BookingModalContainer from './components/BookingModalContainer';
+import AdminContainer from './components/Admin/AdminContainer';
 
-const App = (props) => {
+const App = () => {
   
   return (
     <div className="App">
@@ -28,12 +29,11 @@ const App = (props) => {
           element = { <MainPage/> } />
         <Route path="/portfolio"
           element={<Portfolio />} />
+        <Route path="/admin"
+          element={<AdminContainer />} />
       </Routes>
       <Footer />
-      {
-        props.state.booking.bookingModal &&
-        <BookingModalContainer />
-      }
+      <BookingModalContainer />
     </div>
   );
 }
