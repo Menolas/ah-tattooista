@@ -3,15 +3,15 @@
     "fullName": { "regexp": "[A-Z][a-z]{5,10}" },
     "status": { "boolean": {} },
     "contacts": {
-      "email": { "regexp": "[a-z]{5,10}@gmail.com" },
-      "phone": { "int": {} }
+      "hasMany": {
+        "email": { "regexp": "[a-z]{5,10}@gmail.com" },
+        "phone": { "int": {} }
+      }
     },
     "message": { "loremParagraphs": { "minLength": 20, "maxLength": 100 } },
-    "date": {
-      "createdAt": {
-        "min": "2022-01-01T00:00:00Z",
-        "max": "2022-12-31T23:59:59Z"
-      }
+    "createdAt": {
+      "min": "2022-01-01T00:00:00Z",
+      "max": "2022-12-31T23:59:59Z"
     }
   }
 }
