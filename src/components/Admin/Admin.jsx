@@ -48,7 +48,7 @@ const Admin = (props) => {
       },
     ]); */
 
-    axios.get("https://ah-tattooista.bubbleapps.io/version-test/api/1.1/obj/customers").then(response => {
+    axios.get("https://mockend.com/Menolas/ah-tattooista/customers").then(response => {
       props.setCustomers(response.data.items);
     });
   }
