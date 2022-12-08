@@ -4,8 +4,7 @@ import axios from 'axios';
 
 class Customers extends React.Component {
 
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     axios.get("https://mockend.com/Menolas/ah-tattooista/customers")
       .then(response => {
         this.props.setCustomers(response.data);
