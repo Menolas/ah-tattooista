@@ -5,27 +5,11 @@ const SET_MY_CLIENTS = 'SET_MY_CLIENTS';
 const ADD_TO_MY_CLIENTS = 'ADD_TO_MY_CLIENTS';
 const DELETE_FROM_MY_CLIENTS = 'DELETE_FROM_MY_CLIENTS';
 
-//34aaecdc726bce2e9d164e0083cbd148
-//https://ah-tattooista.bubbleapps.io/version-test/api/1.1/wf
-//https://ah-tattooista.bubbleapps.io/version-test/api/1.1/obj
-
-
-
 let initialState = {
   customers: [],
-  myClients: [
-    {
-      id: "dhsdilfgywef",
-      date: "",
-      fullName: "Kikirikki",
-      contacts: {
-        facebook: "",
-        insta: "",
-        email: "",
-        phone: "0047094070141",
-      },
-    },
-  ],
+  myClients: [],
+  customersList: true,
+  clientsList: false,
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -65,7 +49,7 @@ const adminReducer = (state = initialState, action) => {
     case SET_MY_CLIENTS:
       return {
         ...state,
-        customers: [...action.customers],
+        myClients: [...action.myClients],
       };
     
     case ADD_TO_MY_CLIENTS:

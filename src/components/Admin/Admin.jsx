@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import CustomersContainer from "./CustomersContainer";
+import MyClientsContainer from "./MyClientsContainer";
 
 const Admin = (props) => {
   //debugger;
@@ -19,6 +20,7 @@ const Admin = (props) => {
           <button className="btn">My Clients</button>
         </div>
         <CustomersContainer />
+        <MyClientsContainer />
       </div>
     </div>
   );
