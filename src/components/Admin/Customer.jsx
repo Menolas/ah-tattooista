@@ -11,18 +11,6 @@ const Customer = (props) => {
     const customerId = evt.target.getAttribute('data');
     props.unChangeStatus(customerId);
   };
-
-  const contacts = Object.entries(props.customer.contacts)
-    .map(([soc, contact]) => {
-      if (contact) {
-        return (
-          <li key={soc}>
-            <span>{soc}:&nbsp;</span>
-            <span>{contact}</span>
-          </li>
-        );
-      }
-    });
   
   return (
     <li className="admin__card">
@@ -34,7 +22,34 @@ const Customer = (props) => {
         <div>
           <span>Contacts:</span>
           <ul className="list">
-            {contacts}
+            {
+              props.customer.phone &&
+              <li>
+                <span>Phone:&nbsp;</span>
+                <span>{ props.customer.phone }</span>
+              </li>
+            }
+            {
+              props.customer.email &&
+              <li>
+                <span>Email:&nbsp;</span>
+                <span>{ props.customer.email }</span>
+              </li>
+            }
+            {
+              props.customer.insta &&
+              <li>
+                <span>Instagram:&nbsp;</span>
+                <span>{ props.customer.insta }</span>
+              </li>
+            }
+            {
+              props.customer.whatsapp &&
+              <li>
+                <span>Whatsapp:&nbsp;</span>
+                <span>{ props.customer.whatsapp }</span>
+              </li>
+            }
           </ul>
         </div>
         <div className="admin__card-message">
