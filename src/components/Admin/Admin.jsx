@@ -49,7 +49,7 @@ const Admin = (props) => {
     ]); */
 
     axios.get("https://mockend.com/Menolas/ah-tattooista/customers").then(response => {
-      props.setCustomers(response.data.items);
+      props.setCustomers(response.data);
     });
   }
 

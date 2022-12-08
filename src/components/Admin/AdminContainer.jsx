@@ -19,6 +19,7 @@ let mapDispatchToProps = (dispatch) => {
     },
 
     setCustomers: (customers) => {
+      debugger;
       dispatch(setCustomersAC(customers));
     }
   };
