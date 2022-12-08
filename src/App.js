@@ -10,7 +10,7 @@ import Portfolio from './components/Portfolio/Portfolio';
 import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
 import BookingModalContainer from './components/BookingModalContainer';
-import AdminContainer from './components/Admin/AdminContainer';
+import Admin from './components/Admin/Admin';
 
 const App = () => {
   
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/portfolio"
           element={<Portfolio />} />
         <Route path="/admin"
-          element={<AdminContainer />} />
+          element={<Admin />} />
       </Routes>
       <Footer />
       <BookingModalContainer />
