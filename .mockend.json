@@ -3,7 +3,7 @@
     "fullName": { "regexp": "[A-Z][a-z]{5,10}" },
     "status": { "boolean": {} },
     "email": { "regexp": "[a-z]{5,10}@gmail.com" },
-    "phone": { "int": {} },
+    "phone": { "int": { "min": 110010101, "max": 1000000000 } },
     "message": { "loremParagraphs": { "minLength": 20, "maxLength": 100 } },
     "createdAt": {
       "dateTime": {
