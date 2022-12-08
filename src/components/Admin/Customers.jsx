@@ -1,32 +1,35 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import Customer from "./Customer";
 import axios from 'axios';
 
-const Customers = (props) => {
-  //debugger;
-  if (props.customers.length === 0) {
-    axios.get("https://mockend.com/Menolas/ah-tattooista/customers").then(response => {
-      props.setCustomers(response.data);
-    });
+class Customers extends React.Component {
+
+  constructor(props) {
+    super(props);
+    axios.get("https://mockend.com/Menolas/ah-tattooista/customers")
+      .then(response => {
+        this.props.setCustomers(response.data);
+      });
   }
 
-  const customers = props.customers
+  customers = this.props.customers
     .map(customer => {
       return (
         <Customer
           key={customer.id}
           customer={customer}
-          changeStatus={props.changeStatus}
-          unChangeStatus={props.unChangeStatus} />
+          changeStatus={this.props.changeStatus}
+          unChangeStatus={this.props.unChangeStatus} />
       );
   });
-
-  return (
-    <ul className="admin__cards-list list">
-      { customers }
-    </ul>
-  );
+  
+  render = () => {
+    return (
+      <ul className="admin__cards-list list">
+        {this.customers}
+      </ul>
+    );
+  }
 };
 
 export default Customers;
