@@ -7,12 +7,11 @@ const SET_TOTAL_CUSTOMERS_COUNT = 'SET_TOTAL_CUSTOMERS_COUNT';
 let initialState = {
   customers: [],
   pageSize: 5,
-  totalCustomersCount: 20,
+  totalCustomersCount: 100,
   currentPage: 1,
 }
 
 const customersReducer = (state = initialState, action) => {
-  //debugger;
 
   switch (action.type) {
 
