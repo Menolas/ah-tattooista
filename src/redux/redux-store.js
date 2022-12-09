@@ -4,6 +4,7 @@ import bookingReducer from './booking-reducer';
 import mainPageReducer from './mainPage-reducer';
 import mainNavReducer from './main-nav-reducer';
 import adminReducer from './admin-reducer';
+import customersReducer from './customers-reducer';
 
 let reducers = combineReducers({
   portfolio: portfolioReducer,
@@ -11,6 +12,7 @@ let reducers = combineReducers({
   mainPage: mainPageReducer,
   mainNav: mainNavReducer,
   admin: adminReducer,
+  customers: customersReducer,
 });
 
 let store = createStore(reducers);

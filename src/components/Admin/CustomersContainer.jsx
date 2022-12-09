@@ -1,14 +1,14 @@
 import { connect } from 'react-redux/es/exports';
-import { changeCustomerStatusAC, unChangeCustomerStatusAC, setCustomersAC, setCurrentPageAC, setCustomersTotalCountAC } from '../../redux/admin-reducer';
+import { changeCustomerStatusAC, unChangeCustomerStatusAC, setCustomersAC, setCurrentPageAC, setCustomersTotalCountAC } from '../../redux/customers-reducer';
 import Customers from './Customers';
 
 let mapStateToProps = (state) => {
   //debugger;
   return {
-    customers: state.admin.customers,
-    pageSize: state.admin.pageSize,
-    totalCustomersCount: state.admin.totalCustomersCount,
-    currentPage: state.admin.currentPage,
+    customers: state.customers.customers,
+    pageSize: state.customers.pageSize,
+    totalCustomersCount: state.customers.totalCustomersCount,
+    currentPage: state.customers.currentPage,
   };
 };
 

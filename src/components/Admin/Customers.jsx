@@ -8,7 +8,8 @@ class Customers extends React.Component {
   
   componentDidMount() {
     //console.log(this.props.currentPage);
-    axios.get(`https://mockend.com/Menolas/ah-tattooista/customers?limit=${this.props.pageSize}&offset=${this.props.currentPage}`)
+    debugger;
+    axios.get(`https://mockend.com/Menolas/ah-tattooista/customers`)
       .then(response => {
         this.props.setCustomers(response.data);
         this.props.setCustomersTotalCount(response.data.length);
@@ -17,7 +18,7 @@ class Customers extends React.Component {
   }
 
   onPageChanged = (currentPage) => {
-    debugger;
+    //debugger;
     this.props.setCurrentPage(currentPage);
     axios.get(`https://mockend.com/Menolas/ah-tattooista/customers?limit=${this.props.pageSize}&offset=${this.props.currentPage}`)
       .then(response => {
