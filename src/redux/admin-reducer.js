@@ -4,16 +4,22 @@ const SET_CUSTOMERS = 'SET_CUSTOMERS';
 const SET_MY_CLIENTS = 'SET_MY_CLIENTS';
 const ADD_TO_MY_CLIENTS = 'ADD_TO_MY_CLIENTS';
 const DELETE_FROM_MY_CLIENTS = 'DELETE_FROM_MY_CLIENTS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_CUSTOMERS_COUNT = 'SET_TOTAL_CUSTOMERS_COUNT';
 
 let initialState = {
   customers: [],
   myClients: [],
   customersList: true,
   clientsList: false,
+  pageSize: 5,
+  totalCustomersCount: 20,
+  currentPage: 1,
 }
 
 const adminReducer = (state = initialState, action) => {
-  
+  //debugger;
+
   switch (action.type) {
 
     case CUSTOMER_CONTACTED:
@@ -43,13 +49,13 @@ const adminReducer = (state = initialState, action) => {
     case SET_CUSTOMERS:
       return {
         ...state,
-        customers: [...action.customers],
+        customers: action.customers,
       };
     
     case SET_MY_CLIENTS:
       return {
         ...state,
-        myClients: [...action.myClients],
+        myClients: action.myClients,
       };
     
     case ADD_TO_MY_CLIENTS:
@@ -61,8 +67,20 @@ const adminReducer = (state = initialState, action) => {
     case DELETE_FROM_MY_CLIENTS:
       return {
         ...state,
-        myClients:  [...state.myClients,],
+        //myClients:  [...state.myClients,],
       };
+    
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
+    
+    case SET_TOTAL_CUSTOMERS_COUNT:
+      return {
+        ...state,
+        totalCustomersCount: action.count,
+      }
     
     default: return state;
     
@@ -108,6 +126,20 @@ export const deleteFromMyClientsAC = (myClient) => (
   {
     type: DELETE_FROM_MY_CLIENTS,
     myClient: myClient,
+  }
+);
+
+export const setCurrentPageAC = (currentPage) => (
+  {
+    type: SET_CURRENT_PAGE,
+    currentPage: currentPage,
+  }
+);
+
+export const setCustomersTotalCountAC = (count) => (
+  {
+    type: SET_TOTAL_CUSTOMERS_COUNT,
+    count: count,
   }
 );
 
