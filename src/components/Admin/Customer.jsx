@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Customer = (props) => {
+  //debugger;
 
   const changeStatus = (evt) => {
     const customerId = evt.target.getAttribute('data');
