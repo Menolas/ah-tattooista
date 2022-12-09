@@ -1932,6 +1932,7 @@ input::placeholder {
 }
 .pagination .pagination__item {
   padding: 6px;
+  cursor: pointer;
 }
 .pagination .pagination__item.currentPage {
   position: relative;
