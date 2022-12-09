@@ -20,7 +20,7 @@ const Admin = (props) => {
           <button className="btn">My Clients</button>
         </div>
         <CustomersContainer />
-        <MyClientsContainer />
+        {/* <MyClientsContainer /> */}
       </div>
     </div>
   );
