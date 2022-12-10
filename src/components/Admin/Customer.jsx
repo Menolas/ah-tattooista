@@ -3,14 +3,14 @@ import React from 'react';
 const Customer = (props) => {
   //debugger;
 
-  const changeStatus = (evt) => {
+  const changeCustomerStatus = (evt) => {
     const customerId = evt.target.getAttribute('data');
-    props.changeStatus(customerId);
+    props.changeCustomerStatus(customerId);
   };
 
-  const unChangeStatus = (evt) => {
+  const unChangeCustomerStatus = (evt) => {
     const customerId = evt.target.getAttribute('data');
-    props.unChangeStatus(customerId);
+    props.unChangeCustomerStatus(customerId);
   };
   
   return (
@@ -60,8 +60,8 @@ const Customer = (props) => {
       </div>
       <div className="admin__card-btns">
         {!props.customer.status
-          ? <button data={ props.customer.id } onClick={changeStatus}>Contact</button>
-          : <button data={ props.customer.id } onClick={unChangeStatus}>Done</button>
+          ? <button data={ props.customer.id } onClick={changeCustomerStatus}>Contact</button>
+          : <button data={ props.customer.id } onClick={unChangeCustomerStatus}>Done</button>
         }
       </div>
     </li>

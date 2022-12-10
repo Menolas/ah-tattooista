@@ -1,21 +1,68 @@
+import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import { setMyClientsAC, } from '../../redux/admin-reducer';
+import { setMyClients, setCurrentPage, setMyClientsTotalCount, setIsFetching } from '../../redux/myClients-reducer';
 import MyClients from './MyClients';
+import axios from 'axios';
+import Preloader from './../common/Preloader';
 
-let mapStateToProps = (state, props) => {
+class MyClientsAPIComponent extends React.Component {
+  //debugger;
+
+  componentDidMount() {
+    this.props.setIsFetching(true);
+    axios.get(`https://mockend.com/Menolas/ah-tattooista/clients?limit=${this.props.pageSize}&offset=${this.props.currentPage}`)
+      .then(response => {
+        this.props.setMyClients(response.data);
+        axios.get("https://mockend.com/Menolas/ah-tattooista/clients")
+          .then(response => {
+            this.props.setMyClientsTotalCount(response.data.length);
+          });
+        this.props.setIsFetching(false);
+      });
+  }
+
+  onPageChanged = (currentPage) => {
+    this.props.setIsFetching(true);
+    this.props.setCurrentPage(currentPage);
+    axios.get(`https://mockend.com/Menolas/ah-tattooista/clients?limit=${this.props.pageSize}&offset=${this.props.currentPage}`)
+      .then(response => {
+        this.props.setMyClients(response.data);
+        this.props.setIsFetching(false);
+      });
+  }
+  
+  render = () => {
+    return (
+      <>
+        {this.props.isFetching ? <Preloader /> : null}
+        <MyClients
+          myClients={this.props.myClients}
+          totalMyClientsCount={this.props.totalMyClientsCount}
+          pageSize={this.props.pageSize}
+          currentPage={this.props.currentPage}
+          onPageChanged={this.onPageChanged}
+        />
+      </>
+    );
+  };
+};
+  
+let mapStateToProps = (state) => {
   return {
-    myClients: state.admin.myClients,
+    myClients: state.myClients.myClients,
+    pageSize: state.myClients.pageSize,
+    currentPage: state.myClients.currentPage,
+    isFetching: state.myClients.isFetching,
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    setMyClients: (myClients) => {
-      dispatch(setMyClientsAC(myClients));
-    },
-  };
-};
-
-const MyClientsContainer = connect(mapStateToProps, mapDispatchToProps)(MyClients);
+const MyClientsContainer = connect(mapStateToProps,
+  {
+    setMyClients,
+    setCurrentPage,
+    setMyClientsTotalCount,
+    setIsFetching
+  }
+)(MyClientsAPIComponent);
 
 export default MyClientsContainer;

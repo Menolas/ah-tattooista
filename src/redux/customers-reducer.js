@@ -70,42 +70,42 @@ const customersReducer = (state = initialState, action) => {
   }
 }
 
-export const changeCustomerStatusAC = (customerId) => (
+export const changeCustomerStatus = (customerId) => (
   {
     type: CUSTOMER_CONTACTED,
     customerId: customerId,
   }
 );
 
-export const unChangeCustomerStatusAC = (customerId) => (
+export const unChangeCustomerStatus = (customerId) => (
   {
     type: CUSTOMER_NOT_CONTACTED,
     customerId: customerId,
   }
 );
 
-export const setCustomersAC = (customers) => (
+export const setCustomers = (customers) => (
   {
     type: SET_CUSTOMERS,
     customers: customers,
   }
 );
 
-export const setCurrentPageAC = (currentPage) => (
+export const setCurrentPage = (currentPage) => (
   {
     type: SET_CURRENT_PAGE,
     currentPage: currentPage,
   }
 );
 
-export const setCustomersTotalCountAC = (count) => (
+export const setCustomersTotalCount = (count) => (
   {
     type: SET_TOTAL_CUSTOMERS_COUNT,
     count: count,
   }
 );
 
-export const setIsFetchingAC = (isFetching) => (
+export const setIsFetching = (isFetching) => (
   {
     type: TOGGLE_IS_FETCHING,
     isFetching: isFetching,
