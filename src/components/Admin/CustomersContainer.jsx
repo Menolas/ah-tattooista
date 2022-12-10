@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import { changeCustomerStatusAC, unChangeCustomerStatusAC, setCustomersAC, setCurrentPageAC, setCustomersTotalCountAC, setIsFetchingAC } from '../../redux/customers-reducer';
+import { changeCustomerStatus, unChangeCustomerStatus, setCustomers, setCurrentPage, setCustomersTotalCount, setIsFetching } from '../../redux/customers-reducer';
 import Customers from "./Customers";
 import axios from 'axios';
 import Preloader from './../common/Preloader';
@@ -10,7 +10,7 @@ class CustomersAPIComponent extends React.Component {
   
   componentDidMount() {
     //debugger;
-    this.props.toggleIsFetching(true);
+    this.props.setIsFetching(true);
     axios.get(`https://mockend.com/Menolas/ah-tattooista/customers?limit=${this.props.pageSize}&offset=${this.props.currentPage}`)
       .then(response => {
         this.props.setCustomers(response.data);
@@ -18,17 +18,17 @@ class CustomersAPIComponent extends React.Component {
           .then(response => {
             this.props.setCustomersTotalCount(response.data.length);
           });
-        this.props.toggleIsFetching(false);
+        this.props.setIsFetching(false);
       });
   }
 
   onPageChanged = (currentPage) => {
-    this.props.toggleIsFetching(true);
+    this.props.setIsFetching(true);
     this.props.setCurrentPage(currentPage);
     axios.get(`https://mockend.com/Menolas/ah-tattooista/customers?limit=${this.props.pageSize}&offset=${this.props.currentPage}`)
       .then(response => {
         this.props.setCustomers(response.data);
-        this.props.toggleIsFetching(false);
+        this.props.setIsFetching(false);
       });
   }
   
@@ -42,7 +42,10 @@ class CustomersAPIComponent extends React.Component {
           totalCustomersCount={this.props.totalCustomersCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
-          onPageChanged={this.onPageChanged} />
+          onPageChanged={this.onPageChanged}
+          changeCustomerStatus={this.props.changeCustomerStatus}
+          unChangeCustomerStatus={this.props.unChangeCustomerStatus}
+        />
       </>
     );
   }
@@ -59,35 +62,15 @@ let mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    changeStatus: (customerId) => {
-      dispatch(changeCustomerStatusAC(customerId));
-    },
-
-    unChangeStatus: (customerId) => {
-      dispatch(unChangeCustomerStatusAC(customerId));
-    },
-
-    setCustomers: (customers) => {
-      dispatch(setCustomersAC(customers));
-    },
-
-    setCurrentPage: (currentPage) => {
-      console.log(currentPage);
-      dispatch(setCurrentPageAC(currentPage));
-    },
-
-    setCustomersTotalCount: (count) => {
-      dispatch(setCustomersTotalCountAC(count));
-    },
-
-    toggleIsFetching: (isFetching) => {
-      dispatch(setIsFetchingAC(isFetching));
-    }
-  };
-};
-
-const CustomersContainer = connect(mapStateToProps, mapDispatchToProps)(CustomersAPIComponent);
+const CustomersContainer = connect(mapStateToProps,
+  {
+    changeCustomerStatus, 
+    unChangeCustomerStatus,
+    setCustomers,
+    setCurrentPage,
+    setCustomersTotalCount,
+    setIsFetching,
+  }
+)(CustomersAPIComponent);
 
 export default CustomersContainer;

@@ -10,8 +10,8 @@ const Customers = (props) => {
         <Customer
           key={customer.id}
           customer={customer}
-          changeStatus={props.changeStatus}
-          unChangeStatus={props.unChangeStatus} />
+          changeCustomerStatus={props.changeCustomerStatus}
+          unChangeCustomerStatus={props.unChangeCustomerStatus} />
       );
   });
 
