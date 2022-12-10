@@ -15,6 +15,14 @@ body {
   background-color: #080808;
 }
 
+div#root {
+  min-height: 100vh;
+}
+
+div.App {
+  height: 100%;
+}
+
 .list {
   margin: 0;
   padding: 0;
@@ -1950,4 +1958,22 @@ input::placeholder {
   left: 0;
   right: 0;
   bottom: -2px;
+}
+
+.preloader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 100px;
+  width: 100%;
+  height: 100%;
+}
+.preloader img {
+  margin: auto;
 }/*# sourceMappingURL=style.css.map */
