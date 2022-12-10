@@ -3,12 +3,14 @@ const CUSTOMER_NOT_CONTACTED = 'CUSTOMER_NOT_CONTACTED';
 const SET_CUSTOMERS = 'SET_CUSTOMERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_CUSTOMERS_COUNT = 'SET_TOTAL_CUSTOMERS_COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
   customers: [],
   pageSize: 5,
-  totalCustomersCount: 100,
+  totalCustomersCount: 0,
   currentPage: 1,
+  isFetching: false,
 }
 
 const customersReducer = (state = initialState, action) => {
@@ -55,6 +57,12 @@ const customersReducer = (state = initialState, action) => {
       return {
         ...state,
         totalCustomersCount: action.count,
+      };
+    
+    case TOGGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching,
       }
     
     default: return state;
@@ -94,6 +102,13 @@ export const setCustomersTotalCountAC = (count) => (
   {
     type: SET_TOTAL_CUSTOMERS_COUNT,
     count: count,
+  }
+);
+
+export const setIsFetchingAC = (isFetching) => (
+  {
+    type: TOGGLE_IS_FETCHING,
+    isFetching: isFetching,
   }
 );
 
