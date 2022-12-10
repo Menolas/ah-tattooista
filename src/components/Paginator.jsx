@@ -1,8 +1,9 @@
 import React from "react";
 
 const Paginator = (props) => {
+  //debugger
 
-  let pagesCount = Math.ceil(props.totalCustomersCount / props.pageSize);
+  let pagesCount = Math.ceil(props.totalCount / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);

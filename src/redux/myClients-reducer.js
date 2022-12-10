@@ -7,7 +7,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
   myClients: [],
-  totalMyClientsCount: 0,
+  totalCount: 0,
   pageSize: 5,
   currentPage: 1,
   isFetching: false,
@@ -32,7 +32,7 @@ const myClientsReducer = (state = initialState, action) => {
     case SET_TOTAL_MY_CLIENTS_COUNT:
       return {
         ...state,
-        totalMyClientsCount: action.count,
+        totalCount: action.count,
       };
     
     case TOGGLE_IS_FETCHING:

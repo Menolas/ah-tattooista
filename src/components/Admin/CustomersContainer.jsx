@@ -6,10 +6,8 @@ import axios from 'axios';
 import Preloader from './../common/Preloader';
 
 class CustomersAPIComponent extends React.Component {
-  //debugger;
   
   componentDidMount() {
-    //debugger;
     this.props.setIsFetching(true);
     axios.get(`https://mockend.com/Menolas/ah-tattooista/customers?limit=${this.props.pageSize}&offset=${this.props.currentPage}`)
       .then(response => {
@@ -39,7 +37,7 @@ class CustomersAPIComponent extends React.Component {
         { this.props.isFetching ? <Preloader /> : null }
         <Customers
           customers={this.props.customers}
-          totalCustomersCount={this.props.totalCustomersCount}
+          totalCount={this.props.totalCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           onPageChanged={this.onPageChanged}
@@ -56,7 +54,7 @@ let mapStateToProps = (state) => {
   return {
     customers: state.customers.customers,
     pageSize: state.customers.pageSize,
-    totalCustomersCount: state.customers.totalCustomersCount,
+    totalCount: state.customers.totalCount,
     currentPage: state.customers.currentPage,
     isFetching: state.customers.isFetching,
   };

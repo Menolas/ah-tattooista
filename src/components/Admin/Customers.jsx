@@ -16,16 +16,17 @@ const Customers = (props) => {
   });
 
   return (
-    <div>
+    <>
       <Paginator
-        totalCustomersCount={props.totalCustomersCount}
+        totalCount={props.totalCount}
         pageSize={props.pageSize}
         currentPage={props.currentPage}
-        onPageChanged={props.onPageChanged} />
+        onPageChanged={props.onPageChanged}
+      />
       <ul className="admin__cards-list list">
         {customers}
       </ul>
-    </div>
+    </>
   );
 };
 

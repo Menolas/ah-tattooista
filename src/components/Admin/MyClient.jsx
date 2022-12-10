@@ -1,10 +1,12 @@
 import React from 'react';
+import avatar from '../../assets/img/avatar.webp';
 
 const MyClient = (props) => {
   
   return (
     <li className="admin__card">
       <div className="admin__card-details">
+        <div><img src={avatar} /></div>
         <div className="admin__card-name">
           <span>Name:&nbsp;</span>
           <span>{props.myClient.fullName}</span>
