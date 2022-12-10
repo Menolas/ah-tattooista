@@ -1,36 +1,47 @@
-/* "Client": {
-  "fullName": { "regexp": "[A-Z][a-z]{5,10}" },
-  "avatar": { "string": {} },
-  "email": { "regexp": "[a-z]{5,10}@gmail.com" },
-  "phone": { "int": { "min": 110010101, "max": 1000000000 } },
-  "whatsapp": { "int": { "min": 110010101, "max": 1000000000 } },
-  "insta": { "regexp": "@[a-z]{5,10}" },
-  "createdAt": {
-    "dateTime": {
-      "min": "2022-01-01T00:00:00Z",
-      "max": "2022-12-31T23:59:59Z"
-    }
-  }
-}
-*/
+const SHOW_CUSTOMERS = 'SHOW_CUSTOMERS';
+const SHOW_MY_CLIENTS = 'SHOW_MY_CLIENTS';
 
 let initialState = {
-  myClients: [],
-  customersList: true,
-  clientsList: false,
-  pageSize: 5,
-  totalCustomersCount: 20,
-  currentPage: 1,
+  isCustomers: true,
+  isMyClients: false,
 }
 
 const adminReducer = (state = initialState, action) => {
   //debugger;
 
   switch (action.type) {
+
+    case SHOW_CUSTOMERS:
+      return {
+        ...state,
+        isMyClients: false,
+        isCustomers: true,
+      }
+
+    case SHOW_MY_CLIENTS:
+      return {
+        ...state,
+        isMyClients: true,
+        isCustomers: false,
+      }
     
     default: return state;
     
   }
 }
+
+export const showCustomers = () => (
+  {
+    type: SHOW_CUSTOMERS,
+  }
+);
+
+export const showMyClients = () => (
+  {
+    type: SHOW_MY_CLIENTS,
+  }
+);
+  
+
 
 export default adminReducer;

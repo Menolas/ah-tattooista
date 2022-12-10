@@ -6,7 +6,6 @@ import axios from 'axios';
 import Preloader from './../common/Preloader';
 
 class MyClientsAPIComponent extends React.Component {
-  //debugger;
 
   componentDidMount() {
     this.props.setIsFetching(true);
@@ -37,7 +36,7 @@ class MyClientsAPIComponent extends React.Component {
         {this.props.isFetching ? <Preloader /> : null}
         <MyClients
           myClients={this.props.myClients}
-          totalMyClientsCount={this.props.totalMyClientsCount}
+          totalCount={this.props.totalCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           onPageChanged={this.onPageChanged}
@@ -50,6 +49,7 @@ class MyClientsAPIComponent extends React.Component {
 let mapStateToProps = (state) => {
   return {
     myClients: state.myClients.myClients,
+    totalCount: state.myClients.totalCount,
     pageSize: state.myClients.pageSize,
     currentPage: state.myClients.currentPage,
     isFetching: state.myClients.isFetching,

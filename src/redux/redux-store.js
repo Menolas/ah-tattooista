@@ -12,7 +12,7 @@ let reducers = combineReducers({
   booking: bookingReducer,
   mainPage: mainPageReducer,
   mainNav: mainNavReducer,
-  //admin: adminReducer,
+  admin: adminReducer,
   customers: customersReducer,
   myClients: myClientsReducer,
 });

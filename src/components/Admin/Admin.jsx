@@ -16,11 +16,21 @@ const Admin = (props) => {
       </div>
       <div className="">
         <div className="admin__view-btns">
-          <button className="btn">Customers</button>
-          <button className="btn">My Clients</button>
+          <button
+            className="btn"
+            onClick={props.showCustomers}
+          >
+            Customers
+          </button>
+          <button
+            className="btn"
+            onClick={props.showMyClients}
+          >
+            My Clients
+          </button>
         </div>
-        <CustomersContainer />
-        <MyClientsContainer />
+        { props.isCustomers && <CustomersContainer /> }
+        { props.isMyClients && <MyClientsContainer /> }
       </div>
     </div>
   );
