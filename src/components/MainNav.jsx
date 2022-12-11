@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 
 const MainNav = (props) => {
-  //debugger;
   let mainNavClasses = classNames('main-nav', { 'shown': props.mainNav.mainNavMenuModal });
 
   const openMenu = () => {
@@ -36,7 +35,7 @@ const MainNav = (props) => {
         <span></span>
       </div>
       <ul className = "list main-nav__list">
-        { mainNavItems }
+        {mainNavItems}
       </ul>
     </nav>
   );

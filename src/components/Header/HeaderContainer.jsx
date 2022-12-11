@@ -9,12 +9,12 @@ class HeaderContainer extends React.Component {
   componentDidMount() {
     axios.get(`https://mockend.com/Menolas/ah-tattooista/logins/1`)
       .then(response => {
-      //debugger;
-      if (response.data) {
-        let { login, email, password } = response.data;
-        this.props.setAdminData(login, email, password);
+        if (response.data) {
+          let { login, email, password } = response.data;
+          this.props.setAdminData(login, email, password);
+        }
       }
-    });
+    );
   }
 
   render() {
