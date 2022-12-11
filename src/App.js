@@ -32,7 +32,7 @@ const App = () => {
           element={<Portfolio />} />
         <Route path="/admin"
           element={<AdminContainer />} />
-        <Route path='/clientProfile/*'
+        <Route path='/clientProfile/:userId'
           element={ <ProfileContainer />} />
       </Routes>
       <Footer />
