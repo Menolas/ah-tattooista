@@ -18,12 +18,8 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route exact path='/'
-          element={ <Header
-            indexPage={ true } /> } />
-        <Route path='/portfolio'
-          element={ <Header
-            indexPage={ false } /> } />
+        <Route path='/*'
+          element={ <Header/> } />
       </Routes>
       <Routes>
         <Route exact path='/'

@@ -3,11 +3,13 @@ import SocialNav from '../SocialNav';
 import MainNavContainer from '../MainNavContainer';
 import Logo from '../Logo';
 import classNames from "classnames";
+import { withRouter } from '../../utils/withRouter';
 
 const Header = (props) => {
   //debugger;
-  
-  let headerClasses = classNames('main-header', 'container', { 'main-header--inner': !props.indexPage });
+  let index = Object.keys(props.match.params)[0];
+  console.log(props.match.params[index]);
+  let headerClasses = classNames('main-header', 'container', { 'main-header--inner': props.match.params[index] });
   
   return (
     <header className = { headerClasses }>
@@ -18,4 +20,6 @@ const Header = (props) => {
   );
 }
 
-export default Header;
+let WithUrlDataContainerComponent = withRouter(Header);
+
+export default WithUrlDataContainerComponent;

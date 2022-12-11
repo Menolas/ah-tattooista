@@ -7,6 +7,7 @@ import adminReducer from './admin-reducer';
 import customersReducer from './customers-reducer';
 import myClientsReducer from './myClients-reducer';
 import profileReducer from './profile-reducer';
+import authReducer from './auth-reducer';
 
 let reducers = combineReducers({
   portfolio: portfolioReducer,
@@ -17,6 +18,7 @@ let reducers = combineReducers({
   customers: customersReducer,
   myClients: myClientsReducer,
   profile: profileReducer,
+  auth: authReducer,
 });
 
 let store = createStore(reducers);
