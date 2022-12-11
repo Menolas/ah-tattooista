@@ -28,6 +28,10 @@ let initialState = {
       text: 'Contacts',
       url: './portfolio',
     },
+    {
+      text: 'Admin',
+      url: './admin',
+    },
   ]
 }
 

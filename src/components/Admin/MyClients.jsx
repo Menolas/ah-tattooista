@@ -3,6 +3,7 @@ import MyClient from "./MyClient";
 import Paginator from "../Paginator";
 
 const MyClients = (props) => {
+  //debugger;
 
   const myClients = props.myClients
     .map(myClient => {

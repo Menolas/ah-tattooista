@@ -11,6 +11,7 @@ import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
 import BookingModalContainer from './components/BookingModalContainer';
 import AdminContainer from './components/Admin/AdminContainer';
+import ProfileContainer from './components/Admin/ProfileContainer';
 
 const App = () => {
   
@@ -31,6 +32,8 @@ const App = () => {
           element={<Portfolio />} />
         <Route path="/admin"
           element={<AdminContainer />} />
+        <Route path='/clientProfile/*'
+          element={ <ProfileContainer />} />
       </Routes>
       <Footer />
       <BookingModalContainer />

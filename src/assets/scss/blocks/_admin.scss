@@ -32,6 +32,12 @@
     border: $light-border;
   }
 
+  .admin__card-link {
+    @include link-style;
+    width: 100%;
+    height: 100%;
+  }
+
   .admin__card-details {
     display: flex;
     flex-direction: column;
