@@ -27,5 +27,10 @@
         "max": "2022-12-31T23:59:59Z"
       }
     }
+  },
+  "Login": {
+    "name": { "string": ["admin"] },
+    "email": { "string": ["olenakunina@gmail.com"] },
+    "password": { "string": ["150romashek"]}
   }
 }
