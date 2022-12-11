@@ -9,12 +9,12 @@ class ProfileContainer extends React.Component {
   
   componentDidMount() {
 
-    let userId = this.props.match.params.userId;
-    if (!userId) {
-      userId = 2;
-    }
+    let profileId = this.props.profileId;
+    if (!profileId) {
+      profileId = 2;
+    } 
 
-    axios.get(`https://mockend.com/Menolas/ah-tattooista/clients/` + userId)
+    axios.get(`/Menolas/ah-tattooista/clients/` + profileId)
       .then(response => {
         this.props.setMyClientProfile(response.data);
       });
@@ -35,6 +35,7 @@ let mapStateToProps = (state) => {
   //debugger;
   return {
     profile: state.profile.profile,
+    profileId: state.admin.profileId,
   };
 };
 

@@ -8,7 +8,6 @@ import { withRouter } from '../../utils/withRouter';
 const Header = (props) => {
   //debugger;
   let index = Object.keys(props.match.params)[0];
-  console.log(props.match.params[index]);
   let headerClasses = classNames('main-header', 'container', { 'main-header--inner': props.match.params[index] });
   
   return (

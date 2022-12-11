@@ -1941,6 +1941,11 @@ input::placeholder {
   margin: 0;
 }
 
+@media (min-width: 990px) {
+  .admin {
+    padding-top: 112px;
+  }
+}
 .pagination .pagination__list {
   display: -webkit-box;
   display: -ms-flexbox;

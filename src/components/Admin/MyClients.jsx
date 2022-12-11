@@ -1,6 +1,6 @@
 import React from "react";
 import MyClient from "./MyClient";
-import Paginator from "../Paginator";
+import Paginator from "../common/Paginator";
 
 const MyClients = (props) => {
   //debugger;
@@ -11,6 +11,7 @@ const MyClients = (props) => {
         <MyClient
           key={myClient.id}
           myClient={myClient}
+          showMyClientProfile={props.showMyClientProfile}
         />
       );
   });
