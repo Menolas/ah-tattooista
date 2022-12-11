@@ -30,7 +30,7 @@
   }
 
   .social-nav {
-    margin-left: auto;
+    margin-left: 0;
   }
 
   &.main-header--inner {
@@ -57,6 +57,9 @@
       font-weight: 700;
     }
 
+    .social-nav {
+      margin-left: auto;
+    }
   }
 }
 
@@ -82,12 +85,14 @@
     }
 
     .social-nav {
-      margin-left: 0;
+      //margin-left: 0;
     }
 
     &.main-header--inner {
       
-      
+      .social-nav {
+        margin-left: auto;
+      }
     }
   }
 
