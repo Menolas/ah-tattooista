@@ -33,6 +33,7 @@ const Profile = (props) => {
           </button>
         </div>
         <div className="client-profile">
+          <span>{props.profile.id}</span>
           <div><img src={avatar} /></div>
           <div className="admin__card-name">
             <span>Name:&nbsp;</span>
