@@ -11,7 +11,7 @@ import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
 import BookingModalContainer from './components/BookingModalContainer';
 import AdminContainer from './components/Admin/AdminContainer';
-import ProfileContainer from './components/Admin/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 const App = () => {
   
@@ -19,7 +19,7 @@ const App = () => {
     <div className="App">
       <Routes>
         <Route path='/*'
-          element={ <Header/> } />
+          element={ <HeaderContainer /> } />
       </Routes>
       <Routes>
         <Route exact path='/'
@@ -28,8 +28,8 @@ const App = () => {
           element={<Portfolio />} />
         <Route path="/admin"
           element={<AdminContainer />} />
-        <Route path='/clientProfile/:userId'
-          element={ <ProfileContainer />} />
+        {/* <Route path='/clientProfile/:userId'
+          element={ <ProfileContainer />} /> */}
       </Routes>
       <Footer />
       <BookingModalContainer />

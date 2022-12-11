@@ -1,9 +1,10 @@
 const SET_ADMIN_DATA = 'SET_ADMIN_DATE';
 
 let initialState = {
-  name: null,
+  login: null,
   email: null,
   password: null,
+  isAuth: false,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -13,17 +14,18 @@ const authReducer = (state = initialState, action) => {
     case SET_ADMIN_DATA:
       return {
         ...state,
-        ...action.admin,
+        ...action.data,
+        isAuth: true,
       };
     
     default: return state;
   }
 }
 
-const setAdminData = (admin) => (
+export const setAdminData = (login, email, password) => (
   {
     type: SET_ADMIN_DATA,
-    admin: admin,
+    data: { login, email, password },
   }
 );
 

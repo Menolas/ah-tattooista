@@ -29,7 +29,7 @@
     }
   },
   "Login": {
-    "name": { "string": ["admin"] },
+    "login": { "string": ["admin"] },
     "email": { "string": ["olenakunina@gmail.com"] },
     "password": { "string": ["150romashek"]}
   }
