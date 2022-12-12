@@ -28,8 +28,6 @@ const App = () => {
           element={<Portfolio />} />
         <Route path="/admin"
           element={<AdminContainer />} />
-        {/* <Route path='/clientProfile/:userId'
-          element={ <ProfileContainer />} /> */}
       </Routes>
       <Footer />
       <BookingModalContainer />
