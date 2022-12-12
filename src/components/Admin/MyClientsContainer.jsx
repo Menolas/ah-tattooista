@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
 import { setMyClients, setCurrentPage, setMyClientsTotalCount, setIsFetching } from '../../redux/myClients-reducer';
-import { showMyClientProfile } from '../../redux/admin-reducer';
 import MyClients from './MyClients';
 import axios from 'axios';
 import Preloader from './../common/Preloader';
@@ -41,7 +40,6 @@ class MyClientsAPIComponent extends React.Component {
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           onPageChanged={this.onPageChanged}
-          showMyClientProfile={this.props.showMyClientProfile}
         />
       </>
     );
@@ -64,7 +62,6 @@ const MyClientsContainer = connect(mapStateToProps,
     setCurrentPage,
     setMyClientsTotalCount,
     setIsFetching,
-    showMyClientProfile,
   }
 )(MyClientsAPIComponent);
 

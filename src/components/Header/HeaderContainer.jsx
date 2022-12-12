@@ -7,8 +7,11 @@ import Header from './Header';
 class HeaderContainer extends React.Component {
 
   componentDidMount() {
-    axios.get(`https://mockend.com/Menolas/ah-tattooista/logins/1`)
+    axios.get(`https://mockend.com/Menolas/ah-tattooista/logins/1`, {
+      withCredentials: true
+    })
       .then(response => {
+        debugger;
         if (response.data) {
           let { login, email, password } = response.data;
           this.props.setAdminData(login, email, password);

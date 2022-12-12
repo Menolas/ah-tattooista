@@ -5,7 +5,7 @@ import Portfolio from './components/Portfolio/Portfolio';
 import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
 import BookingModalContainer from './components/BookingModalContainer';
-import AdminContainer from './components/Admin/AdminContainer';
+import Admin from './components/Admin/Admin';
 import HeaderContainer from './components/Header/HeaderContainer';
 import CustomersContainer from './components/Admin/CustomersContainer';
 import MyClientsContainer from './components/Admin/MyClientsContainer';
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/portfolio"
           element={<Portfolio />} />
         <Route path="/admin"
-          element={<AdminContainer />}>
+          element={<Admin />}>
           <Route path="/admin/customers"
             element={<CustomersContainer />} />
           <Route path="/admin/clients"
