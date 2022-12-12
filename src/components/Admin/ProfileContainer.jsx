@@ -9,7 +9,7 @@ class ProfileContainer extends React.Component {
   
   componentDidMount() {
 
-    let profileId = this.props.profileId;
+    let profileId = this.props.match.params.profileId;
     if (!profileId) {
       profileId = 2;
     } 

@@ -5,6 +5,7 @@ import Logo from '../Logo';
 import classNames from "classnames";
 import { NavLink } from "react-router-dom";
 import { withRouter } from '../../utils/withRouter';
+import Sprite from '../../assets/svg/sprite.svg';
 
 const Header = (props) => {
   //debugger;
@@ -16,7 +17,11 @@ const Header = (props) => {
       <Logo />
       <MainNavContainer />
       <SocialNav />
-      {props.isAuth && <NavLink to="/admin">Admin</NavLink>}
+      {props.isAuth &&
+        <NavLink to="/admin/customers" className="main-header__admin-link">
+          <svg><use href={`${Sprite}#admin`}></use></svg>
+        </NavLink>
+      }
     </header>
   );
 }
