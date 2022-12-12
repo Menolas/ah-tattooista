@@ -2,6 +2,8 @@ import React from 'react';
 import CustomersContainer from './CustomersContainer';
 import MyClientsContainer from './MyClientsContainer';
 import ProfileContainer from './ProfileContainer';
+import { NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const Admin = (props) => {
   //debugger;
@@ -10,24 +12,16 @@ const Admin = (props) => {
     <div className="admin container">
       <div className="admin__header">
         <div className="admin__view-btns">
-          <button
-            className="btn"
-            onClick={props.showCustomers}
-          >
+          <NavLink to="/admin/customers" className="btn btn--light-bg">
             Customers
-          </button>
-          <button
-            className="btn"
-            onClick={props.showMyClients}
-          >
+          </NavLink>
+          <NavLink to="/admin/clients" className="btn btn--light-bg">
             My Clients
-          </button>
+          </NavLink>
         </div>
       </div>
       <div className="">
-        { props.isCustomers && <CustomersContainer /> }
-        { props.isMyClients && <MyClientsContainer /> }
-        { props.isMyClientProfile && <ProfileContainer /> }
+        <Outlet />
       </div>
     </div>
   );

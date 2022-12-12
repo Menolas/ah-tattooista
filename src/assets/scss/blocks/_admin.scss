@@ -1,4 +1,5 @@
 .admin {
+  padding-top: 112px;
 
   .admin__header {
     display: flex;
@@ -56,7 +57,4 @@
 
 @media (min-width: 990px) {
 
-  .admin {
-    padding-top: 112px;
-  }
 }

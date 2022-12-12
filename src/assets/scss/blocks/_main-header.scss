@@ -33,6 +33,16 @@
     margin-left: 0;
   }
 
+  .main-header__admin-link {
+    margin-left: 8px;
+    height: 20px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
   &.main-header--inner {
     justify-content: space-between;
 
@@ -84,8 +94,13 @@
       margin-right: 130px;
     }
 
-    .social-nav {
-      //margin-left: 0;
+    .main-header__admin-link {
+      height: 28px;
+
+      svg {
+        width: 28px;
+        height: 28px;
+      }
     }
 
     &.main-header--inner {
