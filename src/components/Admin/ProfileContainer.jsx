@@ -35,7 +35,6 @@ let mapStateToProps = (state) => {
   //debugger;
   return {
     profile: state.profile.profile,
-    profileId: state.admin.profileId,
   };
 };
 

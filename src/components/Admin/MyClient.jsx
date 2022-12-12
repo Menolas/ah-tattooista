@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const MyClient = (props) => {
   
   return (
-    <li className="admin__card" onClick={() => { props.showMyClientProfile(props.myClient.id) }}>
+    <li className="admin__card">
       <NavLink to={'/admin/profile/' + props.myClient.id}>
         <div className="admin__card-details">
           <span>{props.myClient.id}</span>
