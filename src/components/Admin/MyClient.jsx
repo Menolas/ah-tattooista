@@ -6,7 +6,9 @@ const MyClient = (props) => {
   
   return (
     <li className="admin__card">
-      <NavLink to={'/admin/profile/' + props.myClient.id}>
+      <NavLink
+        to={'/admin/profile/' + props.myClient.id}
+        className="admin__card-link">
         <div className="admin__card-details">
           <span>{props.myClient.id}</span>
           <div><img src={avatar} /></div>

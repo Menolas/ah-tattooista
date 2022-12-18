@@ -3,6 +3,7 @@ import Paginator from "../common/Paginator";
 import Customer from "./Customer";
 
 const Customers = (props) => {
+  //debugger;
 
   const customers = props.customers
     .map(customer => {
@@ -11,7 +12,9 @@ const Customers = (props) => {
           key={customer.id}
           customer={customer}
           changeCustomerStatus={props.changeCustomerStatus}
-          unChangeCustomerStatus={props.unChangeCustomerStatus} />
+          unChangeCustomerStatus={props.unChangeCustomerStatus}
+          setIsStatusChanging={props.setIsStatusChanging}
+          isStatusChanging={props.isStatusChanging} />
       );
   });
 

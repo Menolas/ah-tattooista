@@ -14,7 +14,7 @@ class ProfileContainer extends React.Component {
       profileId = 2;
     } 
 
-    axios.get(`/Menolas/ah-tattooista/clients/` + profileId)
+    axios.get(`https://mockend.com/Menolas/ah-tattooista/clients/` + profileId)
       .then(response => {
         this.props.setMyClientProfile(response.data);
       });

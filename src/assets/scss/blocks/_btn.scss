@@ -33,6 +33,19 @@
   }
 }
 
+.btn--dark-bg {
+  color: $light-text;
+  background-color: $dark-theme-color;
+  border: $light-border;
+  border-left: none;
+
+  &::before {
+    @include element-style(2px, 50%, $light-theme-color);
+    left: 0;
+    bottom: 0;
+  }
+}
+
 @media (min-width: 990px) {
 
   .btn {
