@@ -1,32 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import { changeCustomerStatus, unChangeCustomerStatus, setCustomers, setCurrentPage, setCustomersTotalCount, setIsFetching } from '../../redux/customers-reducer';
+import { changeCustomerStatus, unChangeCustomerStatus, setCustomers, setCurrentPage, setCustomersTotalCount, setIsFetching, setIsStatusChanging } from '../../redux/customers-reducer';
 import Customers from "./Customers";
-import axios from 'axios';
 import Preloader from './../common/Preloader';
+import { customersAPI } from '../../api/api';
 
 class CustomersAPIComponent extends React.Component {
   
   componentDidMount() {
     this.props.setIsFetching(true);
-    axios.get(`https://mockend.com/Menolas/ah-tattooista/customers?limit=${this.props.pageSize}&offset=${this.props.currentPage}`)
-      .then(response => {
-        this.props.setCustomers(response.data);
-        axios.get(`https://mockend.com/Menolas/ah-tattooista/customers`)
-          .then(response => {
-            this.props.setCustomersTotalCount(response.data.length);
-          });
-        this.props.setIsFetching(false);
+    customersAPI.getCustomers(this.props.pageSize, this.props.currentPage)
+      .then(async (data) => {
+        //debugger;
+        await this.props.setIsFetching(false);
+        await this.props.setCustomers(data);
+        const count = await customersAPI.getTotalCount();
+        this.props.setCustomersTotalCount(count);
       });
   }
 
   onPageChanged = (currentPage) => {
     this.props.setIsFetching(true);
     this.props.setCurrentPage(currentPage);
-    axios.get(`https://mockend.com/Menolas/ah-tattooista/customers?limit=${this.props.pageSize}&offset=${this.props.currentPage}`)
-      .then(response => {
-        this.props.setCustomers(response.data);
+    customersAPI.getCustomers(this.props.pageSize, currentPage)
+      .then(data => {
         this.props.setIsFetching(false);
+        this.props.setCustomers(data);  
       });
   }
   
@@ -43,6 +42,8 @@ class CustomersAPIComponent extends React.Component {
           onPageChanged={this.onPageChanged}
           changeCustomerStatus={this.props.changeCustomerStatus}
           unChangeCustomerStatus={this.props.unChangeCustomerStatus}
+          setIsStatusChanging={this.props.setIsStatusChanging}
+          isStatusChanging={this.props.isStatusChanging}
         />
       </>
     );
@@ -57,6 +58,7 @@ let mapStateToProps = (state) => {
     totalCount: state.customers.totalCount,
     currentPage: state.customers.currentPage,
     isFetching: state.customers.isFetching,
+    isStatusChanging: state.customers.isStatusChanging,
   };
 };
 
@@ -68,6 +70,7 @@ const CustomersContainer = connect(mapStateToProps,
     setCurrentPage,
     setCustomersTotalCount,
     setIsFetching,
+    setIsStatusChanging,
   }
 )(CustomersAPIComponent);
 

@@ -1,16 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 
 const Customer = (props) => {
-
-  const changeCustomerStatus = (evt) => {
-    const customerId = evt.target.getAttribute('data');
-    props.changeCustomerStatus(customerId);
-  };
-
-  const unChangeCustomerStatus = (evt) => {
-    const customerId = evt.target.getAttribute('data');
-    props.unChangeCustomerStatus(customerId);
-  };
   
   return (
     <li className="admin__card">
@@ -59,8 +50,34 @@ const Customer = (props) => {
       </div>
       <div className="admin__card-btns">
         {!props.customer.status
-          ? <button data={ props.customer.id } onClick={changeCustomerStatus}>Contact</button>
-          : <button data={ props.customer.id } onClick={unChangeCustomerStatus}>Done</button>
+          ? <button
+            data={props.customer.id}
+            disabled={props.isStatusChanging.some(id => id === props.customer.id)}
+            onClick={() => {
+              props.setIsStatusChanging(true, props.customer.id);
+              axios.get(`https://mockend.com/Menolas/ah-tattooista/customers/${props.customer.id}`)
+                .then(response => {
+                  if (response.data) {
+                    props.changeCustomerStatus(props.customer.id);
+                  }
+                  props.setIsStatusChanging(false, props.customer.id);
+                }); 
+            }}
+            >Contact</button>
+          : <button
+            data={props.customer.id}
+            disabled={props.isStatusChanging.some(id => id === props.customer.id)}
+            onClick={() => {
+              props.setIsStatusChanging(true, props.customer.id);
+              axios.get(`https://mockend.com/Menolas/ah-tattooista/customers/${props.customer.id}`)
+                .then(response => {
+                  if (response.data) {
+                    props.unChangeCustomerStatus(props.customer.id);
+                    props.setIsStatusChanging(false, props.customer.id);
+                  }
+                });  
+            }}
+            >Done</button>
         }
       </div>
     </li>

@@ -7,17 +7,22 @@ import Header from './Header';
 class HeaderContainer extends React.Component {
 
   componentDidMount() {
-    axios.get(`https://mockend.com/Menolas/ah-tattooista/logins/1`, {
-      withCredentials: true
-    })
+    axios.get(`https://mockend.com/Menolas/ah-tattooista/logins/1`, { withCredentials: false })
       .then(response => {
-        debugger;
+        //debugger;
         if (response.data) {
           let { login, email, password } = response.data;
           this.props.setAdminData(login, email, password);
         }
       }
     );
+
+    /* axios.get(`http://localhost:3000/`)
+      .then((response) => {
+        debugger;
+        console.log(response); 
+      }
+    ); */
   }
 
   render() {

@@ -29,6 +29,10 @@
     width: 0;
   }
 
+  .main-nav {
+    margin-right: 30px;
+  }
+
   .social-nav {
     margin-left: 0;
   }
@@ -62,6 +66,7 @@
     }
 
     .logo__text {
+      display: none;
       width: auto;
       font-size: 24px;
       font-weight: 700;
@@ -95,6 +100,7 @@
     }
 
     .main-header__admin-link {
+      margin-left: 16px;
       height: 28px;
 
       svg {
@@ -104,6 +110,10 @@
     }
 
     &.main-header--inner {
+
+      .logo__text {
+        display: block;
+      }
       
       .social-nav {
         margin-left: auto;

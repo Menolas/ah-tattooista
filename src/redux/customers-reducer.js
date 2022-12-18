@@ -4,6 +4,7 @@ const SET_CUSTOMERS = 'SET_CUSTOMERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_CUSTOMERS_COUNT = 'SET_TOTAL_CUSTOMERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const TOGGLE_IS_STATUS_CHANGING_IN_PROGRESS = 'TOGGLE_IS_STATUS_CHANGING_IN_PROGRESS';
 
 let initialState = {
   customers: [],
@@ -11,14 +12,16 @@ let initialState = {
   totalCount: 0,
   currentPage: 1,
   isFetching: false,
+  isStatusChanging: [],
 }
 
 const customersReducer = (state = initialState, action) => {
+  //debugger;
 
   switch (action.type) {
 
     case CUSTOMER_CONTACTED:
-      
+      //debugger;
       return {
         ...state,
         customers: state.customers.map(customer => {
@@ -30,7 +33,7 @@ const customersReducer = (state = initialState, action) => {
       };
     
     case CUSTOMER_NOT_CONTACTED:
-
+      //debugger;
       return {
         ...state,
         customers: state.customers.map(customer => {
@@ -42,6 +45,7 @@ const customersReducer = (state = initialState, action) => {
       };
     
     case SET_CUSTOMERS:
+      
       return {
         ...state,
         customers: action.customers,
@@ -65,6 +69,14 @@ const customersReducer = (state = initialState, action) => {
         isFetching: action.isFetching,
       }
     
+    case TOGGLE_IS_STATUS_CHANGING_IN_PROGRESS:
+      return {
+        ...state,
+        isStatusChanging: action.isFetching
+          ? [...state.isStatusChanging, action.customerId]
+          : state.isStatusChanging.filter(id => id !== action.customerId)
+      }
+    
     default: return state;
     
   }
@@ -72,43 +84,43 @@ const customersReducer = (state = initialState, action) => {
 
 export const changeCustomerStatus = (customerId) => (
   {
-    type: CUSTOMER_CONTACTED,
-    customerId: customerId,
+    type: CUSTOMER_CONTACTED, customerId,
   }
 );
 
 export const unChangeCustomerStatus = (customerId) => (
   {
-    type: CUSTOMER_NOT_CONTACTED,
-    customerId: customerId,
+    type: CUSTOMER_NOT_CONTACTED, customerId,
   }
 );
 
 export const setCustomers = (customers) => (
   {
-    type: SET_CUSTOMERS,
-    customers: customers,
+    type: SET_CUSTOMERS, customers,
   }
 );
 
 export const setCurrentPage = (currentPage) => (
   {
-    type: SET_CURRENT_PAGE,
-    currentPage: currentPage,
+    type: SET_CURRENT_PAGE, currentPage,
   }
 );
 
 export const setCustomersTotalCount = (count) => (
   {
-    type: SET_TOTAL_CUSTOMERS_COUNT,
-    count: count,
+    type: SET_TOTAL_CUSTOMERS_COUNT, count,
   }
 );
 
 export const setIsFetching = (isFetching) => (
   {
-    type: TOGGLE_IS_FETCHING,
-    isFetching: isFetching,
+    type: TOGGLE_IS_FETCHING, isFetching,
+  }
+);
+
+export const setIsStatusChanging = (isFetching, customerId) => (
+  {
+    type: TOGGLE_IS_STATUS_CHANGING_IN_PROGRESS, isFetching, customerId
   }
 );
 
