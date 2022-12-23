@@ -16,13 +16,6 @@ class HeaderContainer extends React.Component {
         }
       }
     );
-
-    /* axios.get(`http://localhost:3000/`)
-      .then((response) => {
-        debugger;
-        console.log(response); 
-      }
-    ); */
   }
 
   render() {

@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import thunkMiddleware from "redux-thunk";
 import portfolioReducer from './portfolio-reducer';
 import bookingReducer from './booking-reducer';
 import mainPageReducer from './mainPage-reducer';
@@ -21,7 +22,7 @@ let reducers = combineReducers({
   admin: adminReducer
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 window.store = store;
 
