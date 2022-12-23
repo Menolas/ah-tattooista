@@ -1,3 +1,5 @@
+import { customersAPI } from '../api/api';
+
 const CUSTOMER_CONTACTED = 'CUSTOMER_CONTACTED';
 const CUSTOMER_NOT_CONTACTED = 'CUSTOMER_NOT_CONTACTED';
 const SET_CUSTOMERS = 'SET_CUSTOMERS';
@@ -25,7 +27,7 @@ const customersReducer = (state = initialState, action) => {
       return {
         ...state,
         customers: state.customers.map(customer => {
-          if (customer.id === action.customerId) {
+          if (customer._id === action.customerId) {
             return { ...customer, status: true };
           }
           return customer;
@@ -37,7 +39,7 @@ const customersReducer = (state = initialState, action) => {
       return {
         ...state,
         customers: state.customers.map(customer => {
-          if (customer.id === action.customerId) {
+          if (customer._id === action.customerId) {
             return { ...customer, status: false };
           }
           return customer;
@@ -118,10 +120,54 @@ export const setIsFetching = (isFetching) => (
   }
 );
 
-export const setIsStatusChanging = (isFetching, customerId) => (
+export const toggleIsStatusChanging = (isFetching, customerId) => (
   {
     type: TOGGLE_IS_STATUS_CHANGING_IN_PROGRESS, isFetching, customerId
   }
 );
+
+// thunks
+
+export const getCustomersThunkCreator = (pageSize, currentPage) => {
+
+  return (dispatch) => {
+    dispatch(setIsFetching(true));
+    customersAPI.getCustomers(pageSize, currentPage)
+      .then(async (data) => {
+        //debugger;
+        await dispatch(setIsFetching(false));
+        await dispatch(setCustomers(data));
+        const count = data.length;
+        dispatch(setCustomersTotalCount(count));
+      });
+  }
+}
+
+export const changeCustomerStatusThunkCreator = (customerId) => {
+  return (dispatch) => {
+    dispatch(toggleIsStatusChanging(true, customerId));
+    customersAPI.contactCustomer(customerId)
+      .then(data => {
+        if (data) {
+          dispatch(changeCustomerStatus(customerId));
+          dispatch(toggleIsStatusChanging(false, customerId))
+        }
+      });
+  }
+}
+
+export const unChangeCustomerStatusThunkCreator = (customerId) => {
+  //debugger;
+  return (dispatch) => {
+    dispatch(toggleIsStatusChanging(true, customerId));
+    customersAPI.unContactCustomer(customerId)
+      .then(data => {
+        if (data) {
+          dispatch(unChangeCustomerStatus(customerId));
+          dispatch(toggleIsStatusChanging(false, customerId))
+        }
+      });
+  }
+}
 
 export default customersReducer;

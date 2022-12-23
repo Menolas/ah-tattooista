@@ -1,8 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 
 const Customer = (props) => {
-  
+  //debugger;
   return (
     <li className="admin__card">
       <div className="admin__card-details">
@@ -49,36 +48,20 @@ const Customer = (props) => {
         </div>
       </div>
       <div className="admin__card-btns">
-        {!props.customer.status
-          ? <button
-            data={props.customer.id}
-            disabled={props.isStatusChanging.some(id => id === props.customer.id)}
-            onClick={() => {
-              props.setIsStatusChanging(true, props.customer.id);
-              axios.get(`https://mockend.com/Menolas/ah-tattooista/customers/${props.customer.id}`)
-                .then(response => {
-                  if (response.data) {
-                    props.changeCustomerStatus(props.customer.id);
-                  }
-                  props.setIsStatusChanging(false, props.customer.id);
-                }); 
-            }}
-            >Contact</button>
-          : <button
-            data={props.customer.id}
-            disabled={props.isStatusChanging.some(id => id === props.customer.id)}
-            onClick={() => {
-              props.setIsStatusChanging(true, props.customer.id);
-              axios.get(`https://mockend.com/Menolas/ah-tattooista/customers/${props.customer.id}`)
-                .then(response => {
-                  if (response.data) {
-                    props.unChangeCustomerStatus(props.customer.id);
-                    props.setIsStatusChanging(false, props.customer.id);
-                  }
-                });  
-            }}
-            >Done</button>
-        }
+        <button
+          disabled={props.isStatusChanging.some(id => id === props.customer._id)}
+          onClick={() => {
+            props.customer.status === false
+              ? props.changeCustomerStatusThunkCreator(props.customer._id)
+              : props.unChangeCustomerStatusThunkCreator(props.customer._id)
+            }
+          }
+        >
+          { props.customer.status === false
+            ? 'Contact'
+            : 'Done' }
+        </button>
+        <button>Delete</button>
       </div>
     </li>
   );

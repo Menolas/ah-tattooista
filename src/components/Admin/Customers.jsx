@@ -3,18 +3,16 @@ import Paginator from "../common/Paginator";
 import Customer from "./Customer";
 
 const Customers = (props) => {
-  //debugger;
-
   const customers = props.customers
     .map(customer => {
       return (
         <Customer
-          key={customer.id}
+          key={customer._id}
           customer={customer}
-          changeCustomerStatus={props.changeCustomerStatus}
-          unChangeCustomerStatus={props.unChangeCustomerStatus}
-          setIsStatusChanging={props.setIsStatusChanging}
-          isStatusChanging={props.isStatusChanging} />
+          isStatusChanging={props.isStatusChanging}
+          changeCustomerStatusThunkCreator={props.changeCustomerStatusThunkCreator}
+          unChangeCustomerStatusThunkCreator={props.unChangeCustomerStatusThunkCreator}
+        />
       );
   });
 
