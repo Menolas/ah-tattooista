@@ -7,6 +7,8 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_CUSTOMERS_COUNT = 'SET_TOTAL_CUSTOMERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_STATUS_CHANGING_IN_PROGRESS = 'TOGGLE_IS_STATUS_CHANGING_IN_PROGRESS';
+const TOGGLE_IS_CUSTOMER_DELETING_IN_PROCESS = 'TOGGLE_IS_CUSTOMER_DELETING_IN_PROCESS';
+const DELETE_CUSTOMER = 'DELETE_CUSTOMER';
 
 let initialState = {
   customers: [],
@@ -15,6 +17,7 @@ let initialState = {
   currentPage: 1,
   isFetching: false,
   isStatusChanging: [],
+  isCustomerDeletingInProcess: [],
 }
 
 const customersReducer = (state = initialState, action) => {
@@ -79,6 +82,20 @@ const customersReducer = (state = initialState, action) => {
           : state.isStatusChanging.filter(id => id !== action.customerId)
       }
     
+    case TOGGLE_IS_CUSTOMER_DELETING_IN_PROCESS:
+      return {
+        ...state,
+        isCustomerDeletingInProcess: action.isFetching
+          ? [...state.isCustomerDeletingInProcess, action.customerId]
+          : state.isCustomerDeletingInProcess.filter(id => id !== action.customerId)   
+      }
+    
+    case DELETE_CUSTOMER:
+      return {
+        ...state,
+        customers: state.customers.filter(id => id !== action.customerId)
+      }
+    
     default: return state;
     
   }
@@ -126,6 +143,18 @@ export const toggleIsStatusChanging = (isFetching, customerId) => (
   }
 );
 
+export const toggleIsCustomerDeletingInProcess = (isFetching, customerId) => (
+  {
+    type: TOGGLE_IS_CUSTOMER_DELETING_IN_PROCESS, isFetching, customerId
+  }
+)
+
+export const deleteCustomer = (customerId) => (
+  {
+    type: DELETE_CUSTOMER, customerId
+  }
+);
+
 // thunks
 
 export const getCustomersThunkCreator = (pageSize, currentPage) => {
@@ -136,9 +165,8 @@ export const getCustomersThunkCreator = (pageSize, currentPage) => {
       .then(async (data) => {
         //debugger;
         await dispatch(setIsFetching(false));
-        await dispatch(setCustomers(data));
-        const count = data.length;
-        dispatch(setCustomersTotalCount(count));
+        await dispatch(setCustomers(data.resultCustomers));
+        dispatch(setCustomersTotalCount(data.totalCount));
       });
   }
 }
@@ -165,6 +193,19 @@ export const unChangeCustomerStatusThunkCreator = (customerId) => {
         if (data) {
           dispatch(unChangeCustomerStatus(customerId));
           dispatch(toggleIsStatusChanging(false, customerId))
+        }
+      });
+  }
+}
+
+export const deleteCustomerThunkCreator = (customerId) => {
+  return (dispatch) => {
+    dispatch(toggleIsCustomerDeletingInProcess(true, customerId));
+    customersAPI.deleteCustomer(customerId)
+      .then(data => {
+        if (data.message === "Deleted Customer") {
+          dispatch(deleteCustomer(customerId));
+          dispatch(toggleIsCustomerDeletingInProcess(false, customerId));
         }
       });
   }
