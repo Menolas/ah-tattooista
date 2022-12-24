@@ -11,8 +11,7 @@ const instance = axios.create({
 export const customersAPI = {
 
   getCustomers(pageSize = 5, currentPage = 1) {
-    //return instance.get(`customers?limit=${pageSize}&offset=${currentPage}`)
-    return instance.get(`customers`)
+    return instance.get(`customers?&page=${currentPage}&limit=${pageSize}`)
       .then(response => {
         //debugger;
         return response.data;
@@ -36,6 +35,7 @@ export const customersAPI = {
   },
 
   deleteCustomer(customerId) {
+    //debugger;
     return instance.delete(`customers/${customerId}`)
       .then(response => {
         //debugger;

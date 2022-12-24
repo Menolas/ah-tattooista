@@ -12,6 +12,8 @@ const Customers = (props) => {
           isStatusChanging={props.isStatusChanging}
           changeCustomerStatusThunkCreator={props.changeCustomerStatusThunkCreator}
           unChangeCustomerStatusThunkCreator={props.unChangeCustomerStatusThunkCreator}
+          isCustomerDeletingInProcess={props.isCustomerDeletingInProcess}
+          deleteCustomerThunkCreator={props.deleteCustomerThunkCreator}
         />
       );
   });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import { setCurrentPage, setIsFetching, toggleIsStatusChanging, getCustomersThunkCreator, changeCustomerStatusThunkCreator, unChangeCustomerStatusThunkCreator } from '../../redux/customers-reducer';
+import { setCurrentPage, setIsFetching, toggleIsStatusChanging, getCustomersThunkCreator, changeCustomerStatusThunkCreator, unChangeCustomerStatusThunkCreator, deleteCustomerThunkCreator } from '../../redux/customers-reducer';
 import Customers from "./Customers";
 import Preloader from './../common/Preloader';
 
@@ -29,6 +29,8 @@ class CustomersAPIComponent extends React.Component {
           isStatusChanging={this.props.isStatusChanging}
           changeCustomerStatusThunkCreator={this.props.changeCustomerStatusThunkCreator}
           unChangeCustomerStatusThunkCreator={this.props.unChangeCustomerStatusThunkCreator}
+          isCustomerDeletingInProcess={this.props.isCustomerDeletingInProcess}
+          deleteCustomerThunkCreator={this.props.deleteCustomerThunkCreator}
         />
       </>
     );
@@ -44,6 +46,7 @@ let mapStateToProps = (state) => {
     currentPage: state.customers.currentPage,
     isFetching: state.customers.isFetching,
     isStatusChanging: state.customers.isStatusChanging,
+    isCustomerDeletingInProcess: state.customers.isCustomerDeletingInProcess
   };
 };
 
@@ -54,7 +57,8 @@ const CustomersContainer = connect(mapStateToProps,
     toggleIsStatusChanging,
     getCustomersThunkCreator,
     changeCustomerStatusThunkCreator,
-    unChangeCustomerStatusThunkCreator
+    unChangeCustomerStatusThunkCreator,
+    deleteCustomerThunkCreator
   }
 )(CustomersAPIComponent);
 

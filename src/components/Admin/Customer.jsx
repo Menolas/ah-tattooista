@@ -1,7 +1,17 @@
 import React from 'react';
 
 const Customer = (props) => {
-  //debugger;
+  const contacts = Object.keys(props.customer.contacts).map(contact => {
+    if (props.customer.contacts[contact]) {
+      return (
+        <li key={contact}>
+          <span>{contact}:&nbsp;</span>
+          <span>{props.customer.contacts[contact]}</span>
+        </li>
+      );
+    }
+  });
+
   return (
     <li className="admin__card">
       <div className="admin__card-details">
@@ -12,34 +22,7 @@ const Customer = (props) => {
         <div>
           <span>Contacts:</span>
           <ul className="list">
-            {
-              props.customer.phone &&
-              <li>
-                <span>Phone:&nbsp;</span>
-                <span>{ props.customer.phone }</span>
-              </li>
-            }
-            {
-              props.customer.email &&
-              <li>
-                <span>Email:&nbsp;</span>
-                <span>{ props.customer.email }</span>
-              </li>
-            }
-            {
-              props.customer.insta &&
-              <li>
-                <span>Instagram:&nbsp;</span>
-                <span>{ props.customer.insta }</span>
-              </li>
-            }
-            {
-              props.customer.whatsapp &&
-              <li>
-                <span>Whatsapp:&nbsp;</span>
-                <span>{ props.customer.whatsapp }</span>
-              </li>
-            }
+            {contacts}
           </ul>
         </div>
         <div className="admin__card-message">
@@ -61,7 +44,13 @@ const Customer = (props) => {
             ? 'Contact'
             : 'Done' }
         </button>
-        <button>Delete</button>
+        <button
+          disabled={props.isCustomerDeletingInProcess.some(id => id === props.customer._id)}
+          onClick={() => {
+            //debugger;
+            props.deleteCustomerThunkCreator(props.customer._id)
+          }}
+        >Delete</button>
       </div>
     </li>
   );
