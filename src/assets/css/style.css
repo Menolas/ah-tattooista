@@ -2112,4 +2112,11 @@ input::placeholder {
   height: auto;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.login {
+  padding-top: 152px;
+}
+.login h2 {
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */

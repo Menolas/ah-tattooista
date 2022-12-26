@@ -3,6 +3,7 @@ import { connect } from 'react-redux/es/exports';
 import { setCurrentPage, setIsFetching, toggleIsStatusChanging, getCustomersThunkCreator, changeCustomerStatusThunkCreator, unChangeCustomerStatusThunkCreator, deleteCustomerThunkCreator } from '../../redux/customers-reducer';
 import Customers from "./Customers";
 import Preloader from './../common/Preloader';
+import { Navigate } from "react-router-dom";
 
 class CustomersAPIComponent extends React.Component {
   
@@ -16,6 +17,7 @@ class CustomersAPIComponent extends React.Component {
   }
   
   render = () => {
+    if (!this.props.isAuth) return <Navigate to='/login' />
 
     return (
       <>
@@ -40,6 +42,7 @@ class CustomersAPIComponent extends React.Component {
 let mapStateToProps = (state) => {
   //debugger;
   return {
+    isAuth: state.auth.isAuth,
     customers: state.customers.customers,
     pageSize: state.customers.pageSize,
     totalCount: state.customers.totalCount,
