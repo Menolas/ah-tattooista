@@ -1,4 +1,4 @@
-import { customersAPI } from '../api/api';
+import { customersAPI } from '../api/customerApi';
 
 const CUSTOMER_CONTACTED = 'CUSTOMER_CONTACTED';
 const CUSTOMER_NOT_CONTACTED = 'CUSTOMER_NOT_CONTACTED';

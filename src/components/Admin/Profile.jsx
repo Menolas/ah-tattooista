@@ -4,7 +4,7 @@ import yalkash from '../../assets/img/yalkash.jpg';
 import Preloader from '../common/Preloader';
 
 const Profile = (props) => {
-
+  //debugger;
   if (!props.profile) {
     return <Preloader />
   }

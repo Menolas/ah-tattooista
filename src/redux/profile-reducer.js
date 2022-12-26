@@ -1,3 +1,5 @@
+import { clientsAPI } from '../api/clientApi';
+
 const SET_MY_CLIENT_PROFILE = 'SET_MY_CLIENT_PROFILE';
 
 let initialState = {
@@ -23,5 +25,18 @@ export const setMyClientProfile = (profile) => (
     profile: profile,
   }
 );
+
+// thunks
+
+export const getClientProfileThunkCreator = (clientId) => {
+  return (dispatch) => {
+    clientsAPI.getClientProfile(clientId)
+      .then((data) => {
+        if (data) {
+          dispatch(setMyClientProfile(data));
+        }
+      });
+  }
+}
 
 export default profileReducer;

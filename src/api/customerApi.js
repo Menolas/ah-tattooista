@@ -1,11 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  withCredentials: false,
-  baseURL: 'http://localhost:3030/',
-  headers: {
-    "API-KEY": null
-  }
+  baseURL: 'http://localhost:3030/'
 });
 
 export const customersAPI = {

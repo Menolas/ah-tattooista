@@ -1,3 +1,5 @@
+import { authAPI } from '../api/authApi';
+
 const SET_ADMIN_DATA = 'SET_ADMIN_DATE';
 
 let initialState = {
@@ -14,7 +16,6 @@ const authReducer = (state = initialState, action) => {
     case SET_ADMIN_DATA:
       return {
         ...state,
-        ...action.data,
         isAuth: true,
       };
     
@@ -22,11 +23,22 @@ const authReducer = (state = initialState, action) => {
   }
 }
 
-export const setAdminData = (login, email, password) => (
+export const setAdminData = () => (
   {
     type: SET_ADMIN_DATA,
-    data: { login, email, password },
   }
 );
+
+//thunks
+
+export const getAuthAdminData = () => {
+  return (dispatch) => {
+    authAPI.me().then(data => {
+      if (data) {
+        dispatch(setAdminData());
+      }
+    });
+  }
+}
 
 export default authReducer;
