@@ -10,6 +10,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import CustomersContainer from './components/Admin/CustomersContainer';
 import MyClientsContainer from './components/Admin/MyClientsContainer';
 import ProfileContainer from './components/Admin/ProfileContainer';
+import Login from './components/Login';
 
 const App = () => {
   
@@ -33,6 +34,8 @@ const App = () => {
           <Route path={`/admin/profile/:profileId`}
             element={<ProfileContainer />} />
         </Route>
+        <Route path='/login'
+            element={<Login />} />
       </Routes>
       <Footer />
       <BookingModalContainer />
