@@ -1,3 +1,5 @@
+import { clientsAPI } from '../api/clientApi';
+
 const SET_MY_CLIENTS = 'SET_MY_CLIENTS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_MY_CLIENTS_COUNT = 'SET_TOTAL_CUSTOMERS_COUNT';
@@ -73,5 +75,19 @@ export const setIsFetching = (isFetching) => (
     isFetching: isFetching,
   }
 );
+
+// thunks
+
+export const getMyClientsThunkCreator = (pageSize, currentPage) => {
+  return (dispatch) => {
+    dispatch(setIsFetching(true));
+    clientsAPI.getClients(pageSize, currentPage)
+      .then(async (data) => {
+        await dispatch(setIsFetching(false));
+        await dispatch(setMyClients(data.resultClients));
+        dispatch(setMyClientsTotalCount(data.totalCount));
+      });
+  }
+}
 
 export default myClientsReducer;

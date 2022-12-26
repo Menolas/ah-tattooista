@@ -1,21 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import axios from 'axios';
-import { setAdminData } from '../../redux/auth-reducer';
+import { getAuthAdminData } from '../../redux/auth-reducer';
 import Header from './Header';
+import { authAPI } from './../../api/authApi';
 
 class HeaderContainer extends React.Component {
 
   componentDidMount() {
-    axios.get(`https://mockend.com/Menolas/ah-tattooista/logins/1`, { withCredentials: false })
-      .then(response => {
-        //debugger;
-        if (response.data) {
-          let { login, email, password } = response.data;
-          this.props.setAdminData(login, email, password);
-        }
-      }
-    );
+    this.props.getAuthAdminData();  
   }
 
   render() {
@@ -28,4 +20,4 @@ const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
 });
 
-export default connect(mapStateToProps, { setAdminData })(HeaderContainer);
+export default connect(mapStateToProps, { getAuthAdminData })(HeaderContainer);

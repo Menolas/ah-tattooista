@@ -9,7 +9,7 @@ const MyClients = (props) => {
     .map(myClient => {
       return (
         <MyClient
-          key={myClient.id}
+          key={myClient._id}
           myClient={myClient}
           showMyClientProfile={props.showMyClientProfile}
         />
