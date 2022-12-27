@@ -17,7 +17,6 @@ class CustomersAPIComponent extends React.Component {
   }
   
   render = () => {
-    if (!this.props.isAuth) return <Navigate to='/login' />
 
     return (
       <>
@@ -38,6 +37,11 @@ class CustomersAPIComponent extends React.Component {
     );
   }
 };
+
+let AuthRedirectComponent = (props) => {
+  if (!this.props.isAuth) return <Navigate to='/login' />
+  return <CustomersAPIComponent {...props} />
+}
 
 let mapStateToProps = (state) => {
   //debugger;
