@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux/es/exports';
 import { setCurrentPage, setIsFetching, getMyClientsThunkCreator } from '../../redux/myClients-reducer';
 import MyClients from './MyClients';
-import axios from 'axios';
 import Preloader from './../common/Preloader';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class MyClientsAPIComponent extends React.Component {
 
@@ -42,12 +43,11 @@ let mapStateToProps = (state) => {
   };
 };
 
-const MyClientsContainer = connect(mapStateToProps,
-  {
+export default compose(
+  connect(mapStateToProps, {
     setCurrentPage,
     setIsFetching,
     getMyClientsThunkCreator
-  }
+  }),
+  withAuthRedirect
 )(MyClientsAPIComponent);
-
-export default MyClientsContainer;

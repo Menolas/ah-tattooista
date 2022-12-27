@@ -19,7 +19,5 @@ let mapDispatchToProps = (dispatch) => {
   }
 }
 
-const MainNavContainer = connect(mapStateToProps, mapDispatchToProps)(MainNav);
-
-export default MainNavContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(MainNav);
  

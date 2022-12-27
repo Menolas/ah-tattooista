@@ -16,6 +16,4 @@ let mapDispatchToProps = (dispatch) => {
   };
 }
 
-const BookingModalContainer = connect(mapStateToProps, mapDispatchToProps)(BookingModal);
-
-export default BookingModalContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(BookingModal);

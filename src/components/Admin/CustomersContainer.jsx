@@ -3,7 +3,8 @@ import { connect } from 'react-redux/es/exports';
 import { setCurrentPage, setIsFetching, toggleIsStatusChanging, getCustomersThunkCreator, changeCustomerStatusThunkCreator, unChangeCustomerStatusThunkCreator, deleteCustomerThunkCreator } from '../../redux/customers-reducer';
 import Customers from "./Customers";
 import Preloader from './../common/Preloader';
-import { Navigate } from "react-router-dom";
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class CustomersAPIComponent extends React.Component {
   
@@ -38,11 +39,6 @@ class CustomersAPIComponent extends React.Component {
   }
 };
 
-let AuthRedirectComponent = (props) => {
-  if (!this.props.isAuth) return <Navigate to='/login' />
-  return <CustomersAPIComponent {...props} />
-}
-
 let mapStateToProps = (state) => {
   //debugger;
   return {
@@ -57,8 +53,8 @@ let mapStateToProps = (state) => {
   };
 };
 
-const CustomersContainer = connect(mapStateToProps,
-  {
+export default compose(
+  connect(mapStateToProps, {
     setCurrentPage,
     setIsFetching,
     toggleIsStatusChanging,
@@ -66,7 +62,6 @@ const CustomersContainer = connect(mapStateToProps,
     changeCustomerStatusThunkCreator,
     unChangeCustomerStatusThunkCreator,
     deleteCustomerThunkCreator
-  }
+  }),
+  withAuthRedirect
 )(CustomersAPIComponent);
-
-export default CustomersContainer;
