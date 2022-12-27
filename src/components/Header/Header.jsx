@@ -4,7 +4,7 @@ import MainNavContainer from '../MainNavContainer';
 import Logo from '../Logo';
 import classNames from "classnames";
 import { NavLink } from "react-router-dom";
-import { withRouter } from '../../utils/withRouter';
+import { withRouter } from '../../hoc/withRouter';
 import Sprite from '../../assets/svg/sprite.svg';
 
 const Header = (props) => {
@@ -26,6 +26,4 @@ const Header = (props) => {
   );
 }
 
-let WithUrlDataContainerComponent = withRouter(Header);
-
-export default WithUrlDataContainerComponent;
+export default withRouter(Header);
