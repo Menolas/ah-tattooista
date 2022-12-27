@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-import classNames from "classnames";
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 const Admin = (props) => {
   //debugger;
@@ -24,11 +25,11 @@ const Admin = (props) => {
           </NavLink>
         </div>
       </div>
-      <div className="">
+      <div>
         <Outlet />
       </div>
     </div>
   );
 };
 
-export default Admin;
+export default compose(withAuthRedirect)(Admin);
