@@ -1,6 +1,6 @@
 import React from 'react';
 import SocialNav from '../SocialNav';
-import MainNavContainer from '../MainNavContainer';
+import MainNav from '../MainNav';
 import Logo from '../Logo';
 import classNames from "classnames";
 import { NavLink } from "react-router-dom";
@@ -15,7 +15,7 @@ const Header = (props) => {
   return (
     <header className = { headerClasses }>
       <Logo />
-      <MainNavContainer />
+      <MainNav />
       <SocialNav />
       {props.isAuth &&
         <NavLink to="/admin/customers" className="main-header__admin-link">
