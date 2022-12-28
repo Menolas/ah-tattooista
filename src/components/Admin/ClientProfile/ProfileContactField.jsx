@@ -7,6 +7,14 @@ class ProfileContactField extends React.Component {
     contactTitle: this.props.contact
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.contactFieldValue !== this.props.contactFieldValue) {
+      this.setState({
+        contactFieldValue: this.props.contactFieldValue,
+      });
+    }
+  }
+
   activateEditMode = () => {
     this.setState({
       editMode: true
