@@ -1,13 +1,26 @@
 import React from 'react';
-import avatar from '../../assets/img/avatar.webp';
-import yalkash from '../../assets/img/yalkash.jpg';
-import Preloader from '../common/Preloader';
+import avatar from '../../../assets/img/avatar.webp';
+import yalkash from '../../../assets/img/yalkash.jpg';
+import Preloader from '../../common/Preloader';
+import ProfileContactField from './ProfileContactField';
 
 const Profile = (props) => {
   //debugger;
   if (!props.profile) {
     return <Preloader />
   }
+
+  const contacts = Object.keys(props.profile.contacts).map(contact => {
+    return (
+      <ProfileContactField
+        key={contact}
+        clientId={props.profile._id}
+        contacts={props.profile.contacts}
+        contact={contact}
+        updateContactFieldThunkCreator={props.updateContactFieldThunkCreator}
+      />
+    );
+  });
   
   return (
     <div className="client-profile">
@@ -19,22 +32,7 @@ const Profile = (props) => {
           </span>
           <div className="client-profile__contacts">
             <ul className="list admin__card-contacts-list">
-              <li>
-                <span className="client-profile__contacts-title">Phone:&nbsp;</span>
-                <span>{props.profile.phone}</span>
-              </li>
-              <li>
-                <span className="client-profile__contacts-title">Email:&nbsp;</span>
-                <span>{props.profile.email}</span>
-              </li>
-              <li>
-                <span className="client-profile__contacts-title">Instagram:&nbsp;</span>
-                <span>{props.profile.insta}</span>
-              </li>
-              <li>
-                <span className="client-profile__contacts-title">Whatsapp:&nbsp;</span>
-                <span>{props.profile.whatsapp}</span>
-              </li>
+              { contacts }
             </ul>
           </div>
         </div>
@@ -50,5 +48,10 @@ const Profile = (props) => {
     </div>
   );
 };
+
+/* <li key={contact}>
+    <span>{contact}:&nbsp;</span>
+    <span>{props.profile.contacts[contact]}</span>
+  </li> */
 
 export default Profile;

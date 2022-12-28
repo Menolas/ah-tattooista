@@ -7,9 +7,9 @@ import Footer from './components/Footer/Footer';
 import BookingModalContainer from './components/BookingModalContainer';
 import Admin from './components/Admin/Admin';
 import HeaderContainer from './components/Header/HeaderContainer';
-import CustomersContainer from './components/Admin/CustomersContainer';
-import MyClientsContainer from './components/Admin/MyClientsContainer';
-import ProfileContainer from './components/Admin/ProfileContainer';
+import CustomersContainer from './components/Admin/Customers/CustomersContainer';
+import MyClientsContainer from './components/Admin/Clients/MyClientsContainer';
+import ProfileContainer from './components/Admin/ClientProfile/ProfileContainer';
 import Login from './components/Login';
 
 const App = () => {

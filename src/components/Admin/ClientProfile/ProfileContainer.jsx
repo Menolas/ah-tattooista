@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import { getClientProfileThunkCreator } from '../../redux/profile-reducer';
+import { getClientProfileThunkCreator, updateContactFieldThunkCreator } from '../../../redux/profile-reducer';
 import Profile from './Profile';
-import { withRouter } from '../../hoc/withRouter';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { withRouter } from '../../../hoc/withRouter';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
@@ -24,6 +24,7 @@ class ProfileContainer extends React.Component {
       <Profile
         {...this.props}
         profile={this.props.profile}
+        updateContactFieldThunkCreator={this.props.updateContactFieldThunkCreator}
       />
     );
   }
@@ -37,7 +38,7 @@ let mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, {getClientProfileThunkCreator}),
+  connect(mapStateToProps, { getClientProfileThunkCreator, updateContactFieldThunkCreator }),
   withRouter,
   withAuthRedirect
 )(ProfileContainer);

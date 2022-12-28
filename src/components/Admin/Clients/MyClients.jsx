@@ -1,6 +1,6 @@
 import React from "react";
 import MyClient from "./MyClient";
-import Paginator from "../common/Paginator";
+import Paginator from "../../common/Paginator";
 
 const MyClients = (props) => {
   //debugger;

@@ -1,5 +1,5 @@
 import React from "react";
-import Paginator from "../common/Paginator";
+import Paginator from "../../common/Paginator";
 import Customer from "./Customer";
 
 const Customers = (props) => {

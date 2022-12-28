@@ -26,11 +26,17 @@ export const clientsAPI = {
       });
   },
 
+  updateContactField(clientId, {contactTitle: contactFieldValue}) {
+    return instance.put(`clients/updateContact/${clientId}`, {contactTitle: contactFieldValue})
+      .then(response => {
+        return response.data;
+      })
+  },
+
   deleteClient(clientId) {
-    //debugger;
+  
     return instance.delete(`clients/${clientId}`)
       .then(response => {
-        //debugger;
         return response.data;
       });
   }

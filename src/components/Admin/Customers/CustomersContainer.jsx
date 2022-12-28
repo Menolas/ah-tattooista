@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import { setCurrentPage, setIsFetching, toggleIsStatusChanging, getCustomersThunkCreator, changeCustomerStatusThunkCreator, unChangeCustomerStatusThunkCreator, deleteCustomerThunkCreator } from '../../redux/customers-reducer';
+import { setCurrentPage, setIsFetching, toggleIsStatusChanging, getCustomersThunkCreator, changeCustomerStatusThunkCreator, unChangeCustomerStatusThunkCreator, deleteCustomerThunkCreator } from '../../../redux/customers-reducer';
 import Customers from "./Customers";
-import Preloader from './../common/Preloader';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import Preloader from '../../common/Preloader';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
 class CustomersAPIComponent extends React.Component {
