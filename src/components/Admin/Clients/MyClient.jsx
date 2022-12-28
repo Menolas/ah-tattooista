@@ -1,5 +1,5 @@
 import React from 'react';
-import avatar from '../../assets/img/avatar.webp';
+import avatar from '../../../assets/img/avatar.webp';
 import { NavLink } from 'react-router-dom';
 
 const MyClient = (props) => {

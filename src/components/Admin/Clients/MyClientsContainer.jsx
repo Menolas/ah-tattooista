@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import { setCurrentPage, setIsFetching, getMyClientsThunkCreator } from '../../redux/myClients-reducer';
+import { setCurrentPage, setIsFetching, getMyClientsThunkCreator } from '../../../redux/myClients-reducer';
 import MyClients from './MyClients';
-import Preloader from './../common/Preloader';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import Preloader from '../../common/Preloader';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
 class MyClientsAPIComponent extends React.Component {
