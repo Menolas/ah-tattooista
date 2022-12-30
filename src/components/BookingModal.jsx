@@ -1,5 +1,5 @@
 import React from 'react';
-import BookingFormContainer from './BookingFormContainer';
+import BookingForm from './BookingForm';
 
 const BookingModal = (props) => {
 
@@ -16,7 +16,7 @@ const BookingModal = (props) => {
           <button
             className="close-button booking-modal__close-btn"
             onClick={closeBookingModal}></button>
-          <BookingFormContainer />
+          <BookingForm />
         </div>
       </div>
     );
