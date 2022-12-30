@@ -35,7 +35,6 @@ export const getAuthAdminData = () => {
   return (dispatch) => {
     authAPI.me().then(data => {
       //debugger;
-      console.log(data.data.auth);
       if (data.data.auth === true) {
         dispatch(setAdminData());
       }

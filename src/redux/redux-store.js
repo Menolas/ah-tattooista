@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import thunkMiddleware from "redux-thunk";
+import thunkMiddleware from 'redux-thunk';
 import portfolioReducer from './portfolio-reducer';
 import bookingReducer from './booking-reducer';
 import mainPageReducer from './mainPage-reducer';
@@ -8,6 +8,7 @@ import myClientsReducer from './myClients-reducer';
 import profileReducer from './profile-reducer';
 import authReducer from './auth-reducer';
 import adminReducer from './admin-reducer';
+//import { reducer as formReducer } from 'react-final-form';
 
 let reducers = combineReducers({
   portfolio: portfolioReducer,
@@ -17,7 +18,8 @@ let reducers = combineReducers({
   myClients: myClientsReducer,
   profile: profileReducer,
   auth: authReducer,
-  admin: adminReducer
+  admin: adminReducer,
+  //form: formReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
