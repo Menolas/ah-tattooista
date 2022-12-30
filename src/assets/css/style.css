@@ -1108,6 +1108,7 @@ svg {
 }
 
 .booking__form-title {
+  margin-top: 0;
   margin-bottom: 27px;
   font-size: 20px;
   font-weight: 700;
@@ -1117,7 +1118,13 @@ svg {
   margin-bottom: 32px;
   width: 100%;
 }
-.booking__input-wrap input {
+.booking__input-wrap.booking__input-wrap--concent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.booking__input-wrap input,
+.booking__input-wrap textarea {
   padding-bottom: 8px;
   width: 100%;
   height: 32px;
@@ -1129,13 +1136,15 @@ svg {
   border-top: none;
   background-color: transparent;
 }
-.booking__input-wrap input:focus {
+.booking__input-wrap input:focus,
+.booking__input-wrap textarea:focus {
   border-left: none;
   border-top: none;
   outline: none;
 }
 .booking__input-wrap input[type=checkbox] {
-  display: none;
+  width: 0;
+  height: 0;
 }
 
 label[for=consent],
@@ -1163,7 +1172,7 @@ label[for=consentModal] .checkbox {
           transform: translate(0, -50%);
 }
 
-label[for=consent].checked .checkbox::after {
+input[type=checkbox]:checked + label[for=consent] .checkbox::after {
   content: "";
   display: block;
   position: absolute;
@@ -1199,34 +1208,40 @@ label[for=consent].checked .checkbox::after {
   bottom: 0;
 }
 
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #6F6D6D;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  font-family: "Monseratt", sans-serif;
 }
 
-input::-moz-placeholder {
+input::-moz-placeholder, textarea::-moz-placeholder {
   color: #6F6D6D;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  font-family: "Monseratt", sans-serif;
 }
 
-input:-ms-input-placeholder {
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #6F6D6D;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  font-family: "Monseratt", sans-serif;
 }
 
-input::-ms-input-placeholder {
+input::-ms-input-placeholder, textarea::-ms-input-placeholder {
   color: #6F6D6D;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  font-family: "Monseratt", sans-serif;
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: #6F6D6D;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  font-family: "Monseratt", sans-serif;
 }
 
 @media (min-width: 990px) {
@@ -1247,17 +1262,17 @@ input::placeholder {
     background-size: 615px auto;
   }
   .booking__form-page-wrap {
-    padding: 107px 97px 0 60px;
+    padding: 80px 97px 0 60px;
     width: 615px;
     height: 657px;
   }
   .booking__form-title {
-    margin-bottom: 67px;
+    margin-bottom: 47px;
     font-size: 24px;
     font-weight: 700;
   }
   .booking__input-wrap {
-    margin-bottom: 52px;
+    margin-bottom: 46px;
     width: 100%;
   }
   .booking__input-wrap input {
