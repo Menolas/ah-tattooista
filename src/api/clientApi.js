@@ -26,8 +26,11 @@ export const clientsAPI = {
       });
   },
 
-  updateContactField(clientId, {contactTitle: contactFieldValue}) {
-    return instance.put(`clients/updateContact/${clientId}`, {contactTitle: contactFieldValue})
+  updateContactField(clientId, contactTitle, contactFieldValue) {
+    return instance.post(`clients/updateContact/${clientId}`, {
+      contactTitle: contactTitle,
+      contactFieldValue: contactFieldValue
+    })
       .then(response => {
         return response.data;
       })

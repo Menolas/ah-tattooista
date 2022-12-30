@@ -60,7 +60,7 @@ export const updateContactFieldThunkCreator = (
   contactFieldValue) => {
 
   return (dispatch) => {
-    clientsAPI.updateContactField(clientId, {contactTitle: contactFieldValue})
+    clientsAPI.updateContactField(clientId, contactTitle, contactFieldValue)
       .then((data) => {
         if (data) {
           dispatch(setContactFieldValue(data));
