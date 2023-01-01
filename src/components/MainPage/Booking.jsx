@@ -1,5 +1,5 @@
 import React from "react";
-import BookingForm from "../BookingForm";
+import BookingForm from "../forms/BookingForm";
 
 
 const Booking = (props) => {

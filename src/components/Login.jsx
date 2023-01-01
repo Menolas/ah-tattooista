@@ -1,11 +1,12 @@
 import React from 'react';
-import LoginForm from './LoginForm';
+import LoginForm from './forms/LoginForm';
 
 const Login = () => {
   return (
     <div className="login container">
-      <h2>Login</h2>
-      <LoginForm />
+      <div className = "login__form-wrap">
+        <LoginForm />
+      </div>
     </div>
   )
 }
