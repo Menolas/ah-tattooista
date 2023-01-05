@@ -1,11 +1,15 @@
 import { authAPI } from '../api/authApi';
 
 const SET_ADMIN_DATA = 'SET_ADMIN_DATE';
+const SET_AUTH = 'SET_AUTH';
+const SET_REFRESH_TOKEN = 'SET_REFRESH_TOKEN';
 
 let initialState = {
-  login: null,
-  email: null,
+  userId: null,
+  username: null,
   password: null,
+  token: null,
+  refreshToken: null,
   isAuth: false,
 }
 
@@ -16,29 +20,78 @@ const authReducer = (state = initialState, action) => {
     case SET_ADMIN_DATA:
       return {
         ...state,
-        isAuth: true,
+        ...action.payload,
       };
+    
+    case SET_AUTH:
+      return {
+        ...state,
+        isAuth: action.isAuth
+      };
+    
+    case SET_REFRESH_TOKEN:
+      return {
+        ...state,
+        refreshToken: action.refreshToken
+      }
     
     default: return state;
   }
 }
 
-export const setAdminData = () => (
+const setAdminData = (userId, username, password, token) => (
   {
     type: SET_ADMIN_DATA,
+    payload: { userId, username, password, token }
   }
 );
 
+const setAuth = (isAuth) => (
+  {
+    type: SET_AUTH, isAuth
+  }
+);
+
+const setRefreshToken = (refreshToken) => (
+  {
+    type: SET_REFRESH_TOKEN, refreshToken
+  }
+)
+
 //thunks
 
-export const getAuthAdminData = () => {
+export const getAuthAdminData = (token) => {
+  //debugger;
   return (dispatch) => {
-    authAPI.me().then(data => {
-      //debugger;
+    authAPI.me(token).then(data => {
       if (data.data.auth === true) {
-        dispatch(setAdminData());
+        dispatch(setAuth(true));
       }
     });
+  }
+}
+
+export const login = (username, password) => {
+  return (dispatch) => {
+    authAPI.login(username, password).then(data => {
+      //debugger;
+      if (data.data.results.user) {
+        let { _id, username, password } = data.data.results.user;
+        dispatch(setAdminData(_id, username, password, data.data.results.token));
+        dispatch(getAuthAdminData(data.data.results.token));
+        //dispatch(setRefreshToken(data.data.results.refreshToken));
+      }
+    });
+  }
+}
+
+export const logout = () => {
+  debugger;
+  return (dispatch) => {
+    
+    dispatch(setAdminData(null, null, null, null));
+    dispatch(setAuth(false));
+    
   }
 }
 
