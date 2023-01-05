@@ -1912,6 +1912,9 @@ svg {
 .client-profile .client-profile__contacts {
   font-size: 12px;
 }
+.client-profile .client-profile__contacts input {
+  background-color: #fafafa;
+}
 .client-profile .admin__card-contacts-list {
   display: -webkit-box;
   display: -ms-flexbox;

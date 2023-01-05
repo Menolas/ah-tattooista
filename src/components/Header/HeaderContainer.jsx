@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import { getAuthAdminData } from '../../redux/auth-reducer';
+import { getAuthAdminData, logout } from '../../redux/auth-reducer';
 import Header from './Header';
 
 class HeaderContainer extends React.Component {
-
+  
   componentDidMount() {
-    this.props.getAuthAdminData();  
+    //debugger;
+    this.props.getAuthAdminData(this.props.token);  
   }
 
   render() {
@@ -17,6 +18,7 @@ class HeaderContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
+  token: state.auth.token
 });
 
-export default connect(mapStateToProps, { getAuthAdminData })(HeaderContainer);
+export default connect(mapStateToProps, { getAuthAdminData, logout })(HeaderContainer);

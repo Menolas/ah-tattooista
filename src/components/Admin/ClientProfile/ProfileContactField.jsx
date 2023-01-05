@@ -16,6 +16,7 @@ class ProfileContactField extends React.Component {
   }
 
   activateEditMode = () => {
+    //debugger;
     this.setState({
       editMode: true
     });

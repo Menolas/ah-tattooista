@@ -17,9 +17,19 @@ const Header = (props) => {
       <Logo />
       <MainNav />
       <SocialNav />
-      {props.isAuth &&
-        <NavLink to="/admin/customers" className="main-header__admin-link">
-          <svg><use href={`${Sprite}#admin`}></use></svg>
+      {props.isAuth
+        ?
+        <>
+          <NavLink to="/admin/customers" className="main-header__admin-link">
+            <svg><use href={`${Sprite}#admin`}></use></svg>
+          </NavLink>
+          <NavLink to="/" className="main-header__admin-link" onClick={props.logout}>
+            <svg><use href={`${Sprite}#logout`}></use></svg>
+          </NavLink>
+        </>
+        : 
+        <NavLink to="/login" className="main-header__admin-link">
+          <svg><use href={`${Sprite}#login`}></use></svg>
         </NavLink>
       }
     </header>

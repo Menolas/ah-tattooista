@@ -20,6 +20,10 @@
 
   .client-profile__contacts {
     font-size: 12px;
+
+    input {
+      background-color: $light-theme-color;
+    }
   }
 
   .admin__card-contacts-list {

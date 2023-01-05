@@ -4,6 +4,7 @@ import classNames from "classnames";
 
 class MainNav extends React.Component {
   state = {
+    mainNavClasses: 'main-nav',
     mainNavMenuModal: false,
     mainNavList: [
       {
@@ -33,26 +34,32 @@ class MainNav extends React.Component {
     ]
   }
 
-  mainNavClasses = classNames('main-nav', { 'shown': this.state.mainNavMenuModal });
-
   openMenu = () => {
+    //debugger;
     if (!this.state.mainNavMenuModal) {
       this.setState(
-        { mainNavMenuModal: true }
+        {
+          mainNavMenuModal: true,
+          mainNavClasses: 'main-nav shown'
+        }
       );
     } else {
       this.setState(
-        { mainNavMenuModal: false }
+        {
+          mainNavMenuModal: false,
+          mainNavClasses: 'main-nav'
+        }
       );
     }
-    this.mainNavClasses = classNames('main-nav', { 'shown': this.state.mainNavMenuModal });
+
+    //this.state.mainNavClasses = classNames('main-nav', { 'shown': this.state.mainNavMenuModal });
   };
 
   closeMenu = () => {
     this.setState(
       { mainNavMenuModal: false }
     );
-    this.mainNavClasses = classNames('main-nav');
+    this.state.mainNavClasses = 'main-nav';
   }
 
   mainNavItems = this.state.mainNavList.map((item, i) => {
@@ -70,10 +77,10 @@ class MainNav extends React.Component {
   
   render() {
     return (
-      <nav className={ this.mainNavClasses } >
+      <nav className={ this.state.mainNavClasses } >
         <div
           className="hamburger"
-          onClick={ this.openMenu.bind(this) }>
+          onClick={ this.openMenu }>
           <span></span>
         </div>
         <ul className="list main-nav__list">
