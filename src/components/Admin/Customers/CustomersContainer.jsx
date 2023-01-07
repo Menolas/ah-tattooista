@@ -1,10 +1,29 @@
 import React from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux/es/exports';
-import { setCurrentPage, setIsFetching, toggleIsStatusChanging, getCustomersThunkCreator, changeCustomerStatusThunkCreator, unChangeCustomerStatusThunkCreator, deleteCustomerThunkCreator } from '../../../redux/customers-reducer';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import {
+  setCurrentPage,
+  setIsFetching,
+  toggleIsStatusChanging,
+  getCustomersThunkCreator,
+  changeCustomerStatusThunkCreator,
+  unChangeCustomerStatusThunkCreator,
+  deleteCustomerThunkCreator
+} from '../../../redux/customers-reducer';
+import {
+  getCustomers,
+  getPageSize,
+  getTotalCount,
+  getCurrentPage,
+  getIsStatusChanging,
+  getIsCustomerDeletingInProcess,
+  getIsFetching
+} from '../../../redux/customers-selectors';
 import Customers from "./Customers";
 import Preloader from '../../common/Preloader';
-import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
-import { compose } from 'redux';
+
+
 
 class CustomersAPIComponent extends React.Component {
   
@@ -43,13 +62,13 @@ let mapStateToProps = (state) => {
   //debugger;
   return {
     isAuth: state.auth.isAuth,
-    customers: state.customers.customers,
-    pageSize: state.customers.pageSize,
-    totalCount: state.customers.totalCount,
-    currentPage: state.customers.currentPage,
-    isFetching: state.customers.isFetching,
-    isStatusChanging: state.customers.isStatusChanging,
-    isCustomerDeletingInProcess: state.customers.isCustomerDeletingInProcess
+    customers: getCustomers(state),
+    pageSize: getPageSize(state),
+    totalCount: getTotalCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    isStatusChanging: getIsStatusChanging(state),
+    isCustomerDeletingInProcess: getIsCustomerDeletingInProcess(state)
   };
 };
 
