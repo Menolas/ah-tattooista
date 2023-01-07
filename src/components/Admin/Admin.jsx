@@ -6,7 +6,7 @@ import { compose } from 'redux';
 
 const Admin = (props) => {
   //debugger;
-  //let btnClasses = classNames('btn', { 'active':})
+  
   return (
     <div className="admin container">
       <div className="admin__header">
