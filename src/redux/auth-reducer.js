@@ -74,6 +74,7 @@ export const getAuthAdminData = (token) => {
 
 export const login = (username, password) => {
   return (dispatch) => {
+
     authAPI.login(username, password)
       .then(data => {
         //debugger;
@@ -89,6 +90,7 @@ export const login = (username, password) => {
         }
       });
   }
+
 }
 
 export const logout = () => {

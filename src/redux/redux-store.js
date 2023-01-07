@@ -8,6 +8,7 @@ import myClientsReducer from './myClients-reducer';
 import profileReducer from './profile-reducer';
 import authReducer from './auth-reducer';
 import adminReducer from './admin-reducer';
+import appReducer from './app-reducer';
 //import { reducer as formReducer } from 'react-final-form';
 
 let reducers = combineReducers({
@@ -19,6 +20,7 @@ let reducers = combineReducers({
   profile: profileReducer,
   auth: authReducer,
   admin: adminReducer,
+  app: appReducer,
   //form: formReducer
 });
 
