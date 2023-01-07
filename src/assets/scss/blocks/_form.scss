@@ -97,6 +97,8 @@ select {
 }
 
 .form__error {
+  display: inline-block;
+  margin: 10px 0;
   color: rgb(150, 16, 16);
   font-weight: 600;
 }

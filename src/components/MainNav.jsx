@@ -35,7 +35,6 @@ class MainNav extends React.Component {
   }
 
   openMenu = () => {
-    //debugger;
     if (!this.state.mainNavMenuModal) {
       this.setState(
         {
@@ -51,8 +50,6 @@ class MainNav extends React.Component {
         }
       );
     }
-
-    //this.state.mainNavClasses = classNames('main-nav', { 'shown': this.state.mainNavMenuModal });
   };
 
   closeMenu = () => {

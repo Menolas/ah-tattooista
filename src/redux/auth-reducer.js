@@ -1,4 +1,5 @@
 import { authAPI } from '../api/authApi';
+import { FORM_ERROR } from 'final-form';
 
 const SET_ADMIN_DATA = 'SET_ADMIN_DATE';
 const SET_AUTH = 'SET_AUTH';
@@ -73,20 +74,25 @@ export const getAuthAdminData = (token) => {
 
 export const login = (username, password) => {
   return (dispatch) => {
-    authAPI.login(username, password).then(data => {
-      //debugger;
-      if (data.data.results.user) {
-        let { _id, username, password } = data.data.results.user;
-        dispatch(setAdminData(_id, username, password, data.data.results.token));
-        dispatch(getAuthAdminData(data.data.results.token));
-        //dispatch(setRefreshToken(data.data.results.refreshToken));
-      }
-    });
+    authAPI.login(username, password)
+      .then(data => {
+        //debugger;
+        if (data.data.user) {
+          let { _id, username, password } = data.data.user;
+          dispatch(setAdminData(_id, username, password, data.data.token));
+          dispatch(getAuthAdminData(data.data.token));
+          //dispatch(setRefreshToken(data.data.results.refreshToken));
+        } else {
+          console.log(data);
+          
+          //return { [FORM_ERROR]: message }
+        }
+      });
   }
 }
 
 export const logout = () => {
-  debugger;
+  //debugger;
   return (dispatch) => {
     
     dispatch(setAdminData(null, null, null, null));
