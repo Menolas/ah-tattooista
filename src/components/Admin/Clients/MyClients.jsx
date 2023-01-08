@@ -2,7 +2,7 @@ import React from "react";
 import MyClient from "./MyClient";
 import Paginator from "../../common/Paginator";
 
-const MyClients = (props) => {
+const MyClients = React.memo(props => {
   //debugger;
 
   const myClients = props.myClients
@@ -29,6 +29,6 @@ const MyClients = (props) => {
       </ul>
     </>
   );
-};
+});
 
 export default MyClients;
