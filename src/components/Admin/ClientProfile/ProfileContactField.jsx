@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ProfileContactFieldWithHooks = (props) => {
+const ProfileContactField = (props) => {
   
   let [editMode, setEditMode] = useState(false);
   let [contactFieldValue, setContactFieldValue] = useState(props.contacts[props.contact]);
@@ -54,4 +54,4 @@ const ProfileContactFieldWithHooks = (props) => {
   
 }
 
-export default ProfileContactFieldWithHooks;
+export default ProfileContactField;

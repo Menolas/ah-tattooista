@@ -2,7 +2,7 @@ import React from 'react';
 import avatar from '../../../assets/img/avatar.webp';
 import yalkash from '../../../assets/img/yalkash.jpg';
 import Preloader from '../../common/Preloader';
-import ProfileContactFieldWithHooks from './ProfileContactFieldWithHooks';
+import ProfileContactField from './ProfileContactField';
 
 const Profile = (props) => {
   //debugger;
@@ -12,7 +12,7 @@ const Profile = (props) => {
 
   const contacts = Object.keys(props.profile.contacts).map(contact => {
     return (
-      <ProfileContactFieldWithHooks
+      <ProfileContactField
         key={contact}
         clientId={props.profile._id}
         contacts={props.profile.contacts}
