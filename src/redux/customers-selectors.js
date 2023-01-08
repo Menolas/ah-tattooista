@@ -1,6 +1,17 @@
+import { createSelector } from "reselect";
+
+//primitive selector
 export const getCustomers = (state) => {
   return state.customers.customers;
 }
+
+//reselect library selector
+
+export const getContactedCustomers = createSelector(getCustomers,
+  (customers) => {
+    return customers.filter(customer => customer.status === true);
+  }
+);
 
 export const getPageSize = (state) => {
   return state.customers.pageSize;
