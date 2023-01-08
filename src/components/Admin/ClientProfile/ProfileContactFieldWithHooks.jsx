@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ProfileContactFieldWithHooks = (props) => {
   
   let [editMode, setEditMode] = useState(false);
   let [contactFieldValue, setContactFieldValue] = useState(props.contacts[props.contact]);
+
+  useEffect(() => {
+    setContactFieldValue(props.contacts[props.contact]);
+  }, [props.contacts[props.contact]]);
 
   const activateEditMode = () => {
     setEditMode(true);
