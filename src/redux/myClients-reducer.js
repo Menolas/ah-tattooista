@@ -78,15 +78,15 @@ export const setIsFetching = (isFetching) => (
 
 // thunks
 
-export const getMyClientsThunkCreator = (pageSize, currentPage) => {
-  return (dispatch) => {
+export const getMyClientsThunkCreator = (pageSize, currentPage) => async (dispatch) => {
+  try {
     dispatch(setIsFetching(true));
-    clientsAPI.getClients(pageSize, currentPage)
-      .then(async (data) => {
-        await dispatch(setIsFetching(false));
-        await dispatch(setMyClients(data.resultClients));
-        dispatch(setMyClientsTotalCount(data.totalCount));
-      });
+    let response = await clientsAPI.getClients(pageSize, currentPage);
+    dispatch(setIsFetching(false));
+    await dispatch(setMyClients(response.resultClients));
+    dispatch(setMyClientsTotalCount(response.totalCount));
+  } catch (e) {
+    console.log(e);
   }
 }
 

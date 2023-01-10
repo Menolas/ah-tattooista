@@ -37,6 +37,20 @@ export const customersAPI = {
         //debugger;
         return response.data;
       });
+  },
+
+  addCustomer(
+    name,
+    contact,
+    contactValue,
+    message
+  ) {
+    return instance.post('customers', {
+      name,
+      contact,
+      contactValue,
+      message
+    });
   }
 
 }

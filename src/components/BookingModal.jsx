@@ -1,5 +1,6 @@
-import React from 'react';
+import { connect } from 'react-redux/es/exports';
 import BookingForm from './forms/BookingForm';
+import { closeBookingModal } from '../redux/modal-reducer';
 
 const BookingModal = (props) => {
 
@@ -16,7 +17,7 @@ const BookingModal = (props) => {
           <button
             className="close-button booking-modal__close-btn"
             onClick={closeBookingModal}></button>
-          <BookingForm />
+          <BookingForm consentId="consentModal" />
         </div>
       </div>
     );
@@ -25,4 +26,10 @@ const BookingModal = (props) => {
   }
 }
 
-export default BookingModal;
+let mapStateToProps = (state) => {
+  return {
+    bookingModal: state.modal.bookingModal,
+  };
+}
+
+export default connect(mapStateToProps, {closeBookingModal})(BookingModal);

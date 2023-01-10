@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux/es/exports';
+import { changeActiveStyle } from "../../redux/portfolio-reducer";
 
 const PortfolioSlider = (props) => {
 
   const handleStyleClick = (evt) => {
-    //debugger;
-    
     let style = evt.target.getAttribute('data');
-    props.handleStyleClick(style);
+    props.changeActiveStyle(style);
   };
 
   const PortfolioSliderItem = (props) => {
@@ -52,6 +52,13 @@ const PortfolioSlider = (props) => {
   );
 }
 
-export default PortfolioSlider;
 
-// Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render.
+let mapStateToProps = (state) => {
+  return {
+    tattooStyles: state.portfolio.tattooStyles,
+  };
+};
+
+const PortfolioSliderContainer = connect(mapStateToProps, {changeActiveStyle})(PortfolioSlider);
+
+export default PortfolioSliderContainer;

@@ -9,6 +9,8 @@ const Customers = (props) => {
         <Customer
           key={customer._id}
           customer={customer}
+          pageSize={props.pageSize}
+          currentPage={props.currentPage}
           isStatusChanging={props.isStatusChanging}
           changeCustomerStatusThunkCreator={props.changeCustomerStatusThunkCreator}
           unChangeCustomerStatusThunkCreator={props.unChangeCustomerStatusThunkCreator}

@@ -2167,4 +2167,14 @@ select {
     font-size: 14px;
     font-weight: 700;
   }
+}
+.success {
+  padding: 30px 70px 80px;
+  background-color: #080808;
+}
+.success .close-button {
+  margin-left: auto;
+}
+.success .close-button::before, .success .close-button::after {
+  background-color: #fafafa;
 }/*# sourceMappingURL=style.css.map */

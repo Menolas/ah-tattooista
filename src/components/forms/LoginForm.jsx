@@ -4,12 +4,10 @@ import { Form, Field } from 'react-final-form';
 import { required } from '../../utils/validators';
 import { login } from '../../redux/auth-reducer';
 import { Navigate } from 'react-router';
-import { FORM_ERROR } from 'final-form';
+//import { FORM_ERROR } from 'final-form';
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-const validate = (e) => {
-  //debugger;
-}
+//const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+//const validate = (e) => { };
 
 const LoginForm = (props) => {
 
@@ -23,7 +21,7 @@ const LoginForm = (props) => {
     //return { [FORM_ERROR]: 'Login Failed' }
     props.login(values.username, values.password);
   }
-  //debugger;
+  
   return (
     <Form
       onSubmit={onSubmit}

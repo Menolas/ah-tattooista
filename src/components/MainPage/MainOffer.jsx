@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux/es/exports';
+import { showBookingModal } from '../../redux/modal-reducer';
 
 const MainOffer = (props) => {
 
   const showBookConsultationModal = () => {
-    props.showBookConsultationModal();
+    props.showBookingModal();
   }
 
   return (
@@ -25,4 +27,4 @@ const MainOffer = (props) => {
   )
 }
 
-export default MainOffer;
+export default connect(null, { showBookingModal })(MainOffer);

@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from "classnames";
+import { connect } from 'react-redux/es/exports';
+import { changeActiveStyle } from '../../redux/portfolio-reducer';
 
 const TattooStyle = (props) => {
   const activeStyle = props.activeStyle;
@@ -7,7 +9,7 @@ const TattooStyle = (props) => {
 
   const handleStyleClick = (evt) => {
     let style = evt.target.getAttribute('data');
-    props.handleStyleClick(style);
+    props.changeActiveStyle(style);
   };
 
   const TattooStylesItem = (props) => {
@@ -29,16 +31,24 @@ const TattooStyle = (props) => {
   return (
     <section className="tattoo-style page-block container">
       <ul className="tattoo-style__list list" onClick={handleStyleClick}>
-        { tattooStylesArray }
+        {tattooStylesArray}
       </ul>
       <div className="tattoo-style__item-content">
-        <h2 className="title title--secondary page-block__title tattoo-style__title">{ activeStyleObject.writtenName }</h2>
+        <h2 className="title title--secondary page-block__title tattoo-style__title">{activeStyleObject.writtenName}</h2>
         <div className="tattoo-style__text">
-          { activeStyleObject.description }
-        </div>  
+          {activeStyleObject.description}
+        </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default TattooStyle;
+
+let mapStateToProps = (state) => {
+  return {
+    tattooStyles: state.portfolio.tattooStyles,
+    activeStyle: state.portfolio.activeStyle,
+  }
+}
+
+export default connect(mapStateToProps, { changeActiveStyle })(TattooStyle);

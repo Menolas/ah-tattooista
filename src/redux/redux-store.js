@@ -1,7 +1,7 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import portfolioReducer from './portfolio-reducer';
-import bookingReducer from './booking-reducer';
+import modalReducer from './modal-reducer';
 import mainPageReducer from './mainPage-reducer';
 import customersReducer from './customers-reducer';
 import myClientsReducer from './myClients-reducer';
@@ -13,7 +13,7 @@ import appReducer from './app-reducer';
 
 let reducers = combineReducers({
   portfolio: portfolioReducer,
-  booking: bookingReducer,
+  modal: modalReducer,
   mainPage: mainPageReducer,
   customers: customersReducer,
   myClients: myClientsReducer,
