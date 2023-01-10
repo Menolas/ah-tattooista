@@ -1,91 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import classNames from "classnames";
 
-class MainNav extends React.Component {
-  state = {
-    mainNavClasses: 'main-nav',
-    mainNavMenuModal: false,
-    mainNavList: [
-      {
-        text: 'Portfolio',
-        url: './portfolio',
-      },
-      {
-        text: 'Tattoo Artist',
-        url: './portfolio',
-      },
-      {
-        text: 'Studio Services',
-        url: './portfolio',
-      },
-      {
-        text: 'F.A.Q',
-        url: './portfolio',
-      },
-      {
-        text: 'Booking',
-        url: './portfolio',
-      },
-      {
-        text: 'Contacts',
-        url: './portfolio',
-      },
-    ]
-  }
+const MainNav =(props) => {
+  let [mainNavMenuModal, setMainMenu] = useState(false);
+  let [mainNavClasses, setMainNavClasses] = useState('main-nav');
+    
+  const mainNavList = [
+    {
+      text: 'Portfolio',
+      url: './portfolio',
+    },
+    {
+      text: 'Tattoo Artist',
+      url: './portfolio',
+    },
+    {
+      text: 'Studio Services',
+      url: './portfolio',
+    },
+    {
+      text: 'F.A.Q',
+      url: './portfolio',
+    },
+    {
+      text: 'Booking',
+      url: './portfolio',
+    },
+    {
+      text: 'Contacts',
+      url: './portfolio',
+    },
+  ];
 
-  openMenu = () => {
-    if (!this.state.mainNavMenuModal) {
-      this.setState(
-        {
-          mainNavMenuModal: true,
-          mainNavClasses: 'main-nav shown'
-        }
-      );
+  const openMenu = () => {
+    if (!mainNavMenuModal) {
+      setMainMenu(true);
+      setMainNavClasses('main-nav shown');
     } else {
-      this.setState(
-        {
-          mainNavMenuModal: false,
-          mainNavClasses: 'main-nav'
-        }
-      );
+      setMainMenu(false);
+      setMainNavClasses('main-nav');
     }
   };
 
-  closeMenu = () => {
-    this.setState(
-      { mainNavMenuModal: false }
-    );
-    this.state.mainNavClasses = 'main-nav';
-  }
+  const closeMenu = () => {
+    setMainMenu(false);
+    setMainNavClasses('main-nav');
+  };
 
-  mainNavItems = this.state.mainNavList.map((item, i) => {
+  const mainNavItems = mainNavList.map((item, i) => {
     return (
       <li className = "main-nav__item" key = { i }>
         <NavLink
           to = { item.url }
           className = "main-nav__link"
-          onClick = { this.closeMenu }>
+          onClick = { closeMenu }>
           { item.text }
         </NavLink>
       </li>
     )
   });
+ 
+  return (
+    <nav className={ mainNavClasses } >
+      <div
+        className="hamburger"
+        onClick={ openMenu }>
+        <span></span>
+      </div>
+      <ul className="list main-nav__list">
+        { mainNavItems }
+      </ul>
+    </nav>
+  );
   
-  render() {
-    return (
-      <nav className={ this.state.mainNavClasses } >
-        <div
-          className="hamburger"
-          onClick={ this.openMenu }>
-          <span></span>
-        </div>
-        <ul className="list main-nav__list">
-          { this.mainNavItems }
-        </ul>
-      </nav>
-    );
-  }
 };
 
 export default MainNav;

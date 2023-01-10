@@ -23,7 +23,7 @@ const Header = (props) => {
           <NavLink to="/admin/customers" className="main-header__admin-link">
             <svg><use href={`${Sprite}#admin`}></use></svg>
           </NavLink>
-          <NavLink to="/" className="main-header__admin-link" onClick={props.logout}>
+          <NavLink to="/" className="main-header__admin-link" onClick={() => { props.logout(props.userId) }}>
             <svg><use href={`${Sprite}#logout`}></use></svg>
           </NavLink>
         </>
