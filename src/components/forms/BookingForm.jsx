@@ -1,16 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux/es/exports';
 import { Form, Field } from 'react-final-form';
 import { composeValidators, required, minLengthCreator, maxLengthCreator } from '../../utils/validators';
+import { addCustomer } from '../../redux/customers-reducer';
 
 const BookingForm = (props) => {
 
+  const onSubmit = async values => {
+    console.log(values);
+    props.addCustomer(
+      values.name,
+      values.contact,
+      values.contactValue,
+      values.message,
+    );
+  }
+
   return (
     <Form
-      onSubmit={(values) => { console.log(values) }}
+      onSubmit={onSubmit}
       render={renderProps => {
 
         const {
-          handleSubmit
+          handleSubmit,
+          submitError,
+          submitting,
+          consentId,
+          values
         } = renderProps;
         
         return (
@@ -35,16 +51,23 @@ const BookingForm = (props) => {
               )}
             </Field>
             <div className="form__input-wrap booking__input-wrap">
-              <label>Choose the way you want me to contact you</label>
               <Field
                 name="contact"
                 component="select"
-                placeholder="Choose your contact"
+                validate={required}
               >
-                <option value="email">email</option>
-                <option value="phone">phone</option>
-                <option value="whatsapp">whatsapp</option>
-                <option value="messenger">messenger</option>
+                {({ input, meta }) => (
+                  <>
+                    <select {...input}>
+                      <option>Choose the way you want me to contact you</option>
+                      <option value="email">email</option>
+                      <option value="phone">phone</option>
+                      <option value="whatsapp">whatsapp</option>
+                      <option value="messenger">messenger</option>
+                    </select>
+                    {meta.error && meta.touched && <span className="form__error">{meta.error}</span>}
+                  </>
+                )}
               </Field>
             </div>
             <Field
@@ -77,8 +100,8 @@ const BookingForm = (props) => {
             >
               {({ input, meta }) => (
                 <div className="form__input-wrap form__input-wrap--checkbox">
-                  <input {...input} id="consent" />
-                  <label htmlFor="consent">
+                  <input {...input} id={props.consentId} />
+                  <label htmlFor={props.consentId}>
                     <span className="checkbox"></span>
                     CONSENT WITH PROCESSING OF MY PERSONAL DATA
                   </label>
@@ -86,8 +109,13 @@ const BookingForm = (props) => {
                 </div>
               )}
             </Field>
+            {
+              submitError &&
+              <span className="form__error">{submitError}</span>
+            }
             <button
               type="submit"
+              disabled={submitting}
               className="btn btn--transparent form__submit-btn booking__submit-btn"
             >
               BOOK A CONSULTATION
@@ -99,4 +127,4 @@ const BookingForm = (props) => {
   );
 }
 
-export default BookingForm;
+export default connect(null, {addCustomer})(BookingForm);

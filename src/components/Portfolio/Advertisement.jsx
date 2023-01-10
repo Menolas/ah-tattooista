@@ -1,11 +1,13 @@
 import React from 'react';
 import Sprite from '../../assets/svg/sprite.svg';
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux/es/exports';
+import { showBookingModal } from '../../redux/modal-reducer';
 
 const Advertisement = (props) => {
 
   const showBookConsultationModal = () => {
-    props.showBookConsultationModal();
+    props.showBookingModal();
   }
 
   return (
@@ -41,4 +43,4 @@ const Advertisement = (props) => {
   )
 }
 
-export default Advertisement;
+export default connect(null, {showBookingModal})(Advertisement);

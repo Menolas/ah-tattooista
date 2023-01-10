@@ -118,21 +118,23 @@ const portfolioReducer = (state = initialState, action) => {
   }
 }
 
-export const changeActiveStyleActionCreator = (style) => (
+//action creators
+
+export const changeActiveStyle = (style) => (
   {
     type: CHANGE_ACTIVE_STYLE,
     style: style,
   }
 );
 
-export const showGalleryLargeImageActionCreator = (img) => (
+export const showGalleryLargeImage = (img) => (
   {
     type: SHOW_GALLERY_LARGE_IMAGE,
     img: img,
   }
 );
 
-export const closeGalleryLargeImageActionCreator = () => (
+export const closeGalleryLargeImage = () => (
   {
     type: CLOSE_LARGE_IMAGE,
   }

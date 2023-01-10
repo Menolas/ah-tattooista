@@ -111,7 +111,7 @@ const mainPageReducer = (state = initialState, action) => {
   }
 };
 
-export const showFaqItemTextActionCreator = (index) => (
+export const showFaqItemText = (index) => (
   {
     type: SHOW_FAQ_ITEM_TEXT,
     index: index,

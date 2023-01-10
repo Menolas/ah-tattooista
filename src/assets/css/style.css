@@ -1965,6 +1965,7 @@ svg {
   margin: auto;
   padding: 80px 60px;
   width: 100%;
+  max-width: 615px;
   background-image: url("../img/form-background.png");
   background-repeat: no-repeat;
   background-color: #fafafa;
@@ -2166,4 +2167,14 @@ select {
     font-size: 14px;
     font-weight: 700;
   }
+}
+.success {
+  padding: 30px 70px 80px;
+  background-color: #080808;
+}
+.success .close-button {
+  margin-left: auto;
+}
+.success .close-button::before, .success .close-button::after {
+  background-color: #fafafa;
 }/*# sourceMappingURL=style.css.map */

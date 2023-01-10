@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux/es/exports';
 
 const Services = (props) => {
 
@@ -48,4 +49,10 @@ const Services = (props) => {
   );
 }
 
-export default Services;
+let mapStateToProps = (state) => {
+  return {
+    services: state.mainPage.services,
+  };
+};
+
+export default connect(mapStateToProps, {})(Services);

@@ -1,4 +1,5 @@
 import { customersAPI } from '../api/customerApi';
+import { showSuccessModal } from './modal-reducer';
 
 const CUSTOMER_CONTACTED = 'CUSTOMER_CONTACTED';
 const CUSTOMER_NOT_CONTACTED = 'CUSTOMER_NOT_CONTACTED';
@@ -157,58 +158,80 @@ export const deleteCustomer = (customerId) => (
 
 // thunks
 
-export const getCustomersThunkCreator = (pageSize, currentPage) => {
-
-  return (dispatch) => {
-    dispatch(setIsFetching(true));
-    customersAPI.getCustomers(pageSize, currentPage)
-      .then(async (data) => {
-        //debugger;
-        await dispatch(setIsFetching(false));
-        await dispatch(setCustomers(data.resultCustomers));
-        dispatch(setCustomersTotalCount(data.totalCount));
-      });
+export const getCustomersThunkCreator = (pageSize, currentPage) => async(dispatch) => {
+  dispatch(setIsFetching(true));
+  try {
+    let response = await customersAPI.getCustomers(pageSize, currentPage);
+    dispatch(setIsFetching(false));
+    dispatch(setCustomers(response.resultCustomers));
+    dispatch(setCustomersTotalCount(response.totalCount));
+  } catch (e) {
+    console.log(e);
   }
 }
 
-export const changeCustomerStatusThunkCreator = (customerId) => {
-  return (dispatch) => {
-    dispatch(toggleIsStatusChanging(true, customerId));
-    customersAPI.contactCustomer(customerId)
-      .then(data => {
-        if (data) {
-          dispatch(changeCustomerStatus(customerId));
-          dispatch(toggleIsStatusChanging(false, customerId))
-        }
-      });
+export const changeCustomerStatusThunkCreator = (customerId) => async(dispatch) => {
+  dispatch(toggleIsStatusChanging(true, customerId));
+  
+  try {
+    let response = await customersAPI.contactCustomer(customerId);
+    if (response) {
+      dispatch(changeCustomerStatus(customerId));
+      dispatch(toggleIsStatusChanging(false, customerId))
+    }
+  } catch (e) {
+    console.log(e);
   }
 }
 
-export const unChangeCustomerStatusThunkCreator = (customerId) => {
+export const unChangeCustomerStatusThunkCreator = (customerId) => async (dispatch) => {
+  dispatch(toggleIsStatusChanging(true, customerId));
+  try {
+    let response = await customersAPI.unContactCustomer(customerId);
+    if (response) {
+      dispatch(unChangeCustomerStatus(customerId));
+      dispatch(toggleIsStatusChanging(false, customerId))
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export const deleteCustomerThunkCreator = (customerId, pageSize, currentPage) => async (dispatch) => {
+  dispatch(toggleIsCustomerDeletingInProcess(true, customerId));
+
+  try {
+    let response = await customersAPI.deleteCustomer(customerId);
+    if (response.message === "Customer Deleted") {
+      await dispatch(deleteCustomer(customerId));
+      await dispatch(toggleIsCustomerDeletingInProcess(false, customerId));
+      await dispatch(getCustomersThunkCreator(pageSize, currentPage));
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export const addCustomer = (
+  name,
+  contact,
+  contactValue,
+  message
+) => async (dispatch) => {
   //debugger;
-  return (dispatch) => {
-    dispatch(toggleIsStatusChanging(true, customerId));
-    customersAPI.unContactCustomer(customerId)
-      .then(data => {
-        if (data) {
-          dispatch(unChangeCustomerStatus(customerId));
-          dispatch(toggleIsStatusChanging(false, customerId))
-        }
-      });
+  try {
+    let response = await customersAPI.addCustomer(
+      name,
+      contact,
+      contactValue,
+      message);
+    if (response) {
+      dispatch(showSuccessModal());
+    }
+  } catch (e) {
+    console.log(e);
   }
-}
 
-export const deleteCustomerThunkCreator = (customerId) => {
-  return (dispatch) => {
-    dispatch(toggleIsCustomerDeletingInProcess(true, customerId));
-    customersAPI.deleteCustomer(customerId)
-      .then(data => {
-        if (data.message === "Deleted Customer") {
-          dispatch(deleteCustomer(customerId));
-          dispatch(toggleIsCustomerDeletingInProcess(false, customerId));
-        }
-      });
-  }
 }
 
 export default customersReducer;

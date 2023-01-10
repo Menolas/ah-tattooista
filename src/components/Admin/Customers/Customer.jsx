@@ -48,7 +48,10 @@ const Customer = (props) => {
           disabled={props.isCustomerDeletingInProcess.some(id => id === props.customer._id)}
           onClick={() => {
             //debugger;
-            props.deleteCustomerThunkCreator(props.customer._id)
+            props.deleteCustomerThunkCreator(
+              props.customer._id,
+              props.pageSize,
+              props.currentPage)
           }}
         >Delete</button>
       </div>

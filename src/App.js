@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import Portfolio from './components/Portfolio/Portfolio';
 import MainPage from './components/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
-import BookingModalContainer from './components/BookingModalContainer';
+import BookingModal from './components/BookingModal';
 import Admin from './components/Admin/Admin';
 import HeaderContainer from './components/Header/HeaderContainer';
 import CustomersContainer from './components/Admin/Customers/CustomersContainer';
@@ -15,6 +15,7 @@ import ProfileContainer from './components/Admin/ClientProfile/ProfileContainer'
 import Login from './components/Login';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader';
+import SuccessModal from './components/SuccessModal';
 
 class App extends Component {
 
@@ -52,7 +53,8 @@ class App extends Component {
             element={<Login />} />
         </Routes>
         <Footer />
-        <BookingModalContainer />
+        <BookingModal />
+        <SuccessModal />
       </div>
     );
   }

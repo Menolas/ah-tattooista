@@ -1,6 +1,53 @@
+import React from "react";
+import classNames from "classnames";
 import { connect } from 'react-redux/es/exports';
-import { showFaqItemTextActionCreator } from "../../redux/mainPage-reducer";
-import Faq from './Faq';
+import { showFaqItemText } from "../../redux/mainPage-reducer";
+
+const Faq = (props) => {
+
+  const onFaqItemHover = (evt) => {
+    const index = evt.currentTarget.getAttribute('data');
+    props.showFaqItemText(index);
+  }
+  
+  const FaqItem = (props) => {
+    
+    let faqItemClasses = classNames('faq__item', {'shown': props.faqActive == props.data});
+    
+    return (
+      <li
+        className = { faqItemClasses }
+        data={props.data}
+        onMouseOver = { onFaqItemHover }>
+        <div className = "faq__item-header">
+          <span className = "faq__item-handle"></span>
+          <h5 className = "faq__item-title">
+            { props.question }
+          </h5>
+        </div>
+        <p className = "faq__item-text">
+          { props.answer }
+        </p>
+      </li>
+    );
+  };
+
+  const faqArray = props.faq.map((item, i) => {
+    return (
+      <FaqItem question={item.question} answer={item.answer} key={i} data={i + 1} faqActive={props.faqActive} />
+    )
+  });
+
+  return (
+    <section className = "page-block faq container">
+      <h2 className = "page-block__title">F.A.Q</h2>
+      <ul className = "faq__list list">
+        { faqArray }
+      </ul>
+    </section>
+  )
+}
+
 
 let mapStateToProps = (state) => {
   return {
@@ -9,14 +56,4 @@ let mapStateToProps = (state) => {
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    onFaqItemHover: (index) => {
-      dispatch(showFaqItemTextActionCreator(index));
-    },
-  }
-}
-
-const FaqContainer = connect(mapStateToProps, mapDispatchToProps)(Faq);
-
-export default FaqContainer;
+export default connect(mapStateToProps, { showFaqItemText })(Faq);

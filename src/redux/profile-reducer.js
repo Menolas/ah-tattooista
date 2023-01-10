@@ -43,30 +43,30 @@ const setContactFieldValue = (profile) => (
 
 // thunks
 
-export const getClientProfileThunkCreator = (clientId) => {
-  return (dispatch) => {
-    clientsAPI.getClientProfile(clientId)
-      .then((data) => {
-        if (data) {
-          dispatch(setMyClientProfile(data));
-        }
-      });
+export const getClientProfileThunkCreator = (clientId) => async (dispatch) => {
+  try {
+    let response = await clientsAPI.getClientProfile(clientId);
+    if (response) {
+      await dispatch(setMyClientProfile(response));
+    }
+  } catch (e) {
+    console.log(e);
   }
 }
 
 export const updateContactFieldThunkCreator = (
   clientId,
   contactTitle,
-  contactFieldValue) => {
-
-  return (dispatch) => {
-    clientsAPI.updateContactField(clientId, contactTitle, contactFieldValue)
-      .then((data) => {
-        if (data) {
-          dispatch(setContactFieldValue(data));
-        }
-      });
-  }
+  contactFieldValue) => async (dispatch) => {
+    
+    try {
+      let response = await clientsAPI.updateContactField(clientId, contactTitle, contactFieldValue);
+      if (response) {
+        dispatch(setContactFieldValue(response));
+      }
+    } catch (e) {
+      console.log(e);
+    }
 }
 
 export default profileReducer;

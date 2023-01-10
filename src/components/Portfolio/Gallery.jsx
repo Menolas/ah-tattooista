@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux/es/exports';
+import { showGalleryLargeImage, closeGalleryLargeImage } from '../../redux/portfolio-reducer';
 
 const Gallery = (props) => {
 
@@ -46,7 +48,18 @@ const Gallery = (props) => {
       }
       
     </section>
-  )
+  );
 }
 
-export default Gallery;
+let mapStateToProps = (state) => {
+  return {
+    activeStyle: state.portfolio.activeStyle,
+    gallery: state.portfolio.gallery,
+    imgLargeUrl: state.portfolio.imgLargeUrl,
+  }
+}
+
+export default connect(mapStateToProps, {
+  showGalleryLargeImage,
+  closeGalleryLargeImage
+})(Gallery);
