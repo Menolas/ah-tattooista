@@ -1,5 +1,5 @@
 import { customersAPI } from '../api/customerApi';
-import { showSuccessModal } from './modal-reducer';
+import { showSuccessModal, closeBookingModal } from './modal-reducer';
 
 const CUSTOMER_CONTACTED = 'CUSTOMER_CONTACTED';
 const CUSTOMER_NOT_CONTACTED = 'CUSTOMER_NOT_CONTACTED';
@@ -226,6 +226,7 @@ export const addCustomer = (
       contactValue,
       message);
     if (response) {
+      dispatch(closeBookingModal());
       dispatch(showSuccessModal());
     }
   } catch (e) {

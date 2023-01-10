@@ -50,7 +50,7 @@ export const getAuthAdminData = (token) => async (dispatch) => {
   
   try {
     let response = await authAPI.me(token);
-    if (response.data.results.auth === true) {
+    if (response.data.user) {
       dispatch(setAuth(true));
     }
   } catch (e) {
@@ -73,13 +73,16 @@ export const login = (username, password) => async (dispatch) => {
 
 }
 
-export const logout = () => {
+export const logout = (userId) => async (dispatch) => {
   //debugger;
-  return (dispatch) => {
-    
-    dispatch(setAdminData(null, null, null, null));
-    dispatch(setAuth(false));
-    
+  try {
+    let response = await authAPI.logout(userId);
+    if (response.data === 0) {
+      dispatch(setAdminData(null, null, null, null));
+      dispatch(setAuth(false));
+    }
+  } catch (e) {
+    console.log(e);
   }
 }
 
