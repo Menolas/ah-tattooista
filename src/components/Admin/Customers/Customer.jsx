@@ -44,6 +44,7 @@ const Customer = (props) => {
             ? 'Contact'
             : 'Done' }
         </button>
+        <button>Add to My Clients</button>
         <button
           disabled={props.isCustomerDeletingInProcess.some(id => id === props.customer._id)}
           onClick={() => {

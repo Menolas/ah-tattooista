@@ -10,7 +10,7 @@ const Portfolio = (props) => {
     <main className="site-main">
       <TattooStyles />
       <Advertisement />
-      <Gallery />
+      {/* <Gallery /> */}
       <Contacts />
     </main>
   );

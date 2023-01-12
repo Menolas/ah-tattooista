@@ -1,52 +1,14 @@
+import { galleryApi } from '../api/galleryApi';
+
+const SET_STYLES = 'SET_STYLES';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const CHANGE_ACTIVE_STYLE = 'CHANGE_ACTIVE_STYLE';
 const SHOW_GALLERY_LARGE_IMAGE = 'SHOW_GALLERY_LARGE_IMAGE';
 const CLOSE_LARGE_IMAGE = 'CLOSE_LARGE_IMAGE';
-const BLACK_WORK = 'BLACK_WORK';
-const BLACK_AND_GRAY = 'BLACK_AND_GRAY';
-const FINE_LINE = 'FINE_LINE';
-const NEO_TRADITION = 'NEO_TRADITION';
-const REALISTIC = 'REALISTIC';
-const DESIGNS = 'DESIGNS';
 
 let initialState = {
-  tattooStyles: [
-    {
-      style: BLACK_WORK,
-      writtenName: "BlackWork",
-      img: "blackWork.jpg",
-      description: "blackWork ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      style: BLACK_AND_GRAY,
-      writtenName: "Black&Gray",
-      img: "blackAndGray.jpg",
-      description: "blackGray ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
-    },
-    {
-      style: FINE_LINE,
-      writtenName: "FineLine",
-      img: "fineLine.jpg",
-      description: "fineLine ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      style: NEO_TRADITION,
-      writtenName: "NeoTradition",
-      img: "neoTraditional.jpg",
-      description: "neoTradition ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      style: REALISTIC,
-      writtenName: "Realistic",
-      img: "realistic.jpg",
-      description: "neoTradition ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      style: DESIGNS,
-      writtenName: "Designs",
-      img: "realistic.jpg",
-      description: "designes ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },  
-  ],
+  isFetching: false,
+  tattooStyles: [],
   gallery: {
     BLACK_AND_GRAY: [
       '1.jpg',
@@ -80,7 +42,7 @@ let initialState = {
       'realistic.jpg',
     ]
   },
-  activeStyle: NEO_TRADITION,
+  activeStyle: null,
   imgLargeUrl: '', 
 }
 
@@ -89,11 +51,24 @@ const portfolioReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
-    case CHANGE_ACTIVE_STYLE:
-      console.log(action.style);
+    case TOGGLE_IS_FETCHING:
       return {
         ...state,
-        activeStyle: action.style,
+        isFetching: action.isFetching,
+      }
+
+    case SET_STYLES:
+      return {
+        ...state,
+        tattooStyles: action.tattooStyles
+      }
+
+    case CHANGE_ACTIVE_STYLE:
+      const activeStyle = [...state.tattooStyles].filter(style => style._id === action.styleId)[0];
+      
+      return {
+        ...state,
+        activeStyle: activeStyle,
       };
     
     case SHOW_GALLERY_LARGE_IMAGE:
@@ -120,17 +95,27 @@ const portfolioReducer = (state = initialState, action) => {
 
 //action creators
 
-export const changeActiveStyle = (style) => (
+export const setIsFetching = (isFetching) => (
   {
-    type: CHANGE_ACTIVE_STYLE,
-    style: style,
+    type: TOGGLE_IS_FETCHING, isFetching,
+  }
+);
+
+export const setTattooStyles = (tattooStyles) => (
+  {
+    type: SET_STYLES, tattooStyles
+  }
+);
+
+export const changeActiveStyle = (styleId) => (
+  {
+    type: CHANGE_ACTIVE_STYLE, styleId,
   }
 );
 
 export const showGalleryLargeImage = (img) => (
   {
-    type: SHOW_GALLERY_LARGE_IMAGE,
-    img: img,
+    type: SHOW_GALLERY_LARGE_IMAGE, img,
   }
 );
 
@@ -139,5 +124,19 @@ export const closeGalleryLargeImage = () => (
     type: CLOSE_LARGE_IMAGE,
   }
 );
+
+
+//thunks
+
+export const getTattooStyles = () => async (dispatch) => {
+  dispatch(setIsFetching(true));
+  try {
+    let response = await galleryApi.getCategories(); 
+    dispatch(setTattooStyles(response.data));
+    dispatch(setIsFetching(false));
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 export default portfolioReducer;
