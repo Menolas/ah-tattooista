@@ -43,6 +43,10 @@ svg {
   fill: #fafafa;
 }
 
+* {
+  scrollbar-width: thin;
+}
+
 .background-wrap {
   margin: 0 auto;
   width: 1440px;
